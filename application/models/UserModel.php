@@ -7,11 +7,6 @@
             parent::__construct();
             $this->load->database();
         }
-    
-        public function getAll($input = null){
-            $result = $this->get_all()->get()->result_array();
-            return $result;
-        }
 
         /*public function created($data){
             return $this->insert($data);

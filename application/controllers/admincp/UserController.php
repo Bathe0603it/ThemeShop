@@ -13,7 +13,7 @@
         }
     
         public function index(){
-            $getall = $this->usermodel->getAll();
+            $getall = $this->usermodel->get_all();
             $data['getall'] = $getall;
             $this->loadview($this->view,$data);
         }
