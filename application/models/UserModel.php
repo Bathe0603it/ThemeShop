@@ -8,6 +8,11 @@
             $this->load->database();
         }
 
+        public function create(){
+            $input = $this->input->post();
+            
+        }
+
         /*public function created($data){
             return $this->insert($data);
         }*/
