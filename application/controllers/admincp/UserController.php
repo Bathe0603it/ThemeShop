@@ -30,6 +30,13 @@
         }
         private function postCreate(){
             // xu ly formvalidate
+            $input  = $this->input->post();
+            if ($this->form_validation->run('user_create')) {
+                dd($input);
+            }
+            else{
+                
+            }
             
             // neu ok
             

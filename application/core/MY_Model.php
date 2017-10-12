@@ -173,7 +173,7 @@ class MY_Model extends CI_Model
         if (!empty($params)) {
             $this->db->select($params);
         }
-        return $this->db->from($this->table)->result_array();
+        return $this->db->from($this->table)->get()->result_array();
     }
 
     public function get_by_all($params = null)
