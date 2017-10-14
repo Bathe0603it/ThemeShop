@@ -190,7 +190,10 @@ class MY_Model extends CI_Model
      */
     public function insert($data, $skip_validation = FALSE)
     {
-        $this->db->insert($this->table,$data);
+        foreach ($data as $key => $value) {
+            $arr_input[strtolower($key)]  = $value;
+        }
+        $this->db->insert($this->table,$arr_input);
         return $insert_id = $this->db->insert_id(); // tra ve id hien tai gui len
     }
 
@@ -201,7 +204,10 @@ class MY_Model extends CI_Model
     {
         $arr = null;
         foreach ($data as $key => $value) {
-            $arr[] = $this->db->insert($this->table,$value);
+            foreach ($value as $key_strto => $value_strto) {
+                $arr_input[strtolower($key_strto)]  = $value_strto;
+            }
+            $arr[] = $this->db->insert($this->table,$arr_input);
         }
         return $arr;
     }
