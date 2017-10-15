@@ -27,7 +27,7 @@
             $this->method   = $this->router->fetch_method();
         }
          
-        function loadview($url = null ,$data = null){
+        function loadView($url = null ,$data = null){
             $data['view']  = !empty($url)?$url:$this->view;
             $this->load->view('admincp/layout/index',$data);
         }

@@ -5,17 +5,17 @@
      * function action login admin
      * 
      * */
-    class RuleController extends MY_Controller
+    class RoleController extends MY_Controller
     {
         public function __construct(){
             parent::__construct();
-            $this->load->model('rulemodel');
+            $this->load->model('RoleModel');
         }
     
         public function index(){
-            $getall = $this->usermodel->get_all();
+            $getall = $this->RoleModel->getAll();
             $data['getall'] = $getall;
-            $this->loadview($this->view,$data);
+            $this->loadView($this->view,$data);
         }
         
         public function edit(){
@@ -26,8 +26,9 @@
             if (is_post()) {
                 $this->postCreate();
             }
-            $this->loadview($this->view);
+            $this->loadView($this->view);
         }
+        
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();

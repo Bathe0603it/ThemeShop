@@ -34,4 +34,20 @@
             );
         }
     }
+
+    if(!function_exists('getGroupSystem')){
+        function getGroupSystem($input = null){
+            $arr = array(
+                'Cửa hàng của bạn',
+                'Nội dung',
+                'Cấu hình',
+            );
+            if (!empty($input) || $input == 0) {
+                if (array_key_exists($input, $arr)) {
+                    return $arr[$input];
+                }
+            }
+            return $arr;
+        }
+    }
 ?>

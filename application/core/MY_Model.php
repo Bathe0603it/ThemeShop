@@ -50,14 +50,14 @@ class MY_Model extends CI_Model
         return $result;
     }
 
-    public function get_info($primary_value = null){
+    public function getInfo($primary_value = null){
         if (empty($primary_value)) {
             return $this->db->from($this->table);
         }
         return $this->get_where(array($this->primary_key => $primary_value));
     }
 
-    public function get_where($params,$params2 = null)
+    public function getWhere($params,$params2 = null)
     {
         $result = $this->db->from($this->table);
         $this->db->where($params)->get();
@@ -67,13 +67,13 @@ class MY_Model extends CI_Model
         return $this->db->row_array();        
     }
 
-    public function get_by_where($params,$params2 = null)
+    public function getByWhere($params,$params2 = null)
     {
         $result = $this->db->from($this->table);
         return $this->db->where($params);    
     }
 
-    public function get_like($params,$params2 = null)
+    public function getLike($params,$params2 = null)
     {
         $result = $this->db->from($this->table);
         $this->db->like($params)->get();
@@ -83,7 +83,7 @@ class MY_Model extends CI_Model
         return $this->db->row_array();
     }
 
-    public function get_by_like($params,$params2 = null){
+    public function getByLike($params,$params2 = null){
         $result = $this->db->from($this->table);
         foreach ($params as $key => $value) {
             if (isset($value[2])) {
@@ -96,7 +96,7 @@ class MY_Model extends CI_Model
         return $this->db;  
     }
 
-    public function get_by($params = null){
+    public function getBy($params = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
@@ -142,7 +142,7 @@ class MY_Model extends CI_Model
     /**
      * Fetch an array of records based on an array of primary values.
      */
-    public function get_many($values)
+    public function getMany($values)
     {
         return $this->db->from($this->table)->where_in($this->primary_key,$values);
     }
@@ -168,7 +168,7 @@ class MY_Model extends CI_Model
      * Fetch all the records in the table. Can be used as a generic call
      * to $this->_database->get() with scoped methods.
      */
-    public function get_all($params = null)
+    public function getAll($params = null)
     {
         if (!empty($params)) {
             $this->db->select($params);
@@ -176,7 +176,7 @@ class MY_Model extends CI_Model
         return $this->db->from($this->table)->get()->result_array();
     }
 
-    public function get_by_all($params = null)
+    public function getByAll($params = null)
     {
         if (!empty($params)) {
             $this->db->select($params);
@@ -200,7 +200,7 @@ class MY_Model extends CI_Model
     /**
      * Insert multiple rows into the table. Returns an array of multiple IDs.
      */
-    public function insert_many($data)
+    public function insertMany($data)
     {
         $arr = null;
         foreach ($data as $key => $value) {
@@ -222,7 +222,7 @@ class MY_Model extends CI_Model
                             ->update($this->table);
     }
 
-    public function update_where($where, $data)
+    public function updateWhere($where, $data)
     {
         return $result = $this->db->set($data)
                                     ->where($where)
@@ -232,7 +232,7 @@ class MY_Model extends CI_Model
     /**
      * Update many records, based on an array of primary values.
      */
-    public function update_many_where($primary_values, $data)
+    public function updateManyWhere($primary_values, $data)
     {
         return $result = $this->db->set($data)
                                     ->where_in($this->primary_key,$primary_value)
@@ -242,7 +242,7 @@ class MY_Model extends CI_Model
     /**
      * Update all records
      */
-    public function update_all($data)
+    public function updateAll($data)
     {
         return $result = $this->db->set($data)->update($this->table);
                                     
@@ -264,7 +264,7 @@ class MY_Model extends CI_Model
     /**
      * Delete a row from the database table by an arbitrary WHERE clause
      */
-    public function delete_where($where,$destroy = null)
+    public function deleteWhere($where,$destroy = null)
     {
         if (!empty($destroy)) {
             return $this->update_where($where,array('status'=>'trash'));
@@ -275,7 +275,7 @@ class MY_Model extends CI_Model
     /**
      * Delete many rows from the database table by multiple primary values
      */
-    public function delete_many($primary_values)
+    public function deleteMany($primary_values)
     {
         return $this->db->where_in($this->primary_key, $primary_values)->from($this->table);
     }
@@ -283,7 +283,7 @@ class MY_Model extends CI_Model
     /**
      * Fetch a count of rows based on an arbitrary WHERE call.
      */
-    public function count_where($where)
+    public function countWhere($where)
     {
         // lay du lieu bang co dieu kien where
         return $this->db->select($this->primary_key)->where($where)->get($this->table)->num_rows();
@@ -293,7 +293,7 @@ class MY_Model extends CI_Model
      * Fetch a total count of rows, disregarding any previous conditions
      * lay tong so hang bo qua bat cu dieu kien where nao truoc
      */
-    public function count_all()
+    public function countAll()
     {
         return $this->db->select($this->primary_key)->get($this->table)->num_rows();
     }
@@ -302,7 +302,7 @@ class MY_Model extends CI_Model
      * Return the next auto increment of the table. Only tested on MySQL.
      * Tim hieu lay ban ghi tiep theo trong database
      */
-    public function get_next_id()
+    public function getNextId()
     {
         return (int) $this->db->select('AUTO_INCREMENT')
             ->from('information_schema.TABLES')
@@ -429,7 +429,7 @@ class MY_Model extends CI_Model
     /**
      * Set WHERE parameters, cleverly
      */
-    protected function set_where($params,$params2 = null)
+    protected function setWhere($params,$params2 = null)
     {
         if (!empty($params2)) {
             $this->where($param,$params2);
@@ -444,7 +444,7 @@ class MY_Model extends CI_Model
     /**
      * Set Like parameters, cleverly
      */
-    protected function set_like($params,$params2 = null)
+    protected function setLike($params,$params2 = null)
     {
         if (!empty($params2)) {
             $this->like($param,$params2);

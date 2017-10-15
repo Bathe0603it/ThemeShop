@@ -25,7 +25,7 @@ $config = array(
 
     'user_create' => array(
         array(
-            'field' => 'fullname',
+            'field' => 'FullName',
             'label' => 'Thông tin tên',
             'rules' => 'trim|required|max_length[100]',
             'errors' => array(
@@ -34,7 +34,7 @@ $config = array(
                 )),
 
         array(
-            'field' => 'email',
+            'field' => 'Email',
             'label' => 'Thông tin Email',
             'rules' => 'trim|required|min_length[6]|max_length[100]|valid_email|is_unique[user.email]',
             'errors' => array(
@@ -45,7 +45,7 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 100')),
 
         array(
-            'field' => 'phonenumber',
+            'field' => 'Tel',
             'label' => 'Thông tin số điện thoại',
             'rules' => 'trim|min_length[9]|max_length[15]',
             'errors' => array(
@@ -53,7 +53,7 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 15')),
 
         array(
-            'field' => 'address',
+            'field' => 'Address',
             'label' => 'Thông tin địa chỉ',
             'rules' => 'trim|required|min_length[6]|max_length[255]',
             'errors' => array(
@@ -62,19 +62,19 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 255')),
 
         array(
-            'field' => 'description',
+            'field' => 'Description',
             'label' => 'Mô tả',
             'rules' => 'trim',
             'errors' => array()),
 
         array(
-            'field' => 'receive',
+            'field' => 'Receive',
             'label' => 'Nhận thông tin về email',
             'rules' => 'trim',
             'errors' => array()),
 
         array(
-            'field' => 'password',
+            'field' => 'Password',
             'label' => 'Password',
             'rules' => 'trim|required|min_length[6]|max_length[80]',
             'errors' => array(
@@ -83,20 +83,20 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 80')),
 
         array(
-            'field' => 'confirmpassword',
-            'label' => 'Password không khớp',
-            'rules' => 'trim|required|min_length[6]|max_length[80]|matches[password]',
+            'field' => 'ConfirmPassword',
+            'label' => 'Password',
+            'rules' => 'trim|required|min_length[6]|max_length[80]|matches[Password]',
             'errors' => array(
                 'required' => '%s không được để trống.',
                 'min_length' => '%s phải có số ký tự tối thiểu là 6',
-                'matches'   => '%s password không khớp',
+                'matches'   => '%s không khớp nhau',
                 'max_length' => '%s có số ký tự tối đa là 80')),
 
     ),
 
     'user_edit' => array(
         array(
-            'field' => 'fullname',
+            'field' => 'FullName',
             'label' => 'Thông tin tên',
             'rules' => 'trim|required|max_length[100]',
             'errors' => array(
@@ -105,7 +105,7 @@ $config = array(
                 )),
 
         array(
-            'field' => 'phonenumber',
+            'field' => 'Tel',
             'label' => 'Thông tin số điện thoại',
             'rules' => 'trim|min_length[9]|max_length[15]',
             'errors' => array(
@@ -113,7 +113,7 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 15')),
 
         array(
-            'field' => 'address',
+            'field' => 'Address',
             'label' => 'Thông tin địa chỉ',
             'rules' => 'trim|required|min_length[6]|max_length[255]',
             'errors' => array(
@@ -122,19 +122,19 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 255')),
 
         array(
-            'field' => 'description',
+            'field' => 'Description',
             'label' => 'Mô tả',
             'rules' => 'trim',
             'errors' => array()),
 
         array(
-            'field' => 'receive',
+            'field' => 'Receive',
             'label' => 'Nhận thông tin về email',
             'rules' => 'trim',
             'errors' => array()),
 
         array(
-            'field' => 'password',
+            'field' => 'Password',
             'label' => 'Password',
             'rules' => 'trim|required|min_length[6]|max_length[80]',
             'errors' => array(
@@ -143,7 +143,7 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 80')),
 
         array(
-            'field' => 'confirmpassword',
+            'field' => 'ConfirmPassword',
             'label' => 'Password không khớp',
             'rules' => 'trim|required|min_length[6]|max_length[80]|matches[password]',
             'errors' => array(

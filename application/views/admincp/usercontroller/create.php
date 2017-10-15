@@ -53,12 +53,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label class="control-label strong" for="PhoneNumber">Điện thoại</label>
+                                    <label class="control-label strong" for="Tel">Điện thoại</label>
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Số điện thoại không dài quá 15 ký tự" data-val-length-max="15" data-val-phone="Số điện thoại không đúng định dạng" id="PhoneNumber" name="PhoneNumber" placeholder="Nhập Số điện thoại" type="text" value="<?php echo set_value('phonenumber'); ?>">
+                                        <input class="form-control" data-val="true" data-val-length="Số điện thoại không dài quá 15 ký tự" data-val-length-max="15" data-val-phone="Số điện thoại không đúng định dạng" id="Tel" name="Tel" placeholder="Nhập Số điện thoại" type="text" value="<?php echo set_value('Tel'); ?>">
                                         <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span></span>
+                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Tel" data-valmsg-replace="true"></span></span>
                                         </div>
                                     </div>
                                 </div>

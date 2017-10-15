@@ -2,7 +2,7 @@
 <section class="content-header">
     <h1>
         Tài khoản
-        <small>Danh sách người dùng</small>
+        <small>Danh sách các quyền hệ thống</small>
     </h1>
 </section>
 <!-- Main content -->
@@ -11,19 +11,15 @@
     <div class="row">
         <div class="col-md-3 col-xs-12">
             <h4>Nhân viên quản trị</h4>
-            <p class="text-muted">Bạn có thể cấp quyền quản lý website cửa hàng cho người khác.</p>
+            <p class="text-muted">Bạn có thể cấp quyền quản lý website cửa hàng cho người khác bằng các quyền hệ thống.</p>
             <p class="text-muted margin-lg-bottom">
-                <a class="btn btn-default" href="<?php echo admin_url($this->object.'/'.$this->create);?>" id="ht-user-add"><span>Thêm mới</span></a>
-            </p>
-            <p class="text-muted">Bạn có thể đăng xuất các nhân viên quản trị khỏi website cửa hàng của bạn.</p>
-            <p class="text-muted">
-                <a class="btn btn-default btn-other" href="javascript:void(0)" bind-event-click="showStopAllSession()"><span>Chấm dứt các phiên đăng nhập</span></a>
+                <a class="btn btn-default" href="<?php echo admin_url($this->object.'/'.$this->create);?>" id="ht-user-add"><span>Thêm mới quyền</span></a>
             </p>
         </div>
         <div class="col-md-9 col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách quản trị viên</h3>
+                    <h3 class="box-title">Danh sách quyền hệ thống</h3>
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -40,17 +36,15 @@
                             <th>ID</th>
                             <th>User</th>
                             <th>Tel</th>
-                            <th>Status</th>
                             <th>Đăng nhập gần nhất</th>
                         </tr>
                         <?php if (!empty($getall)): ?>
                             <?php foreach ($getall as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $value['id']; ?></td>
-                                    <td><a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['fullname'] ?></a></td>
-                                    <td><?php echo $value['tel']; ?></td>
-                                    <td><span class="label label-success"><?php echo $value['status']; ?></span></td>
-                                    <td><?php echo $value['login_timer']; ?></td>
+                                    <td><a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['name'] ?></a></td>
+                                    <td><?php echo $value['description']; ?></td>
+                                    <td><?php echo getGroupSystem($value['groupsystem']); ?></td>
                                 </tr>
                             <?php endforeach ?>
                         <?php endif ?>
