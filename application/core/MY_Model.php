@@ -67,10 +67,19 @@ class MY_Model extends CI_Model
         return $this->db->row_array();        
     }
 
-    public function getByWhere($params,$params2 = null)
+    public function getByWhere($params,$not_result = null)
     {
-        $result = $this->db->from($this->table);
-        return $this->db->where($params);    
+        if (isset($params['select'])) {
+            $this->db->select($params['select']);
+        }
+        $this->db->from($this->table)->where($params);    
+        if (isset($params['limit'])) {
+            $this->db->limit($params['limit'][0],$params['limit'][1]);
+        }
+        if ($not_result) {
+            return $this->db->get()->result_array();
+        }
+        return $this->db;
     }
 
     public function getLike($params,$params2 = null)
@@ -94,6 +103,18 @@ class MY_Model extends CI_Model
             }
         }
         return $this->db;  
+
+        if (isset($params['select'])) {
+            $this->db->select($params['select']);
+        }
+        $this->db->from($this->table)->where($params);    
+        if (isset($params['limit'])) {
+            $this->db->limit($params['limit'][0],$params['limit'][1]);
+        }
+        if ($not_result) {
+            return $this->db->get()->result_array();
+        }
+        return $this->db;
     }
 
     public function getBy($params = null){
