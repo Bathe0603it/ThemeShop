@@ -77,9 +77,9 @@ class MY_Model extends CI_Model
             $this->db->limit($params['limit'][0],$params['limit'][1]);
         }
         if ($not_result) {
-            return $this->db->get()->result_array();
+            return $this->db;    
         }
-        return $this->db;
+        return $this->db->get()->result_array();
     }
 
     public function getLike($params,$params2 = null)
@@ -92,18 +92,7 @@ class MY_Model extends CI_Model
         return $this->db->row_array();
     }
 
-    public function getByLike($params,$params2 = null){
-        $result = $this->db->from($this->table);
-        foreach ($params as $key => $value) {
-            if (isset($value[2])) {
-                $this->db->like($value[0],$value[1],$value[2]);
-            }
-            else{
-                $this->db->like($key,$value);
-            }
-        }
-        return $this->db;  
-
+    public function getByLike($params,$not_result = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
@@ -112,9 +101,9 @@ class MY_Model extends CI_Model
             $this->db->limit($params['limit'][0],$params['limit'][1]);
         }
         if ($not_result) {
-            return $this->db->get()->result_array();
+            return $this->db;    
         }
-        return $this->db;
+        return $this->db->get()->result_array();
     }
 
     public function getBy($params = null){
