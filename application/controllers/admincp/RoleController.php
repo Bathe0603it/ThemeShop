@@ -32,7 +32,7 @@
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
-            if ($this->form_validation->run('user_create')) {
+            if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
                 // quy doi password luu kieu md5
                 $arr_insert['password'] = md5($this->auth->suffix_pass.$input['password']);
