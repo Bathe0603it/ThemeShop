@@ -34,17 +34,12 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
-                // quy doi password luu kieu md5
-                $arr_insert['password'] = md5($this->auth->suffix_pass.$input['password']);
                 $this->usermodel->insert($arr_insert);
             }
             else{
-                
+                $msg = validation_errors();
+                $this->session->set_flashdata('msg',$msg);
             }
-            
-            // neu ok
-            
-            // neu k ok
         }
         
         
