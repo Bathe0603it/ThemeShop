@@ -23,6 +23,18 @@
         }
     }
 
+    if(!function_exists('insertOk')){
+        function insertOk($input = null){
+            return 'Thêm mới '.$input.' thành công !';
+        }
+    }
+
+    if(!function_exists('editOk')){
+        function editOk($input = null){
+            return 'Cập nhập '.$input.' thành công !';
+        }
+    }
+
     if(!function_exists('get_status')){
         function get_status($input = null){
             $arr = array(
