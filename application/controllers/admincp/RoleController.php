@@ -35,10 +35,12 @@
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
                 $this->usermodel->insert($arr_insert);
+                $msg = insertOk('quyền hệ thống');
+                $this->session->set_flashdata('msg_success',$msg);
             }
             else{
                 $msg = validation_errors();
-                $this->session->set_flashdata('msg',$msg);
+                $this->session->set_flashdata('msg_warning',$msg);
             }
         }
         

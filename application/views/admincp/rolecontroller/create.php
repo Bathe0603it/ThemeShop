@@ -86,7 +86,10 @@
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
                                         <select class="form-control" name="GroupSystem" placeholder="Chọn nhóm quyền hệ thống">
-                                            <option <?php set_select($i=1,'GroupSystem'); ?>></option>
+                                            <?php foreach (getGroupSystem() as $key => $value): ?>
+                                                <option value="<?php echo $key; ?>" <?php set_select($key,'GroupSystem'); ?>><?php echo $value; ?></option>
+                                            <?php endforeach ?>
+                                            
                                         </select>
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="GroupSystem" data-valmsg-replace="true"></span></span>

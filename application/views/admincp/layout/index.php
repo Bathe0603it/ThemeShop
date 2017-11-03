@@ -39,6 +39,30 @@
 					<?php
 			    		$this->load->view($view);
 			    	?>
+                    <section class="msgInfo">
+                        <?php if ($this->session->has_userdata('msg_success')): ?>
+                            <div class="alert alert-success">
+                                <?php echo $this->session->flashdata('msg_success'); ?>
+                            </div>
+                        <?php endif ?>
+                        <?php if ($this->session->has_userdata('msg_warning')): ?>
+                            <div class="alert alert-warning">
+                                <?php echo $this->session->flashdata('msg_warning'); ?>
+                            </div>
+                        <?php endif ?>
+                        <?php if ($this->session->has_userdata('msg_warnings')): ?>
+                            <div class="alert alert-warning">
+                                <?php $msg_warnings = $this->session->flashdata('msg_warnings'); ?>
+                                <ul>
+                                    <?php foreach ($msg_warnings as $key => $value): ?>
+                                        <li>
+                                            <?php echo $value; ?>
+                                        </li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </div>
+                        <?php endif ?>
+                    </section>
 		    	</div>
 		    	<!-- /.content-wrapper -->
 		    	<?php
