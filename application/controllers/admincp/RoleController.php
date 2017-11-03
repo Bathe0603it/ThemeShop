@@ -32,6 +32,7 @@
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
+            dd($input);
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
                 $this->usermodel->insert($arr_insert);
