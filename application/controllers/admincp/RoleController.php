@@ -32,10 +32,9 @@
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
-            dd($input);
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
-                $this->usermodel->insert($arr_insert);
+                // $this->usermodel->insert($arr_insert);
                 $msg = insertOk('quyền hệ thống');
                 $this->session->set_flashdata('msg_success',$msg);
             }
