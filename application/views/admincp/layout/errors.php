@@ -23,5 +23,8 @@
     <?php endif ?>
 </section>
 <script type="text/javascript">
-    
+    var do_action_msg = function(){
+        $('.msgInfo').hide('slow');
+    };
+    setTimeout(do_action_msg, 3000);
 </script>

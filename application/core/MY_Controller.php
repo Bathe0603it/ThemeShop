@@ -9,7 +9,7 @@
             parent::__construct();
             /** xu ly dang nhap **/
             $this->load->helper('admin_helper');
-            $this->load->library(array('form_validation','auth','paginationextends'));
+            $this->load->library(array('form_validation','auth','paginationextends','function_lib'));
             $segment1 = $this->uri->segment(1);
             $segment2 = $this->uri->segment(2);
             $segment3 = $this->uri->segment(3);

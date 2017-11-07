@@ -9,11 +9,11 @@
     {
         public function __construct(){
             parent::__construct();
-            $this->load->model('RoleModel');
+            $this->load->model('roleModel');
         }
     
         public function index(){
-            $getall = $this->RoleModel->getAll();
+            $getall = $this->roleModel->getAll();
             $data['getall'] = $getall;
             $this->loadView($this->view,$data);
         }
@@ -26,7 +26,10 @@
             if (is_post()) {
                 $this->postCreate();
             }
-            $this->loadView($this->view);
+            $getAll     = $this->roleModel->getAll();   // lay danh sach cac quyen he thong
+            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
+            $data['parent_getall'] = $parent_getall;
+            $this->loadView($this->view,$data);
         }
         
         private function postCreate(){
@@ -34,7 +37,7 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
-                // $this->usermodel->insert($arr_insert);
+                // $this->roleModel->insert($arr_insert);
                 $msg = insertOk('quyền hệ thống');
                 $this->session->set_flashdata('msg_success',$msg);
             }

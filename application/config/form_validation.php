@@ -168,8 +168,9 @@ $config = array(
             'label' => 'Đường dẫn',
             'rules' => 'trim|required|max_length[255]|is_unique[role.permission]',
             'errors' => array(
-                'required' => '%s không được để trống.',
-                'max_length' => '%s có chiều dài không lớn hơn 255',
+                'required'  => '%s không được để trống.',
+                'max_length'    => '%s có chiều dài không lớn hơn 255',
+                'is_unique' => '%s đã tồn tại',
                 )),
     ),
 

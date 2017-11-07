@@ -15,6 +15,7 @@
     
 </section>
 <!-- Main content -->
+<?php dd($getall); ?>
 <section class="content">
     <!-- /.row -->
     <div class="row">

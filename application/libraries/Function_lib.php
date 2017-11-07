@@ -56,5 +56,32 @@
             }
             return $this->menu_arr;
         }
+
+        public function get_parent_to_number($input,$id_parent = 0,$heading = ''){
+            $menu_tmp = array();
+            foreach ($input as $key => $item)
+            {
+                if ($item['parent'] == $id_parent)
+                {
+                    $menu_tmp[] = $item;
+                    unset($input[$key]);
+                }
+            }
+            if ($menu_tmp)
+            {
+                //$this->menu_arr[$heading]    = $item;
+                foreach ($menu_tmp as $item)
+                {
+                    $this->menu_arr     = array(
+                        'info'  => $item,
+                        'heading'   => $heading,
+                    );
+                     
+                    $this->get_parent_to_array($input, $item['id'],$heading.'--');
+                }
+                
+            }
+            return $this->menu_arr;
+        }
     }
 ?>
