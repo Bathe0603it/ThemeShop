@@ -18,6 +18,7 @@ class MY_Model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        $this->order_by = array($this->primary_key,'desc');
     }
 
     public function show($input = null){
@@ -183,7 +184,10 @@ class MY_Model extends CI_Model
         if (!empty($params)) {
             $this->db->select($params);
         }
-        return $this->db->from($this->table)->get()->result_array();
+        if (isset($params['order_by'])) {
+            return $this->db->from($this->table)->order_by($params['order_by'][0],$params['order_by'][1])->get()->result_array();
+        }
+        return $this->db->from($this->table)->order_by($this->order_by[0],$this->order_by[1])->get()->result_array();
     }
 
     public function getByAll($params = null)

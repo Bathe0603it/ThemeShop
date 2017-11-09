@@ -45,10 +45,12 @@
                 //$this->menu_arr[$heading]    = $item;
                 foreach ($menu_tmp as $item)
                 {
-                    $this->menu_arr     = array(
+                    $this->menu_arr[$item['id']]    = array(
                         'info'  => $item,
                         'heading'   => $heading,
                     );
+                    $this->menu_arr[$item['id']]    = $item;
+                    $this->menu_arr[$item['id']]['heading'] = $heading;
                      
                     $this->get_parent_to_array($input, $item['id'],$heading.'--');
                 }

@@ -15,7 +15,6 @@
     
 </section>
 <!-- Main content -->
-<?php dd($getall); ?>
 <section class="content">
     <!-- /.row -->
     <div class="row">
@@ -71,7 +70,11 @@
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
                                         <select class="form-control" name="Parent" placeholder="Chọn danh mục quyền">
-                                            <option <?php set_select($i=1,'Parent'); ?>></option>
+                                            <?php if ($parent_getall): ?>
+                                                <?php foreach ($parent_getall as $key => $value): ?>
+                                                    <option value="<?php echo $value['id'] ?>" <?php set_select('Parent',$value['id']); ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
                                         </select>
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Parent" data-valmsg-replace="true"></span></span>
