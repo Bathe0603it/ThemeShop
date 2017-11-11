@@ -72,7 +72,7 @@
                                         <select class="form-control" name="Parent" placeholder="Chọn danh mục quyền">
                                             <?php if ($parent_getall): ?>
                                                 <?php foreach ($parent_getall as $key => $value): ?>
-                                                    <option value="<?php echo $value['id'] ?>" <?php set_select('Parent',$value['id']); ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>
+                                                    <option value="<?php echo $value['id'] ?>" <?php echo set_select('Parent',$value['id']); ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>
                                                 <?php endforeach ?>
                                             <?php endif ?>
                                         </select>
@@ -91,7 +91,7 @@
                                     <div class="controls">
                                         <select class="form-control" name="GroupSystem" placeholder="Chọn nhóm quyền hệ thống">
                                             <?php foreach (getGroupSystem() as $key => $value): ?>
-                                                <option value="<?php echo $key; ?>" <?php set_select($key,'GroupSystem'); ?>><?php echo $value; ?></option>
+                                                <option value="<?php echo $key; ?>" <?php echo set_select('GroupSystem',$key); ?>><?php echo $value; ?></option>
                                             <?php endforeach ?>
                                             
                                         </select>
