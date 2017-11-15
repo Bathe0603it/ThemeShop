@@ -9,14 +9,22 @@ class System extends My_Controller{
 	}
 
 	public function flash($param1,$param2 = null){
-		if (!$param2) {
+		if ($param2) {
 			return $this->ci->session->set_userdata( $param1,$param2 );
 		}
 		if ($this->ci->session->has_userdata($param1)) {
-			$result = $this->session->userdata($param1);
+			$result = $this->ci->session->userdata($param1);
 			$this->ci->session->unset_userdata($param1);
 			return $result;
 		}
+		return false;
+	}
+
+	public function hasFlash($param){
+		if ($this->ci->session->has_userdata($param)) {
+			return true;
+		}
+		return false;
 	}
 	
 

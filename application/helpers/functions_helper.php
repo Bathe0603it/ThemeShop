@@ -60,4 +60,18 @@
             return false;
         }
     }
+
+    if(!function_exists('getObject')){
+        function getObject(){
+            $CI = &get_instance();
+            return $CI->router->fetch_class();
+        }
+    }
+
+    if(!function_exists('getMethod')){
+        function getMethod($position = null){
+            $CI = &get_instance();
+            return $CI->router->fetch_method();
+        }
+    }
 ?>

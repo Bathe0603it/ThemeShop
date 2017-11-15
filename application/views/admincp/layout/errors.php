@@ -1,17 +1,22 @@
 <section class="msgInfo">
-    <?php if ($this->session->has_userdata('msg_success')): ?>
+    <?php if ($this->system->hasFlash('msg_success')): ?>
         <div class="msg msg-success">
-            <?php echo $this->session->flashdata('msg_success'); ?>
+            <?php echo $this->system->flash('msg_success'); ?>
         </div>
     <?php endif ?>
-    <?php if ($this->session->has_userdata('msg_warning')): ?>
+    <?php if ($this->system->hasFlash('msg_warning')): ?>
         <div class="msg msg-warning">
-            <?php echo $this->session->flashdata('msg_warning'); ?>
+            <?php echo $this->system->flash('msg_warning'); ?>
         </div>
     <?php endif ?>
-    <?php if ($this->session->has_userdata('msg_warnings')): ?>
+    <?php if ($this->system->hasFlash('msg_error')): ?>
+        <div class="msg msg-error">
+            <?php echo $this->system->flash('msg_error'); ?>
+        </div>
+    <?php endif ?>
+    <?php if ($this->system->hasFlash('msg_warnings')): ?>
         <div class="msg msg-warning">
-            <?php $msg_warnings = $this->session->flashdata('msg_warnings'); ?>
+            <?php $msg_warnings = $this->system->flash('msg_warnings'); ?>
             <ul>
                 <?php foreach ($msg_warnings as $key => $value): ?>
                     <li>

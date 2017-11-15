@@ -62,4 +62,12 @@
             return $arr;
         }
     }
+
+    if(!function_exists('rediectIndex')){
+        function rediectIndex($input = null){
+            return redirect(base_url('admincp/').getObject());
+        }
+    }
+
+
 ?>
