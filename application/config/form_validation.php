@@ -174,5 +174,25 @@ $config = array(
                 )),
     ),
 
+    'role_edit' => array(
+        array(
+            'field' => 'Name',
+            'label' => 'Nhãn đường dẫn',
+            'rules' => 'trim|required|max_length[255]',
+            'errors' => array(
+                'required' => '%s không được để trống.',
+                'max_length' => '%s có chiều dài không lớn hơn 255',
+                )),
+        array(
+            'field' => 'Permission',
+            'label' => 'Đường dẫn',
+            'rules' => 'trim|required|max_length[255]|callback_permissionCheck',
+            'errors' => array(
+                'required'  => '%s không được để trống.',
+                'max_length'    => '%s có chiều dài không lớn hơn 255',
+                'permissionCheck' => '%s đã tồn tại ở 1 bản ghi',
+                )),
+    ),
+
     
 );

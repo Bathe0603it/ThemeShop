@@ -26,9 +26,8 @@
                 return rediectIndex();
             }
             // end
-
             if (is_post()) {
-                $this->postEdit();
+                $this->postEdit($id);
             }
             $getAll     = $this->roleModel->getAll();   // lay danh sach cac quyen he thong
             $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
@@ -62,7 +61,27 @@
         }
 
         private function postEdit(){
+            // xu ly formvalidate
+            $input  = $this->input->post();
+            if ($this->form_validation->run('role_edit')) {
+                $arr_insert = $input;
+                $this->roleModel->insert($arr_insert);
+                $msg = insertOk('quyền hệ thống');
+                $this->system->flash('msg_success',$msg);
+            }
+            else{
+                $msg = validation_errors();
+                $this->system->flash('msg_warning',$msg);
+            }
+        }
 
+        public function permissionCheck($param){
+            $input  = $this->input->post();
+            // Kiem tra url hien tai da ton tai trong db
+            $id     = $_GET['id'];
+            $permission     = $input['Permission'];
+            $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
+            return $checkData?true:false;
         }
         
         
