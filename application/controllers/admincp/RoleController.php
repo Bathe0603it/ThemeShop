@@ -25,7 +25,7 @@
                 $this->system->flash('msg_error','Chưa chọn bản ghi sửa đổi');
                 return rediectIndex();
             }
-            if (is_post()) {
+            if (is_post()) { 
                 $this->postEdit($id);
             }
             // Thong tin ban ghi hien tai
