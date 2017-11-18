@@ -5,7 +5,7 @@
         <div class="col-md-8 col-xs-12">
             <h1>
                 Tài khoản
-                <small>Thêm mới quyền hệ thống</small>
+                <small>Chỉnh sửa quyền hệ thống</small>
             </h1>
         </div>
         <div class="col-md-4 col-xs-12">

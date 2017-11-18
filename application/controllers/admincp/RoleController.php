@@ -29,7 +29,10 @@
             if (is_post()) {
                 $this->postEdit($id);
             }
-            $getAll     = $this->roleModel->getAll();   // lay danh sach cac quyen he thong
+            // Thong tin ban ghi hien tai
+            $data['item']   = $item = $this->roleModel->getInfo($id);dd($item);
+
+            $getAll     = $this->roleModel->getAll();   // lay danh sach cac ban ghi
             $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);

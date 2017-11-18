@@ -19,6 +19,7 @@ class MY_Model extends CI_Model
     {
         parent::__construct();
         $this->order_by = array($this->primary_key,'desc');
+        $this->load->database();
     }
 
     public function show($input = null){
@@ -53,9 +54,9 @@ class MY_Model extends CI_Model
 
     public function getInfo($primary_value = null){
         if (empty($primary_value)) {
-            return $this->db->from($this->table);
+            return false;
         }
-        return $this->get_where(array($this->primary_key => $primary_value));
+        return $this->getWhere(array($this->primary_key => $primary_value));
     }
 
     public function getWhere($params,$params2 = null)
