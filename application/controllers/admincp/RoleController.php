@@ -26,6 +26,7 @@
                 return rediectIndex();
             }
             if (is_post()) { 
+                // here
                 $this->postEdit($id);
             }
             // Thong tin ban ghi hien tai
