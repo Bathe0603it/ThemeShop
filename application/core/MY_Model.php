@@ -22,30 +22,30 @@ class MY_Model extends CI_Model
         $this->load->database();
     }
 
-    public function show($input = null){
+    public function show($result , $input = null){
         if (isset($input['result'])) {
             switch ($input['result']) {
                 case 'result_array':
-                    $result = $this->db->result_array();
+                    $result = $result->result_array();
                     break;
                 case 'row_array':
-                    $result = $this->db->row_array();
+                    $result = $result->row_array();
                     break;
                 case 'num_rows':
-                    $result = $this->db->num_rows();
+                    $result = $result->num_rows();
                     break;
                 case 'list_fields':
-                    $result = $this->db->list_fields();
+                    $result = $result->list_fields();
                     break;
                 case 'row':
-                    $result = $this->db->row();
+                    $result = $result->row();
                     break;
                 case 'result':
-                    $result = $this->db->result();
+                    $result = $result->result();
                     break;
                 
                 default:
-                    $result = $this->db->row_array();
+                    $result = $result->row_array();
                     break;
             }
         }
@@ -61,12 +61,12 @@ class MY_Model extends CI_Model
 
     public function getWhere($params,$params2 = null)
     {
-        $result = $this->db->from($this->table);
-        $this->db->where($params)->get();
+        $result     = $this->db->from($this->table);
+        $result     = $this->db->where($params)->get();
         if (!empty($params2)) {
-            return $this->show($params2);
+            return $this->show($result , $params2);
         }
-        return $this->db->row_array();        
+        return $result->row_array();        
     }
 
     public function getByWhere($params,$not_result = null)
