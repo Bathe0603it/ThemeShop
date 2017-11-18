@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="FullName">Nhãn</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Nhãn hệ thống không dài quá 50 ký tự" data-val-length-max="255" id="Name" name="Name" placeholder="Nhập nhãn" type="text" value="<?php echo set_value('Name'); ?>">
+                                        <input class="form-control" data-val="true" data-val-length="Nhãn hệ thống không dài quá 50 ký tự" data-val-length-max="255" id="Name" name="Name" placeholder="Nhập nhãn" type="text" value="<?php echo $item['name']; ?>">
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="FullName" data-valmsg-replace="true"></span></span>
                                         </div>
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="Permission">Permission</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-required="Nhập vào đường dẫn quyền hệ thống" name="Permission" placeholder="Nhập Permission" type="text" value="<?php echo set_value('Permission'); ?>">
+                                        <input class="form-control" data-val="true" data-val-required="Nhập vào đường dẫn quyền hệ thống" name="Permission" placeholder="Nhập Permission" type="text" value="<?php echo $item['permission']; ?>">
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Permission" data-valmsg-replace="true"></span></span>
                                         </div>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="Description">Mô tả quyền hệ thống</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" id="Description" name="Description" placeholder="Nhập mô tả quyền hệ thống" type="text" value="<?php echo set_value('Description'); ?>">
+                                        <input class="form-control" data-val="true" id="Description" name="Description" placeholder="Nhập mô tả quyền hệ thống" type="text" value="<?php echo $item['description']; ?>">
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Description" data-valmsg-replace="true"></span></span>
                                         </div>
@@ -72,7 +72,7 @@
                                         <select class="form-control" name="Parent" placeholder="Chọn danh mục quyền">
                                             <?php if ($parent_getall): ?>
                                                 <?php foreach ($parent_getall as $key => $value): ?>
-                                                    <option value="<?php echo $value['id'] ?>" <?php echo set_select('Parent',$value['id']); ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>
+                                                    <option value="<?php echo $value['id'] ?>" <?php echo $item['parent']==$value['id']?'selected=""':''; ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>
                                                 <?php endforeach ?>
                                             <?php endif ?>
                                         </select>
@@ -91,7 +91,7 @@
                                     <div class="controls">
                                         <select class="form-control" name="GroupSystem" placeholder="Chọn nhóm quyền hệ thống">
                                             <?php foreach (getGroupSystem() as $key => $value): ?>
-                                                <option value="<?php echo $key; ?>" <?php echo set_select('GroupSystem',$key); ?>><?php echo $value; ?></option>
+                                                <option value="<?php echo $key; ?>" <?php echo $item['groupsystem']==$value['id']?'selected=""':''; ?>><?php echo $value; ?></option>
                                             <?php endforeach ?>
                                             
                                         </select>
