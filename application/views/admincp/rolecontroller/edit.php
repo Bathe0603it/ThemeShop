@@ -91,7 +91,7 @@
                                     <div class="controls">
                                         <select class="form-control" name="GroupSystem" placeholder="Chọn nhóm quyền hệ thống">
                                             <?php foreach (getGroupSystem() as $key => $value): ?>
-                                                <option value="<?php echo $key; ?>" <?php echo $item['groupsystem']==$value['id']?'selected=""':''; ?>><?php echo $value; ?></option>
+                                                <option value="<?php echo $key; ?>" <?php echo $item['groupsystem']==$key?'selected=""':''; ?>><?php echo $value; ?></option>
                                             <?php endforeach ?>
                                             
                                         </select>

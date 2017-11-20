@@ -68,7 +68,7 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('role_edit')) {
                 $arr_insert = $input;
-                $this->roleModel->insert($arr_insert);
+                //$this->roleModel->update($arr_insert);
                 $msg = insertOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
             }
@@ -84,6 +84,9 @@
             $id     = $_GET['id'];
             $permission     = $input['Permission'];
             $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
+            if (empty($checkData)) {
+                return true;
+            }
             return $checkData?true:false;
         }
         
