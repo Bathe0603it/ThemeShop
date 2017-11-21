@@ -69,7 +69,7 @@
             if ($this->form_validation->run('role_edit')) {
                 $arr_insert = $input;
                 //$this->roleModel->update($arr_insert);
-                $msg = insertOk('quyền hệ thống');
+                $msg = editOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
             }
             else{
@@ -87,7 +87,7 @@
             if (empty($checkData)) {
                 return true;
             }
-            return $checkData?true:false;
+            return !$checkData?true:false;
         }
         
         
