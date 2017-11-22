@@ -84,10 +84,7 @@
             $id     = $_GET['id'];
             $permission     = $input['Permission'];
             $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
-            if (empty($checkData)) {
-                return true;
-            }
-            return $checkData?true:false;
+            return !$checkData?true:false;
         }
         
         
