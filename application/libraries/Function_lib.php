@@ -2,6 +2,8 @@
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
     class Function_lib extends MY_Controller{
+        public $parent_number   = null;
+        public $arr_list        = null;
 
         function __construct(){
             $this->CI = & get_instance();
@@ -45,10 +47,6 @@
                 //$this->menu_arr[$heading]    = $item;
                 foreach ($menu_tmp as $item)
                 {
-                    $this->menu_arr[$item['id']]    = array(
-                        'info'  => $item,
-                        'heading'   => $heading,
-                    );
                     $this->menu_arr[$item['id']]    = $item;
                     $this->menu_arr[$item['id']]['heading'] = $heading;
                      
@@ -59,7 +57,7 @@
             return $this->menu_arr;
         }
 
-        public function get_parent_to_number($input,$id_parent = 0,$heading = ''){
+        public function get_parent_to_number($input,$id_parent = 0,$heading = 0){
             $menu_tmp = array();
             foreach ($input as $key => $item)
             {
@@ -71,16 +69,19 @@
             }
             if ($menu_tmp)
             {
+                $this->menu_arr[$heading]   = $menu_tmp;
+                foreach ($menu_tmp as $key => $item) {
+                    $this->get_parent_to_number($input, $item['id'],$heading++);
+                }
+                
                 //$this->menu_arr[$heading]    = $item;
-                foreach ($menu_tmp as $item)
+                /*foreach ($menu_tmp as $item)
                 {
                     $this->menu_arr     = array(
                         'info'  => $item,
                         'heading'   => $heading,
                     );
-                     
-                    $this->get_parent_to_array($input, $item['id'],$heading.'--');
-                }
+                }*/
                 
             }
             return $this->menu_arr;
