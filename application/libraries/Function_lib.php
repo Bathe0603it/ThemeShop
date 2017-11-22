@@ -57,7 +57,7 @@
             return $this->menu_arr;
         }
 
-        public function get_parent_to_number($input,$id_parent = 0,$heading = ''){
+        public function get_parent_to_number($input,$id_parent = 0,$heading = 0){
             $menu_tmp = array();
             foreach ($input as $key => $item)
             {
@@ -69,8 +69,11 @@
             }
             if ($menu_tmp)
             {
-                $this->arr_list[$this->parent_number]   = $menu_tmp;
-                $this->get_parent_to_number($input, $item['id'],$heading.'--');
+                $this->menu_arr[$heading]   = $menu_tmp;
+                foreach ($menu_tmp as $key => $item) {
+                    $this->get_parent_to_number($input, $item['id'],$heading++);
+                }
+                
                 //$this->menu_arr[$heading]    = $item;
                 /*foreach ($menu_tmp as $item)
                 {

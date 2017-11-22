@@ -84,10 +84,20 @@
             $id     = $_GET['id'];
             $permission     = $input['Permission'];
             $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
-            if (empty($checkData)) {
-                return true;
-            }
             return !$checkData?true:false;
+        }
+
+        /**
+        *
+        * 
+        * @param 
+        * @return 
+        *
+        **/
+        private function updateLevel(){
+            $result = $this->roleModel->getAll();
+            $recive = $this->function_lib->get_parent_to_number($result);
+            dd($recive);
         }
         
         
