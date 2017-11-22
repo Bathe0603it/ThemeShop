@@ -230,5 +230,6 @@
         <script src="<?php echo admin_template_url();?>dist/js/app.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo admin_template_url();?>dist/js/demo.js"></script>
+        <script src="<?php echo admin_public_url();?>js/jsadmin.js"></script>
     </body>
 </html>

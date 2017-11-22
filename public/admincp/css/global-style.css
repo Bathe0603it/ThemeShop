@@ -35,7 +35,7 @@ a:hover, a:focus{ text-decoration: none; }
 .btn-default.active, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.btn-default.dropdown-toggle { color: #479ccf !important; }
 .btn-default.active span, .btn-default:active span, .btn-default:focus span, .btn-default:hover span, .open>.btn-default.dropdown-toggle span{ color: #479ccf !important; }
 
-.btn{ color: #479ccf !important; }
+.btn{ /*color: #479ccf !important;*/ }
 .boxButtonHead{ float: right;background: transparent;margin-top: 0;margin-bottom: 0;font-size: 12px;padding: 7px 5px;position: absolute;top: 15px;right: 10px;border-radius: 2px; }
 
 .msgInfo{ position: fixed;width: 100%;bottom: 0px;line-height: 25px;color: #fff;border: none;color: white;display: inline-block;font-size: 16px; }
@@ -43,6 +43,11 @@ a:hover, a:focus{ text-decoration: none; }
 .msgInfo .msg-success{ background: rgba(70, 160, 73, 0.46);padding: 10px 28px; }
 .msgInfo .msg-errors{ background: rgba(218, 25, 11, 0.47);padding: 10px 28px; }
 .msgInfo .msg-error{ background-color: #f4433680;padding: 10px 28px; }
+
+.content-header{ position: fixed;width: 100%;background: #fff !important;z-index: 1;line-height: 25px;border-bottom: 1px solid #dddee0;box-shadow: 0 2px 2px -2px rgba(0,0,0,.5); }
+.content-header h1, .content-header h2, .content-header h3, .content-header h4, .content-header h5{ margin: 0px; }
+.content-wrapper{ position: relative; }
+.fixTop{ top: 0px; }
 
 
 

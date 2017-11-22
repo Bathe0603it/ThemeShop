@@ -230,14 +230,14 @@ class MY_Model extends CI_Model
     /**
      * Updated a record based on the primary value.
      */
-    public function update($primary_value, $data)
+    public function update($data,$primary_value)
     {
         return $this->db->set($data)
                             ->where($this->primary_key, $primary_value)
                             ->update($this->table);
     }
 
-    public function updateWhere($where, $data)
+    public function updateWhere( $data, $where)
     {
         return $result = $this->db->set($data)
                                     ->where($where)
@@ -247,7 +247,7 @@ class MY_Model extends CI_Model
     /**
      * Update many records, based on an array of primary values.
      */
-    public function updateManyWhere($primary_values, $data)
+    public function updateManyWhere( $data, $primary_values)
     {
         return $result = $this->db->set($data)
                                     ->where_in($this->primary_key,$primary_value)

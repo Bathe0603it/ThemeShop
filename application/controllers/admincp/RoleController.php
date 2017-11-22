@@ -54,6 +54,7 @@
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
                 $this->roleModel->insert($arr_insert);
+                $this->updateLevel();
                 $msg = insertOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
             }
@@ -63,12 +64,13 @@
             }
         }
 
-        private function postEdit(){
+        private function postEdit($id){
             // xu ly formvalidate
             $input  = $this->input->post();
             if ($this->form_validation->run('role_edit')) {
-                $arr_insert = $input;
-                //$this->roleModel->update($arr_insert);
+                $arr_update = $input;
+                $this->roleModel->update($arr_update,$id);
+                $this->updateLevel();
                 $msg = editOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
             }
@@ -94,10 +96,18 @@
         * @return 
         *
         **/
-        private function updateLevel(){
+        public function updateLevel(){
             $result = $this->roleModel->getAll();
             $recive = $this->function_lib->get_parent_to_number($result);
-            dd($recive);
+            foreach ($recive as $key => $value) {
+                foreach ($value as $keyItem => $valueItem) {
+                    $arrUpdate  = array(
+                        'level' => $key
+                    );
+                    $this->roleModel->update($arrUpdate,$valueItem['id']);
+                }
+            }
+            return true;
         }
         
         

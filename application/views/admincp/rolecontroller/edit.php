@@ -9,7 +9,7 @@
             </h1>
         </div>
         <div class="col-md-4 col-xs-12">
-            <button class="btn btn-info">Lưu</button>
+            <button class="btn bg-maroon btn-flat margin">Lưu</button>
         </div>
     </div>
     
