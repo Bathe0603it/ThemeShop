@@ -69,7 +69,7 @@
             if ($this->form_validation->run('role_edit')) {
                 $arr_insert = $input;
                 //$this->roleModel->update($arr_insert);
-                $msg = insertOk('quyền hệ thống');
+                $msg = editOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
             }
             else{
@@ -85,6 +85,19 @@
             $permission     = $input['Permission'];
             $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
             return !$checkData?true:false;
+        }
+
+        /**
+        *
+        * 
+        * @param 
+        * @return 
+        *
+        **/
+        private function updateLevel(){
+            $result = $this->roleModel->getAll();
+            $recive = $this->function_lib->get_parent_to_number($result);
+            dd($recive);
         }
         
         
