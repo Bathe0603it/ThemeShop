@@ -3,6 +3,14 @@ $(document).ready(function(){
         t = parseInt($(window).scrollTop());
         t>50?$('.content-header').addClass('fixTop'):$('.content-header').removeClass('fixTop');
     });
+
+    /**
+    *
+    * plug in head-content
+    * @param 
+    * @return 
+    *
+    **/
     function heightContentHead(){
         var x = $('.content-header').css('height');
         var paddingX = parseInt(x)+10;
