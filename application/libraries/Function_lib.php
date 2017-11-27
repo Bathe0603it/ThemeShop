@@ -2,8 +2,12 @@
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
     class Function_lib extends MY_Controller{
-        public $parent_number   = null;
-        public $arr_list        = null;
+        private $parent_number   = null;
+        private $arr_list        = null;
+        private $listRecursive   = null;
+        private $id_level_0     = null;
+        private $id_level_1     = null;
+        private $id_level_2     = null;
 
         function __construct(){
             $this->CI = & get_instance();
@@ -85,6 +89,33 @@
                 
             }
             return $this->menu_arr;
+        }
+
+        /**
+        *
+        * Hàm get dữ liệu mảng theo đệ quy
+        * @param $data = array
+        * @return array
+        *
+        **/
+        public function getListRecursive($data){
+            foreach ($data as $key => $value) {
+                if($value['level'] == 0){
+                    $this->listRecursive[$value['id']]['info']    = $value;
+                    $this->id_level_0 = $value['id'];
+                }
+                if($value['level'] == 1){
+                    $this->listRecursive[$this->id_level_0][$value['id']]['info']    = $value;
+                    $this->id_level_1 = $value['id'];
+                }
+                if($value['level'] == 2){
+                    $this->listRecursive[$this->id_level_0][$this->id_level_1][$value['id']]['info']    = $value;
+                }
+                /*if($value['level'] == 2){
+                    $this->link_position['not_parent'][$value['parent']][$value['id']]['info']    = $value;
+                }*/
+            }
+            return $this->listRecursive;
         }
     }
 ?>
