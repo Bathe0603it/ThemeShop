@@ -166,99 +166,53 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
                     <div class="row all-roles" bind-show="isLimitAccess">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <div class="col-sm-9 col-sm-offset-3">
-                                    <strong>Cửa hàng của bạn</strong>
-                                </div>
-                                <div class="controls col-sm-9 col-sm-offset-3">
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-1" name="RoleIds" value="1">
-                                        Trang chủ
-                                        </label>
+                        <?php if ($roleListRecursive): ?>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="col-sm-9 col-sm-offset-3">
+                                        <strong>Cửa hàng của bạn</strong>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-2" name="RoleIds" value="2">
-                                        Sản phẩm, danh mục và kho hàng
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-3" name="RoleIds" value="3">
-                                        Đơn hàng
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-4" name="RoleIds" value="4">
-                                        Khách hàng
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-5" name="RoleIds" value="5">
-                                        Khuyến mãi
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-sales-12" name="RoleIds" value="12">
-                                        Báo cáo
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <div class="col-sm-9 col-sm-offset-3">
-                                    <strong>Nội dung</strong>
-                                </div>
-                                <div class="controls col-sm-9 col-sm-offset-3">
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-content-7" name="RoleIds" value="7">
-                                        Blog và trang nội dung
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-content-8" name="RoleIds" value="8">
-                                        Menu
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-content-9" name="RoleIds" value="9">
-                                        Giao diện
-                                        </label>
+                                    <div class="controls col-sm-9 col-sm-offset-3">
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-1" name="RoleIds" value="1">
+                                            Trang chủ
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-2" name="RoleIds" value="2">
+                                            Sản phẩm, danh mục và kho hàng
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-3" name="RoleIds" value="3">
+                                            Đơn hàng
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-4" name="RoleIds" value="4">
+                                            Khách hàng
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-5" name="RoleIds" value="5">
+                                            Khuyến mãi
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                            <input type="checkbox" id="role-sales-12" name="RoleIds" value="12">
+                                            Báo cáo
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <div class="col-sm-9 col-sm-offset-3">
-                                    <strong>Cấu hình</strong>
-                                </div>
-                                <div class="controls col-sm-9 col-sm-offset-3">
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-content-10" name="RoleIds" value="10">
-                                        Quản lý ứng dụng
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                        <input type="checkbox" id="role-content-11" name="RoleIds" value="11">
-                                        Cấu hình hệ thống
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endif ?>
                     </div>
                 </div>
                 <!-- ./box-body -->
