@@ -99,7 +99,8 @@
         *
         **/
         public function getListRecursive($data){
-            foreach ($data as $key => $value) {
+            $recursiveData  = $this->get_parent_to_array($data);
+            foreach ($recursiveData as $key => $value) {
                 if($value['level'] == 0){
                     $this->listRecursive[$value['id']]['info']    = $value;
                     $this->id_level_0 = $value['id'];
