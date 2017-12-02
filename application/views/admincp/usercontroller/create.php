@@ -166,52 +166,40 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
                     <div class="row all-roles" bind-show="isLimitAccess">
-                        <?php if ($roleListRecursive): ?>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div class="col-sm-9 col-sm-offset-3">
-                                        <strong>Cửa hàng của bạn</strong>
-                                    </div>
-                                    <div class="controls col-sm-9 col-sm-offset-3">
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-1" name="RoleIds" value="1">
-                                            Trang chủ
-                                            </label>
+                        <?php if ($roleListRecursive = $data['roleListRecursive']): ?>
+                            
+                                    <?php foreach ($roleListRecursive as $key => $value): ?>
+                                        <?php
+                                            $name = $value['info']['name'];
+                                            unset($value['info']); 
+                                        ?>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="col-sm-9 col-sm-offset-3">
+                                                    <strong><?php echo $name; ?></strong>
+                                                </div>
+                                                <div class="controls col-sm-9 col-sm-offset-3">
+                                                    <?php if ($value): ?>
+                                                        <?php foreach ($value as $key2 => $value2): ?>
+                                                            <?php
+                                                                $name   = $value2['info']['name'];
+                                                                $id     = $value2['info']['id'];
+                                                                unset($value2['info']); 
+                                                            ?>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                <input type="checkbox" id="role-sales-1" name="RoleIds[]" value="<?php echo $id ?>">
+                                                                <?php echo $name; ?>
+                                                                </label>
+                                                            </div>
+                                                        <?php endforeach ?>
+                                                    <?php endif ?>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-2" name="RoleIds" value="2">
-                                            Sản phẩm, danh mục và kho hàng
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-3" name="RoleIds" value="3">
-                                            Đơn hàng
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-4" name="RoleIds" value="4">
-                                            Khách hàng
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-5" name="RoleIds" value="5">
-                                            Khuyến mãi
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                            <input type="checkbox" id="role-sales-12" name="RoleIds" value="12">
-                                            Báo cáo
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    <?php endforeach ?>
+                                    
+                                
                         <?php endif ?>
                     </div>
                 </div>

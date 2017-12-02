@@ -31,7 +31,6 @@
             $roleList   = $this->roleModel->getAll();
             // chuyen role ve dang level
             $roleListRecursive  = $this->function_lib->getListRecursive($roleList);
-            dd($roleListRecursive);
             // gui du lieu qua view
             $data['data']   = array(
                 'roleListRecursive' => $roleListRecursive,
