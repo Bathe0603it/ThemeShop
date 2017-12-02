@@ -1,4 +1,4 @@
-r<?php
+<?php
     if(!function_exists('admin_url')){
         function admin_url($input = null){
             return base_url('admincp/'.$input);

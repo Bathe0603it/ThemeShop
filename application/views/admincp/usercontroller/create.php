@@ -29,11 +29,11 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label class="control-label strong" for="FullName">Tên</label>
+                                    <label class="control-label strong" for="UserName">Tên</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Tên của người dùng không dài quá 50 ký tự" data-val-length-max="50" id="FullName" name="FullName" placeholder="Nhập Tên" type="text" value="<?php echo set_value('fullname'); ?>">
+                                        <input class="form-control" data-val="true" data-val-length="Tên của người dùng không dài quá 50 ký tự" data-val-length-max="50" id="UserName" name="UserName" placeholder="Nhập Tên" type="text" value="<?php echo set_value('username'); ?>">
                                         <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="FullName" data-valmsg-replace="true"></span></span>
+                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="UserName" data-valmsg-replace="true"></span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -166,41 +166,37 @@
                 <!-- /.box-header -->
                 <div class="box-body" style="display: block;">
                     <div class="row all-roles" bind-show="isLimitAccess">
-                        <?php if ($roleListRecursive = $data['roleListRecursive']): ?>
-                            
-                                    <?php foreach ($roleListRecursive as $key => $value): ?>
-                                        <?php
-                                            $name = $value['info']['name'];
-                                            unset($value['info']); 
-                                        ?>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <div class="col-sm-9 col-sm-offset-3">
-                                                    <strong><?php echo $name; ?></strong>
-                                                </div>
-                                                <div class="controls col-sm-9 col-sm-offset-3">
-                                                    <?php if ($value): ?>
-                                                        <?php foreach ($value as $key2 => $value2): ?>
-                                                            <?php
-                                                                $name   = $value2['info']['name'];
-                                                                $id     = $value2['info']['id'];
-                                                                unset($value2['info']); 
-                                                            ?>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                <input type="checkbox" id="role-sales-1" name="RoleIds[]" value="<?php echo $id ?>">
-                                                                <?php echo $name; ?>
-                                                                </label>
-                                                            </div>
-                                                        <?php endforeach ?>
-                                                    <?php endif ?>
-                                                </div>
-                                            </div>
+                        <?php $get_group_system = getGroupSystem(); ?>
+                        <?php $list_group_system = $data['list_group_system']; ?>
+                        <?php if ($get_group_system): ?>
+                            <?php foreach ($get_group_system as $key_ggs => $value_ggs): ?>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="col-sm-9 col-sm-offset-3">
+                                            <strong><?php echo $value_ggs; ?></strong>
                                         </div>
-                                    <?php endforeach ?>
-                                    
-                                
+                                        <?php if (isset($list_group_system[$key_ggs])): ?>
+                                            <?php foreach ($list_group_system[$key_ggs] as $key_lgs => $value_lgs): ?>
+                                                <?php
+                                                    $name   = $value_lgs['name'];
+                                                    $heading = $value_lgs['heading'];
+                                                    $id     = $value_lgs['id'];
+                                                ?>
+                                                <div class="controls col-sm-9 col-sm-offset-3">
+                                                    <div class="checkbox">
+                                                        <?php echo $heading; ?>&nbsp<label>
+                                                        <input type="checkbox" id="role-sales-1" name="RoleIds[]" value="<?php echo $id ?>">
+                                                        <?php echo $name; ?>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach ?>
+                                        <?php endif ?>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
                         <?php endif ?>
+                        
                     </div>
                 </div>
                 <!-- ./box-body -->

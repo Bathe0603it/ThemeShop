@@ -25,7 +25,7 @@ $config = array(
 
     'user_create' => array(
         array(
-            'field' => 'FullName',
+            'field' => 'UserName',
             'label' => 'Thông tin tên',
             'rules' => 'trim|required|max_length[100]',
             'errors' => array(
@@ -96,7 +96,7 @@ $config = array(
 
     'user_edit' => array(
         array(
-            'field' => 'FullName',
+            'field' => 'UserName',
             'label' => 'Thông tin tên',
             'rules' => 'trim|required|max_length[100]',
             'errors' => array(

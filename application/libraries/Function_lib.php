@@ -8,12 +8,14 @@
         private $id_level_0     = null;
         private $id_level_1     = null;
         private $id_level_2     = null;
+        public $menu_arr       = null;
 
         function __construct(){
             $this->CI = & get_instance();
+            $this->menu_arr       = null;
         }
         
-        public function get_parent_to_compornent($input,$id_parent = 0,$heading = ''){
+        public function set_parent_to_compornent($input,$id_parent = 0,$heading = ''){
             $menu_tmp = array();
             $this->menu_child .= '';
             foreach ($input as $key => $item)
@@ -29,14 +31,19 @@
                 foreach ($menu_tmp as $item)
                 {
                     $this->menu_child = $this->load->view('site/tuvi_ngay_thang_nam/table',array('item'=>$item,'heading'=>$heading));
-                    $this->get_parent_to_compornent($input, $item['id'],$heading.'|--');
+                    $this->set_parent_to_compornent($input, $item['id'],$heading.'|--');
                 }
                 
             }
-            return $this->menu_child;
         }
 
-        public function get_parent_to_array($input,$id_parent = 0,$heading = ''){
+        public function get_parent_to_compornent(){
+            $result_temp    = $this->menu_arr;
+            $this->menu_arr = null;
+            return $result_temp;
+        }
+
+        public function set_parent_to_array($input,$id_parent = 0,$heading = ''){
             $menu_tmp = array();
             foreach ($input as $key => $item)
             {
@@ -54,14 +61,19 @@
                     $this->menu_arr[$item['id']]    = $item;
                     $this->menu_arr[$item['id']]['heading'] = $heading;
                      
-                    $this->get_parent_to_array($input, $item['id'],$heading.'--');
+                    $this->set_parent_to_array($input, $item['id'],$heading.'--');
                 }
                 
             }
-            return $this->menu_arr;
         }
 
-        public function get_parent_to_number($input,$id_parent = 0,$heading = 0){
+        public function get_parent_to_array(){
+            $result_temp    = $this->menu_arr;
+            $this->menu_arr = null;
+            return $result_temp;
+        }
+
+        public function set_parent_to_number($input,$id_parent = 0,$heading = 0){
             $menu_tmp = array();
             foreach ($input as $key => $item)
             {
@@ -75,7 +87,7 @@
             {
                 $this->menu_arr[$heading]   = $menu_tmp;
                 foreach ($menu_tmp as $key => $item) {
-                    $this->get_parent_to_number($input, $item['id'],$heading++);
+                    $this->set_parent_to_number($input, $item['id'],$heading++);
                 }
                 
                 //$this->menu_arr[$heading]    = $item;
@@ -88,7 +100,12 @@
                 }*/
                 
             }
-            return $this->menu_arr;
+        }
+
+        public function get_parent_to_number(){
+            $result_temp    = $this->menu_arr;
+            $this->menu_arr = null;
+            return $result_temp;
         }
 
         /**
@@ -99,24 +116,25 @@
         *
         **/
         public function getListRecursive($data){
-            $recursiveData  = $this->get_parent_to_array($data);
+            $recursiveData  = $this->set_parent_to_array($data);
+            $recursiveData  = $this->get_parent_to_array();
             foreach ($recursiveData as $key => $value) {
                 if($value['level'] == 0){
-                    $this->listRecursive[$value['id']]['info']    = $value;
-                    $this->id_level_0 = $value['id'];
+                    $listRecursive[$value['id']]['info']    = $value;
+                    $id_level_0 = $value['id'];
                 }
                 if($value['level'] == 1){
-                    $this->listRecursive[$this->id_level_0][$value['id']]['info']    = $value;
-                    $this->id_level_1 = $value['id'];
+                    $listRecursive[$this->id_level_0][$value['id']]['info']    = $value;
+                    $id_level_1 = $value['id'];
                 }
                 if($value['level'] == 2){
-                    $this->listRecursive[$this->id_level_0][$this->id_level_1][$value['id']]['info']    = $value;
+                    $listRecursive[$this->id_level_0][$this->id_level_1][$value['id']]['info']    = $value;
                 }
                 /*if($value['level'] == 2){
                     $this->link_position['not_parent'][$value['parent']][$value['id']]['info']    = $value;
                 }*/
             }
-            return $this->listRecursive;
+            return $listRecursive;
         }
     }
 ?>
