@@ -112,6 +112,7 @@ class MY_Model extends CI_Model
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
+        $this->db->from($this->table);
         if (isset($params['where'])) {
             $this->db->where($params['where']);
         }
