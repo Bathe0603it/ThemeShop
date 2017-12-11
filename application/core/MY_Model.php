@@ -59,8 +59,7 @@ class MY_Model extends CI_Model
         return $this->getWhere(array($this->primary_key => $primary_value));
     }
 
-    public function getWhere($params,$params2 = null)
-    {
+    public function getWhere($params,$params2 = null){
         $result     = $this->db->from($this->table);
         $result     = $this->db->where($params)->get();
         if (!empty($params2)) {
@@ -69,8 +68,7 @@ class MY_Model extends CI_Model
         return $result->row_array();        
     }
 
-    public function getByWhere($params,$not_result = null)
-    {
+    public function getByWhere($params,$not_result = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
@@ -84,8 +82,7 @@ class MY_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function getLike($params,$params2 = null)
-    {
+    public function getLike($params,$params2 = null){
         $result = $this->db->from($this->table);
         $this->db->like($params)->get();
         if (!empty($params2)) {
@@ -108,7 +105,7 @@ class MY_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function getBy($params = null){
+    public function getBy($params = null,$params2 = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
@@ -150,6 +147,11 @@ class MY_Model extends CI_Model
         else{
             $this->db->limit($this->limit);
         }
+        $result    = $this->db->get();
+        if (!empty($params2)) {
+            return $this->show($result , $params2);
+        }
+        return $result->result_array();
     }
 
     /**
@@ -157,7 +159,7 @@ class MY_Model extends CI_Model
      */
     public function getMany($values)
     {
-        return $this->db->from($this->table)->where_in($this->primary_key,$values);
+        return $this->db->from($this->table)->where_in($this->primary_key,$values)->get()->result_array();
     }
 
     /**
@@ -190,14 +192,6 @@ class MY_Model extends CI_Model
             return $this->db->from($this->table)->order_by($params['order_by'][0],$params['order_by'][1])->get()->result_array();
         }
         return $this->db->from($this->table)->order_by($this->order_by[0],$this->order_by[1])->get()->result_array();
-    }
-
-    public function getByAll($params = null)
-    {
-        if (!empty($params)) {
-            $this->db->select($params);
-        }
-        return $this->db->from($this->table);
     }
 
     /**
@@ -268,7 +262,7 @@ class MY_Model extends CI_Model
      * Delete a row from the table by the primary value
      * Kiem tra an du lieu hay xoa
      */
-    public function delete($primary_values,$destroy = null)
+    public function delete($primary_values, $destroy = null)
     {
         if (!empty($destroy)) {
             return $this->update($primary_values,array('status'=>'trash'));
@@ -280,7 +274,7 @@ class MY_Model extends CI_Model
     /**
      * Delete a row from the database table by an arbitrary WHERE clause
      */
-    public function deleteWhere($where,$destroy = null)
+    public function deleteWhere($where, $destroy = null)
     {
         if (!empty($destroy)) {
             return $this->update_where($where,array('status'=>'trash'));
@@ -291,9 +285,23 @@ class MY_Model extends CI_Model
     /**
      * Delete many rows from the database table by multiple primary values
      */
-    public function deleteMany($primary_values)
+    public function deleteManyWhere($primary_values, $destroy = null)
     {
-        return $this->db->where_in($this->primary_key, $primary_values)->from($this->table);
+        if (!empty($destroy)) {
+            return $this->updateManyWhere(array('status'=>'trash'),$primary_values);
+        }
+        return $this->db->where_in($this->primary_key, $primary_values)->delete($this->table);
+    }
+
+    /**
+     * Delete many rows from the database table by multiple primary values
+     */
+    public function deleteAll($destroy = null)
+    {
+        if (!empty($destroy)) {
+            return $this->updateAll(array('status'=>'trash'));
+        }
+        return $this->db->delete($this->table);
     }
 
     /**

@@ -12,6 +12,7 @@
         }
     
         public function index(){
+            dd($this->session->userdata('logined'));
             $this->load->view('admincp/dashboardcontroller/index');
         }
         
