@@ -14,8 +14,8 @@
         }
     
         public function index(){
-            $getall = $this->userModel->getAll();
-            $data['getall'] = $getall;
+            $getAll = $this->userModel->getAll();
+            $data['getAll'] = $getAll;
             $this->loadview($this->view,$data);
         }
         

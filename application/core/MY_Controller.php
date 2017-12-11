@@ -28,10 +28,8 @@
         }
          
         function loadView($url = null ,$data = null){
-            $data   = array(
-                'view'  => !empty($url)?$url:$this->view,
-                'logined'   => $this->session->has_userdata('logined')?$this->session->userdata('logined'):'',
-            );
+            $data['view']   = !empty($url)?$url:$this->view;
+            $data['logined']    = $this->session->has_userdata('logined')?$this->session->userdata('logined'):'';
             $this->load->view('admincp/layout/index',$data);
         }
     }

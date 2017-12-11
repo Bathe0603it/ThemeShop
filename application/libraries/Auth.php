@@ -57,7 +57,7 @@ class Auth {
                    'email'          => $row['email'],
                    'fullname'       => $row['fullname'],
                    'status'         => $row['status'],
-             );
+            );
 			$this->CI->session->set_userdata(array('logined' => $newdata));
 			return TRUE;
 		}
@@ -66,6 +66,13 @@ class Auth {
 			// No existing user.
 			return FALSE;
 		}
+	}
+
+	public function infoUser(){
+		if ($this->logged_in()) {
+			return $result	= $this->CI->session->userdata('logined');
+		}
+		return redirect(admin_url('logincontroller'));
 	}
 	
 	/**

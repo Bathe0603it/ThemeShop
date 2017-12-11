@@ -43,8 +43,8 @@
                             <th>Status</th>
                             <th>Đăng nhập gần nhất</th>
                         </tr>
-                        <?php if (!empty($getall)): ?>
-                            <?php foreach ($getall as $key => $value): ?>
+                        <?php if (!empty($getAll)): ?>
+                            <?php foreach ($getAll as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $value['id']; ?></td>
                                     <td><a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['fullname'] ?></a></td>
