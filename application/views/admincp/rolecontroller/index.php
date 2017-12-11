@@ -38,8 +38,8 @@
                             <th>Tel</th>
                             <th>Đăng nhập gần nhất</th>
                         </tr>
-                        <?php if (!empty($parent_getall)): ?>
-                            <?php foreach ($parent_getall as $key => $value): ?>
+                        <?php if (!empty($data['parent_getall'])): ?>
+                            <?php foreach ($data['parent_getall'] as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $value['id']; ?></td>
                                     <td><?php echo $value['heading'] ?> <a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['name'] ?></a></td>

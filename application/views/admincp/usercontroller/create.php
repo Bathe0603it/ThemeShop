@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="UserName">Tên</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Tên của người dùng không dài quá 50 ký tự" data-val-length-max="50" id="UserName" name="UserName" placeholder="Nhập Tên" type="text" value="<?php echo set_value('username'); ?>">
+                                        <input class="form-control" data-val="true" data-val-length="Tên của người dùng không dài quá 50 ký tự" data-val-length-max="50" id="UserName" name="UserName" placeholder="Nhập Tên" type="text" value="<?php echo set_value('UserName'); ?>">
                                         <div class="has-error">
                                             <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="UserName" data-valmsg-replace="true"></span></span>
                                         </div>

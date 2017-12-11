@@ -11,11 +11,15 @@
             parent::__construct();
             $this->load->model('roleModel');
         }
-    
+        
         public function index(){
             $getAll = $this->roleModel->getAll();
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
-            $data['parent_getall'] = $parent_getall;
+            $parent_getall  = $this->function_lib->set_parent_to_array($getAll);
+            $parent_getall  = $this->function_lib->get_parent_to_array();
+
+            $data['data']   = array(
+                'parent_getall' => $parent_getall,
+            );
             $this->loadView($this->view,$data);
         }
         
