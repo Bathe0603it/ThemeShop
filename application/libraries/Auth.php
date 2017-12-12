@@ -74,6 +74,24 @@ class Auth {
 		}
 		return redirect(admin_url('logincontroller'));
 	}
+
+	/**
+	*
+	* Check permission login to url
+	* @param string	 ---
+	* @return bool|null	---
+	*
+	**/
+	public function checkPermission(){
+		// Logincheck
+		!$this->logged_in()?redirect(admin_url('logincontroller')):'';
+
+		// Quyen hien tai
+		$permission 	= '';
+		// Lay quyen he thong
+		$this->CI->load->model('roleModel');
+        $getAllRole = $this->CI->roleModel->getAll();
+	}
 	
 	/**
 	 *

@@ -9,17 +9,24 @@
             parent::__construct();
             /** xu ly dang nhap **/
             $this->load->helper('admin_helper');
-            $this->load->library(array('form_validation','auth','paginationextends','function_lib'));
+            $urlNow = $this->uri->string();
             $segment1 = $this->uri->segment(1);
             $segment2 = $this->uri->segment(2);
             $segment3 = $this->uri->segment(3);
+            $this->load->library(array('form_validation','auth','paginationextends','function_lib'));
+
+            // Khong ton tai session logined
             if (!$this->session->has_userdata('logined') && $segment2 != 'logincontroller') {
                 return redirect(admin_url('logincontroller'));
             }
+
+            // Ton tai session Logined and url is login
             if ($this->session->has_userdata('logined') && $segment2 == 'logincontroller') {
                 return redirect(admin_url('dashboardcontroller'));
             }
-            $info_admin = $this->session->userdata('logined');
+
+            // Kiem tra quyen he thong
+            
             
             /** xu ly view **/
             $this->view = 'admincp/' . $this->router->fetch_class() .'/' . $this->router->fetch_method();
