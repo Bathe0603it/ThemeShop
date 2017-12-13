@@ -23,4 +23,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 		echo slug('Tướng phú quý của đàn ông được quan niệm như thế nào?');
 	}
+
+	public function get(){
+		$this->load->view('get');
+	}
 }

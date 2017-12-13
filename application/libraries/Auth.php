@@ -68,7 +68,13 @@ class Auth {
 		}
 	}
 
-	public function infoUser(){
+	/**
+	*
+	* Info user logined
+	* @return array|null	---
+	*
+	**/
+	public function info(){
 		if ($this->logged_in()) {
 			return $result	= $this->CI->session->userdata('logined');
 		}
@@ -87,7 +93,8 @@ class Auth {
 		!$this->logged_in()?redirect(admin_url('logincontroller')):'';
 
 		// Quyen hien tai
-		$permission 	= '';
+		$info 	= $this->infoUser();
+		$permission 	= json_decode($info['permission']);
 		// Lay quyen he thong
 		$this->CI->load->model('roleModel');
         $getAllRole = $this->CI->roleModel->getAll();

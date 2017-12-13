@@ -36,7 +36,7 @@
          
         function loadView($url = null ,$data = null){
             $data['view']   = !empty($url)?$url:$this->view;
-            $data['logined']    = $this->session->has_userdata('logined')?$this->session->userdata('logined'):'';
+            $data['logined']    = $this->auth->info()?$this->auth->info():'';
             $this->load->view('admincp/layout/index',$data);
         }
     }
