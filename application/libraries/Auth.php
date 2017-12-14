@@ -81,23 +81,35 @@ class Auth {
 		return redirect(admin_url('logincontroller'));
 	}
 
+	public function getPermission(){
+		$info 	= $this->info();
+		$permission 	= json_decode($info['permission']);
+
+		// Lay quyen he thong
+		$this->CI->load->model('roleModel');
+        $getUrl = $this->CI->roleModel->getMany($permission,array(
+        												'select'	=> 'permission'));
+	}
+
 	/**
 	*
 	* Check permission login to url
-	* @param string	 ---
+	* @param string	 Url is now
 	* @return bool|null	---
 	*
 	**/
-	public function checkPermission(){
-		// Logincheck
-		!$this->logged_in()?redirect(admin_url('logincontroller')):'';
-
+	public function checkPermission($url){
 		// Quyen hien tai
-		$info 	= $this->infoUser();
+		$info 	= $this->info();
 		$permission 	= json_decode($info['permission']);
+
 		// Lay quyen he thong
 		$this->CI->load->model('roleModel');
-        $getAllRole = $this->CI->roleModel->getAll();
+        $getUrl = $this->CI->roleModel->getMany($permission,array(
+        													'select'	=> 'permission'));
+        $getUrl = $getUrl?get_field('permission',$getUrl):null;
+        // Return match
+        return in_array($url, $getUrl)?true:false;
 	}
 	
 	/**

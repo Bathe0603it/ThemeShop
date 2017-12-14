@@ -7,7 +7,7 @@
      * */
     class ProductController extends MY_Controller
     {
-        private $model = 'ProductModel';
+        private $model = 'productModel';
 
         public function __construct(){                                                                                                              
             parent::__construct();
@@ -19,7 +19,7 @@
                 'select'    => 'id,name',
                 ''
             );
-            $getAll = $this->ProductModel->getBy();
+            $getAll = $this->productModel->getBy();
             
             $data['data']   = array(
                 'getAll'    => $getAll,
@@ -38,9 +38,9 @@
                 $this->postEdit($id);
             }
             // Thong tin ban ghi hien tai
-            $data['item']   = $item = $this->ProductModel->getInfo($id);
+            $data['item']   = $item = $this->productModel->getInfo($id);
 
-            $getAll         = $this->ProductModel->getAll();   // lay danh sach cac ban ghi
+            $getAll         = $this->productModel->getAll();   // lay danh sach cac ban ghi
             $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
@@ -50,7 +50,7 @@
             if (is_post()) {
                 $this->postCreate();
             }
-            $getAll     = $this->ProductModel->getAll();   // lay danh sach cac quyen he thong
+            $getAll     = $this->productModel->getAll();   // lay danh sach cac quyen he thong
             $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
@@ -61,7 +61,7 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('role_create')) {
                 $arr_insert = $input;
-                $this->ProductModel->insert($arr_insert);
+                $this->productModel->insert($arr_insert);
                 $this->updateLevel();
                 $msg = insertOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
@@ -77,7 +77,7 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('role_edit')) {
                 $arr_update = $input;
-                $this->ProductModel->update($arr_update,$id);
+                $this->productModel->update($arr_update,$id);
                 $this->updateLevel();
                 $msg = editOk('quyền hệ thống');
                 $this->system->flash('msg_success',$msg);
@@ -93,7 +93,7 @@
             // Kiem tra url hien tai da ton tai trong db
             $id     = $_GET['id'];
             $permission     = $input['Permission'];
-            $checkData  = $this->ProductModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
+            $checkData  = $this->productModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
             return !$checkData?true:false;
         }
 
@@ -105,7 +105,7 @@
         *
         **/
         public function updateLevel(){
-            $result = $this->ProductModel->getAll();
+            $result = $this->productModel->getAll();
             $recive = $this->function_lib->set_parent_to_number($result);
             $recive = $this->function_lib->get_parent_to_number($result);
             foreach ($recive as $key => $value) {
@@ -113,7 +113,7 @@
                     $arrUpdate  = array(
                         'level' => $key
                     );
-                    $this->ProductModel->update($arrUpdate,$valueItem['id']);
+                    $this->productModel->update($arrUpdate,$valueItem['id']);
                 }
             }
             return true;

@@ -26,7 +26,7 @@
                     $input['email'],$input['password']
                 );
                 if($this->auth->process_login($arr_input)){
-                    redirect(admin_url('dashboardcontroller'));
+                    redirect(admin_url('dashboardcontroller/index'));
                 }
                 else{
                     echo 'login false';

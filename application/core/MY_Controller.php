@@ -8,24 +8,33 @@
         function __construct(){
             parent::__construct();
             /** xu ly dang nhap **/
-            $this->load->helper('admin_helper');
-            $urlNow = $this->uri->string();
+            $this->load->helper(array('admin_helper','db_helper'));
+            $urlNow = $this->uri->uri_string();
             $segment1 = $this->uri->segment(1);
             $segment2 = $this->uri->segment(2);
             $segment3 = $this->uri->segment(3);
             $this->load->library(array('form_validation','auth','paginationextends','function_lib'));
 
-            // Khong ton tai session logined
+            // not exits session logined
             if (!$this->session->has_userdata('logined') && $segment2 != 'logincontroller') {
                 return redirect(admin_url('logincontroller'));
             }
 
-            // Ton tai session Logined and url is login
+            // exits session Logined and url is login
             if ($this->session->has_userdata('logined') && $segment2 == 'logincontroller') {
-                return redirect(admin_url('dashboardcontroller'));
+                return redirect(admin_url('dashboardcontroller/index'));
             }
 
-            // Kiem tra quyen he thong
+            // exits session Logined and url is login
+            if ($this->session->has_userdata('logined') && $segment2 != 'logincontroller') {
+                // Check Permission System
+                if (!$this->auth->checkPermission($urlNow)) {
+                    $msg    = 'Không thể truy xuất <b>đường dẫn</b>';
+                    $this->system->flash('msg_warning',$msg);
+                    return redirect(admin_url('dashboardcontroller/index'));
+                }
+            }
+
             
             
             /** xu ly view **/
@@ -37,6 +46,7 @@
         function loadView($url = null ,$data = null){
             $data['view']   = !empty($url)?$url:$this->view;
             $data['logined']    = $this->auth->info()?$this->auth->info():'';
+            $arrPermission  = $this->auth->getPermission();
             $this->load->view('admincp/layout/index',$data);
         }
     }

@@ -22,34 +22,44 @@ class MY_Model extends CI_Model
         $this->load->database();
     }
 
+    /**
+    *
+    * Return type query
+    * @param object     Return $this->db->result as result
+    * @param array      Get type result
+    * @return null   
+    *
+    **/
     public function show($result , $input = null){
+        $result1    = null;
         if (isset($input['result'])) {
             switch ($input['result']) {
                 case 'result_array':
-                    $result = $result->result_array();
+                    $result1 = $result->result_array();
                     break;
                 case 'row_array':
-                    $result = $result->row_array();
+                    $result1 = $result->row_array();
                     break;
                 case 'num_rows':
-                    $result = $result->num_rows();
+                    $result1 = $result->num_rows();
                     break;
                 case 'list_fields':
-                    $result = $result->list_fields();
+                    $result1 = $result->list_fields();
                     break;
                 case 'row':
-                    $result = $result->row();
+                    $result1 = $result->row();
                     break;
                 case 'result':
-                    $result = $result->result();
+                    $result1 = $result->result();
                     break;
                 
                 default:
-                    $result = $result->row_array();
+                    $result1 = $result->row_array();
                     break;
             }
         }
-        return $result;
+        
+        return $result1?$result1:$result->row_array();;
     }
 
     public function getInfo($primary_value = null){
@@ -157,9 +167,19 @@ class MY_Model extends CI_Model
     /**
      * Fetch an array of records based on an array of primary values.
      */
-    public function getMany($values)
+    public function getMany($params, $param2 = null)
     {
-        return $this->db->from($this->table)->where_in($this->primary_key,$values)->get()->result_array();
+        if (isset($param2['select'])) {
+            $this->db->select($param2['select']);
+        }
+        $this->db->from($this->table)->where_in($this->primary_key,$params);    
+        if (isset($param2['limit'])) {
+            $this->db->limit($param2['limit'][0],$param2['limit'][1]);
+        }
+        if (isset($param2['result'])) {
+            return $this->show($this->db->get(),$param2);
+        }
+        return $this->db->get()->result_array();
     }
 
     /**
