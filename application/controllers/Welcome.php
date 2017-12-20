@@ -25,6 +25,6 @@ class Welcome extends CI_Controller {
 	}
 
 	public function get(){
-		$this->load->view('get');
+		$this->load->view('gets');
 	}
 }
