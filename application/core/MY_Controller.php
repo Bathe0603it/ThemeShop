@@ -21,21 +21,19 @@
             }
 
             // exits session Logined and url is login
-            if ($this->session->has_userdata('logined') && $segment2 == 'logincontroller') {
+            if ($this->session->has_userdata('logined') && $segment2 == 'logincontroller' && $segment3 != 'logout') {
                 return redirect(admin_url('dashboardcontroller/index'));
             }
 
             // exits session Logined and url is login
             if ($this->session->has_userdata('logined') && $segment2 != 'logincontroller') {
                 // Check Permission System
-                if (!$this->auth->checkPermission($urlNow)) {
-                    $msg    = 'Không thể truy xuất <b>đường dẫn</b>';
-                    $this->system->flash('msg_warning',$msg);
-                    return redirect(admin_url('dashboardcontroller/index'));
-                }
+                // if (!$this->auth->checkPermission($urlNow)) {
+                //     $msg    = 'Không thể truy xuất <b>đường dẫn</b>';
+                //     $this->system->flash('msg_warning',$msg);
+                //     return redirect(admin_url('dashboardcontroller/index'));
+                // }
             }
-
-            
             
             /** xu ly view **/
             $this->view = 'admincp/' . $this->router->fetch_class() .'/' . $this->router->fetch_method();
@@ -45,8 +43,8 @@
          
         function loadView($url = null ,$data = null){
             $data['view']   = !empty($url)?$url:$this->view;
-            $data['logined']    = $this->auth->info()?$this->auth->info():'';
             $arrPermission  = $this->auth->getPermission();
+            $data['recursivePermission']    = $recursivePermission = $this->function_lib->getListRecursive($arrPermission);
             $this->load->view('admincp/layout/index',$data);
         }
     }

@@ -38,4 +38,8 @@
                 echo 'none';
             }
         }
+
+        public function logOut(){
+            $this->auth->logout();
+        }
     }

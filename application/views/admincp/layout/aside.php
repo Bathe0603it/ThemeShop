@@ -37,21 +37,40 @@
                     <li><a href="<?php echo admin_template_url();?>index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
-                <span class="pull-right-container">
-                <span class="label label-primary pull-right">4</span>
-                </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                    <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                </ul>
-            </li>
+            <?php dd($recursivePermission); ?>
+            <?php if ($recursivePermission): ?>
+                <?php foreach ($recursivePermission as $key => $value): ?>
+                    <?php
+                        $linkRecu   = $value['info']['permission'];
+                        $nameRecu   = $value['info']['name'];
+                        $titleRecu  = $value['info']['description'];
+                        unset($value['info']);
+                    ?>
+                    <li class="treeview">
+                        <a href="<?php echo $linkRecu; ?>">
+                            <i class="fa fa-files-o"></i>
+                            <span><?php echo $nameRecu; ?></span>
+                            <span class="pull-right-container">
+                            <span class="label label-primary pull-right"><?php echo count($value); ?></span>
+                            </span>
+                        </a>
+                        <?php if ($value): ?>
+                            <ul class="treeview-menu">
+                            <?php foreach ($value as $key2 => $value2): ?>
+                                <?php
+                                    $linkRecu   = $value2['info']['permission'];
+                                    $nameRecu   = $value2['info']['name'];
+                                    $titleRecu  = $value2['info']['description'];
+                                    unset($value2['info']);
+                                ?>
+                                <li><a href="<?php echo $linkRecu; ?>"><i class="fa fa-circle-o"></i> <?php echo $nameRecu; ?></a></li>
+                            <?php endforeach ?>
+                            </ul>
+                        <?php endif ?>
+                    </li>
+                <?php endforeach ?>
+            <?php endif ?>
+            
             <li>
                 <a href="../widgets.html">
                 <i class="fa fa-th"></i> <span>Widgets</span>
