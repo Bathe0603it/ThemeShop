@@ -43,8 +43,16 @@
          
         function loadView($url = null ,$data = null){
             $data['view']   = !empty($url)?$url:$this->view;
+<<<<<<< HEAD
             $arrPermission  = $this->auth->getPermission();
             $data['recursivePermission']    = $recursivePermission = $this->function_lib->getListRecursive($arrPermission);
+=======
+            $data['logined']    = $this->auth->info()?$this->auth->info():'';
+
+            // get permission of administrator
+            $arrPermission  = $this->auth->getPermission();
+            $data['permissions'] = $this->function_lib->getListRecursive($arrPermission);
+>>>>>>> f1972fb4902d4baaf84093c30860c73b3f7dc5ad
             $this->load->view('admincp/layout/index',$data);
         }
     }
