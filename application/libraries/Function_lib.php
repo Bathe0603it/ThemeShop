@@ -121,11 +121,11 @@
             foreach ($recursiveData as $key => $value) {
                 if($value['level'] == 0){
                     $listRecursive[$value['id']]['info']    = $value;
-                    $id_level_0 = $value['id'];
+                    $this->id_level_0 = $value['id'];
                 }
                 if($value['level'] == 1){
                     $listRecursive[$this->id_level_0][$value['id']]['info']    = $value;
-                    $id_level_1 = $value['id'];
+                    $this->id_level_1 = $value['id'];
                 }
                 if($value['level'] == 2){
                     $listRecursive[$this->id_level_0][$this->id_level_1][$value['id']]['info']    = $value;
