@@ -47,7 +47,7 @@
                             <?php foreach ($getAll as $key => $value): ?>
                                 <tr>
                                     <td><?php echo $value['id']; ?></td>
-                                    <td><a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['username'] ?></a></td>
+                                    <td><a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['fullname'] ?></a></td>
                                     <td><?php echo $value['tel']; ?></td>
                                     <td><span class="label label-success"><?php echo $value['status']; ?></span></td>
                                     <td><?php echo $value['login_timer']; ?></td>
