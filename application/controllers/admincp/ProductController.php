@@ -8,6 +8,7 @@
     class ProductController extends MY_Controller
     {
         private $model = 'productModel';
+        protected $limit    = 25;
 
         public function __construct(){                                                                                                              
             parent::__construct();
@@ -15,11 +16,9 @@
         }
     
         public function index(){
-            $arr_set = array(
-                'select'    => 'id,name',
-                ''
-            );
-            $getAll = $this->productModel->getBy();
+            
+
+            $productList = $this->productModel->getBy();
             
             $data['data']   = array(
                 'getAll'    => $getAll,
@@ -59,7 +58,7 @@
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
-            if ($this->form_validation->run('role_create')) {
+            if ($this->form_validation->run('product_create')) {
                 $arr_insert = $input;
                 $this->productModel->insert($arr_insert);
                 $this->updateLevel();
@@ -75,7 +74,7 @@
         private function postEdit($id){
             // xu ly formvalidate
             $input  = $this->input->post();
-            if ($this->form_validation->run('role_edit')) {
+            if ($this->form_validation->run('product_edit')) {
                 $arr_update = $input;
                 $this->productModel->update($arr_update,$id);
                 $this->updateLevel();

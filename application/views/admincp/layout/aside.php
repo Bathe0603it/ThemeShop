@@ -28,26 +28,25 @@
             <?php if ($permissions): ?>
                 <?php foreach ($permissions as $key => $value): ?>
                     <?php
-                        $name_record = $value['info']['name'];
-                        $link_record = base_url($value['info']['permission']).''; 
-                        $id_record   = $value['info']['id'];
-                        unset($value['info']);
+                        $name_record = $value['name'];
+                        $link_record = base_url($value['permission']).''; 
+                        $id_record   = $value['id'];
                     ?>
                     <li class="treeview">
                         <a href="<?php echo $link_record; ?>">
                         <i class="fa fa-files-o"></i>
                         <span><?php echo $name_record; ?></span>
                         <span class="pull-right-container">
-                        <span class="label label-primary pull-right"><?php echo count($value)-1>0?count($value)-1:'' ?></span>
+                        <span class="label label-primary pull-right"><?php echo count($value['children'])-1>0?count($value['children'])-1:'' ?></span>
                         </span>
                         </a>
-                        <?php if ($value): ?>
+                        <?php if ($value['children']): ?>
                             <ul class="treeview-menu">
-                            <?php foreach ($value as $key1 => $value1): ?>
+                            <?php foreach ($value['children'] as $key1 => $value1): ?>
                                 <?php
-                                    $name_record = $value1['info']['name'];
-                                    $link_record = base_url($value1['info']['permission']).''; 
-                                    $id_record   = $value1['info']['id'];
+                                    $name_record = $value1['name'];
+                                    $link_record = base_url($value1['permission']).''; 
+                                    $id_record   = $value1['id'];
                                     unset($value1['info']);
                                 ?>
                                 <li><a href="<?php echo $link_record; ?>"><i class="fa fa-circle-o"></i> <?php echo $name_record; ?></a></li>

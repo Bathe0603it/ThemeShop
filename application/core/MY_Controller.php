@@ -44,8 +44,9 @@
         }
          
         function loadView($url = null, $data = null){
+            // Url view
             $data['view']   = !empty($url)?$url:$this->view;
-            $data['logined']    = $this->auth->info()?$this->auth->info():'';
+            
             $arrPermission  = $this->auth->getPermission();
             $data['recursivePermission']    = $recursivePermission = $this->function_lib->getListRecursive($arrPermission);
             $data['logined']    = $this->auth->info()?$this->auth->info():'';

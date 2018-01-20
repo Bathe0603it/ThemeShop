@@ -2,8 +2,39 @@
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
     class PaginationExtends extends CI_Pagination{
+        public $limit    = 25;
+        public $total    = null;
+        public $base_url    = null;
+
         function __construct(){
             $this->CI = & get_instance();
+        }
+
+        function get($limit = null, $total = null, $base_url = null){
+            $this->limit    = $limit?$limit:$this->limit;
+            $this->total    = $total?$total:$this->total;
+            $this->base_url    = $base_url?$base_url:$this->uri->uri_string();
+            // Action pagination
+            $page   = isset($_GET['page'])?$_GET['page']:1;
+            $page   = !empty($page)?$page:1;
+            $offset = ( $page - 1 )*$this->limit;
+
+            /** cau hinh phan trang -2 **/
+            // $this->load->library('pagination');
+            $slugPage   = $this->base_url;
+            
+            $queryString    = str_replace('page='.$page, '', $_SERVER['QUERY_STRING']);
+            if ($queryString) {
+                $config["base_url"] = $slugPage.'?'.$queryString;
+            }
+            else{
+                $config['base_url'] = base_url($slugPage.'');
+            }
+            $config['total_rows'] = $this->total;
+            $config['per_page'] = $this->limit;
+            $this->initialize($config);
+            return $this->create_links();
+            /** end -2 **/
         }
         function pagination_page($url =null,$total = null,$record = null,$giatri_get = null,$hienthi = true){
             $this->CI->load->library('pagination');  

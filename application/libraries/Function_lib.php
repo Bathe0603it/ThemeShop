@@ -163,7 +163,7 @@
         * @return array
         *
         **/
-        public function getListRecursive($data){
+        /*public function getListRecursiveBin($data){
             $recursiveData  = $this->set_parent_to_array($data);
             $recursiveData  = $this->get_parent_to_array();
             foreach ($recursiveData as $key => $value) {
@@ -178,11 +178,28 @@
                 if($value['level'] == 2){
                     $listRecursive[$this->id_level_0][$this->id_level_1][$value['id']]['info']    = $value;
                 }
-                /*if($value['level'] == 2){
-                    $this->link_position['not_parent'][$value['parent']][$value['id']]['info']    = $value;
-                }*/
             }
             return $listRecursive;
+        }*/
+
+        /**
+        *
+        * Hàm get dữ liệu mảng theo đệ quy
+        * @param $data = array
+        * @return array
+        *
+        **/
+        public function getListRecursive(&$elements, $parentId = 0){
+            $branch = array();
+            foreach ($elements as $key => $element) {
+                if ($element['parent'] == $parentId) {
+
+                    $element['children'] = $this->getListRecursive($elements, $element['id']);
+
+                    $branch[] = $element;                 
+                }
+            }
+            return $branch;
         }
     }
 ?>
