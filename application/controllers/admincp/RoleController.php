@@ -22,6 +22,13 @@
             );
             $this->loadView($this->view,$data);
         }
+
+        public function test(){
+            $getAll         = $this->roleModel->getAll();   // lay danh sach cac ban ghi
+            $parent_getall  = $this->function_lib->setAbc($getAll);
+
+            dd($parent_getall);
+        }
         
         public function edit(){
             // Kiem tra co ton tai id truyen vao k
@@ -37,7 +44,8 @@
             $data['item']   = $item = $this->roleModel->getInfo($id);
 
             $getAll         = $this->roleModel->getAll();   // lay danh sach cac ban ghi
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
+            $parent_getall  = $this->function_lib->get_parent_to_array_heading($getAll);
+
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
         }
@@ -47,7 +55,8 @@
                 $this->postCreate();
             }
             $getAll     = $this->roleModel->getAll();   // lay danh sach cac quyen he thong
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
+            $parent_getall  = $this->function_lib->get_parent_to_array_heading($getAll);
+
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
         }

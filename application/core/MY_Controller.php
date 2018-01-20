@@ -43,7 +43,7 @@
             $this->method   = $this->router->fetch_method();
         }
          
-        function loadView($url = null ,$data = null){
+        function loadView($url = null, $data = null){
             $data['view']   = !empty($url)?$url:$this->view;
             $data['logined']    = $this->auth->info()?$this->auth->info():'';
             $arrPermission  = $this->auth->getPermission();

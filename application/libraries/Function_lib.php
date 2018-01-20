@@ -73,6 +73,30 @@
             return $result_temp;
         }
 
+        public function get_parent_to_array_heading($input,$id_parent = 0,$heading = ''){
+            $menu_tmp = array();
+            foreach ($input as $key => $item)
+            {
+                if ($item['parent'] == $id_parent)
+                {
+                    $menu_tmp[] = $item;
+                    unset($input[$key]);
+                }
+            }
+            if ($menu_tmp)
+            {
+                //$this->menu_arr[$heading]    = $item;
+                foreach ($menu_tmp as $item)
+                {
+                    $this->menu_arr[$item['id']]    = $item;
+                    $this->menu_arr[$item['id']]['heading'] = $heading;
+                     
+                    $this->get_parent_to_array_heading($input, $item['id'],$heading.'--');
+                }
+            }
+            return $this->menu_arr;
+        }
+
         public function set_parent_to_number($input,$id_parent = 0,$heading = 0){
             $menu_tmp = array();
             foreach ($input as $key => $item)
@@ -106,6 +130,30 @@
             $result_temp    = $this->menu_arr;
             $this->menu_arr = null;
             return $result_temp;
+        }
+
+        public function setAbc($input,$id_parent = 0,$heading = ''){
+            $menu_tmp = array();
+            foreach ($input as $key => $item)
+            {
+                if ($item['parent'] == $id_parent)
+                {
+                    $menu_tmp[] = $item;
+                    unset($input[$key]);
+                }
+            }
+            if ($menu_tmp)
+            {
+                //$this->menu_arr[$heading]    = $item;
+                foreach ($menu_tmp as $item)
+                {
+                    $this->arr_list[$item['id']]    = $item;
+                    $this->arr_list[$item['id']]['heading']    = $heading;
+                     
+                    $this->setAbc($input, $item['id'],$heading.'|--');
+                }
+            }
+            return $this->arr_list;
         }
 
         /**
