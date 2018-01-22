@@ -111,6 +111,7 @@
         **/
         public function updateLevel(){
             $result = $this->roleModel->getAll();
+            $this->function_lib->set_parent_to_number($result);
             $recive = $this->function_lib->get_parent_to_number($result);
             foreach ($recive as $key => $value) {
                 foreach ($value as $keyItem => $valueItem) {
