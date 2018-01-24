@@ -231,5 +231,16 @@
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo admin_template_url();?>dist/js/demo.js"></script>
         <script src="<?php echo admin_public_url();?>js/jsadmin.js"></script>
+        <!-- CK Editor -->
+        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+        <script>
+            $(function () {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('content');
+                //bootstrap WYSIHTML5 - text editor
+            });
+        </script>
     </body>
 </html>

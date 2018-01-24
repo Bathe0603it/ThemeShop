@@ -12,7 +12,6 @@
             <button class="btn btn-info">Lưu</button>
         </div>
     </div>
-    
 </section>
 <!-- Main content -->
 <section class="content">
@@ -35,7 +34,7 @@
                     <div class="form-group" id="ht-cre-product-content">
                         <label class="control-label strong" for="Content">Nội dung</label>
                         <div class="controls">
-                            <textarea bind="content" class="form-control" cols="20" id="Content" name="Content" placeholder="" rows="2" type="text"></textarea>
+                            <textarea bind="content" class="form-control" cols="20" id="content" name="Content" placeholder="" rows="2" type="text"></textarea>
                             <span class="help-block"><span class="field-validation-valid" data-valmsg-for="Content" data-valmsg-replace="true"></span></span>
                         </div>
                     </div>
@@ -630,3 +629,4 @@
 </section>
 <!-- /.content -->
 </form>
+
