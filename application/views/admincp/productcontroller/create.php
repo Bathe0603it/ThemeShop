@@ -27,14 +27,13 @@
                     <div class="form-group" id="ht-cre-product-name">
                         <label class="control-label strong" for="Name">Tên sản phẩm</label> <span class="asterisk">*</span>
                         <div class="controls">
-                            <input bind="name" class="form-control" data-val="true" data-val-length="Tên sản phẩm tối đa 255 ký tự" data-val-length-max="255" data-val-required="Tên sản phẩm không được để trống" id="Name" name="Name" placeholder="Nhập tên sản phẩm" type="text" value="">
+                            <input bind="name" class="form-control" id="name" name="name" placeholder="Nhập tên sản phẩm" type="text" value="">
                         </div>
                     </div>
                     <div class="form-group" id="ht-cre-product-content">
                         <label class="control-label strong" for="Content">Nội dung</label>
                         <div class="controls">
-                            <textarea bind="content" class="form-control" cols="20" id="content" name="Content" placeholder="" rows="2" type="text"></textarea>
-                            <span class="help-block"><span class="field-validation-valid" data-valmsg-for="Content" data-valmsg-replace="true"></span></span>
+                            <textarea bind="content" class="form-control" cols="20" id="content" name="content" placeholder="" rows="2" type="text"></textarea>
                         </div>
                     </div>
                     <div class="form-group" define="{shownSummary: false}" bind-show="!shownSummary">
@@ -43,8 +42,7 @@
                     <div class="form-group hide" id="div-summary" bind-show="shownSummary">
                         <label class="control-label strong" for="Summary">Mô tả ngắn</label>
                         <div class="controls">
-                            <textarea class="form-control" cols="20" data-val="true" data-val-length="Mô tả ngắn tối đa 500 kí tự" data-val-length-max="500" id="Summary" name="Summary" placeholder="" rows="2" type="text"></textarea>
-                            <span class="help-block"><span class="field-validation-valid" data-valmsg-for="Summary" data-valmsg-replace="true"></span></span>
+                            <textarea class="form-control" cols="20" id="summary" name="summary" placeholder="" rows="2" type="text"></textarea>
                         </div>
                     </div>
                     <div class="row">
