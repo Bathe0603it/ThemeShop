@@ -29,7 +29,6 @@
                         <label class="control-label strong" for="Name">Tên sản phẩm</label> <span class="asterisk">*</span>
                         <div class="controls">
                             <input bind="name" class="form-control" data-val="true" data-val-length="Tên sản phẩm tối đa 255 ký tự" data-val-length-max="255" data-val-required="Tên sản phẩm không được để trống" id="Name" name="Name" placeholder="Nhập tên sản phẩm" type="text" value="">
-                            <span class="help-block"><span class="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span></span>
                         </div>
                     </div>
                     <div class="form-group" id="ht-cre-product-content">

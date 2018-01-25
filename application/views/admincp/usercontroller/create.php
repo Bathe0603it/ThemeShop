@@ -31,10 +31,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="UserName">Tên</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Tên của người dùng không dài quá 50 ký tự" data-val-length-max="50" id="UserName" name="UserName" placeholder="Nhập Tên" type="text" value="<?php echo set_value('UserName'); ?>">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="UserName" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" name="username" placeholder="Nhập Tên" type="text" value="<?php echo set_value('username'); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -44,10 +41,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="Email">Email</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-email="Email không đúng định dạng" data-val-length="Địa chỉ email không dài quá 128 ký tự" data-val-length-max="128" data-val-required="Nhập vào địa chỉ email" id="Email" name="Email" placeholder="Nhập Email" type="text" value="<?php echo set_value('email'); ?>">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Email" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" id="email" name="email" placeholder="Nhập Email" type="text" value="<?php echo set_value('email'); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -56,10 +50,7 @@
                                     <label class="control-label strong" for="Tel">Điện thoại</label>
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Số điện thoại không dài quá 15 ký tự" data-val-length-max="15" data-val-phone="Số điện thoại không đúng định dạng" id="Tel" name="Tel" placeholder="Nhập Số điện thoại" type="text" value="<?php echo set_value('Tel'); ?>">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Tel" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" id="Tel" name="tel" placeholder="Nhập Số điện thoại" type="text" value="<?php echo set_value('tel'); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -70,10 +61,7 @@
                                     <label class="control-label strong" for="Address">Địa chỉ</label>
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Trang chủ không dài quá 128 ký tự" data-val-length-max="128" id="Address" name="Address" placeholder="Nhập Trang chủ" type="text" value="<?php echo set_value('address'); ?>">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Address" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" id="address" name="address" placeholder="Nhập Trang chủ" type="text" value="<?php echo set_value('address'); ?>">
                                     </div>
                                 </div>
                             </div>
@@ -84,10 +72,7 @@
                                     <label class="control-label strong" for="Description">Thông tin giới thiệu</label>
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
-                                        <textarea class="form-control" cols="20" data-val="true" data-val-length="Thông tin giới thiệu dài không quá 255 ký tự" data-val-length-max="255" id="Description" name="Description" placeholder="Nhập Thông tin giới thiệu" rows="5"><?php echo set_value('description'); ?></textarea>
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Description" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <textarea class="form-control" cols="20" id="description" name="description" placeholder="Nhập Thông tin giới thiệu" rows="5"><?php echo set_value('description'); ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +83,7 @@
                                     <div class="controls">
                                         <div class="checkbox">
                                             <label class="strong">
-                                                <input id="Receive" name="Receive" type="checkbox" value="<?php echo set_value('receive'); ?>">
+                                                <input id="receive" name="Receive" type="checkbox" value="<?php echo set_value('receive'); ?>">
                                                 Hãy cập nhập cho tôi những thông báo quan trọng qua Email
                                             </label>
                                             <br>
@@ -113,10 +98,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="Password">Mật khẩu</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-length="Mật khẩu dài từ 6 đến 50 ký tự" data-val-length-max="50" data-val-length-min="6" data-val-required="Nhập vào mật khẩu của bạn" id="Password" name="Password" placeholder="Nhập Mật khẩu" type="password">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="Password" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" data-val-required="Nhập vào mật khẩu của bạn" id="password" name="password" placeholder="Nhập Mật khẩu" type="password">
                                     </div>
                                 </div>
                             </div>
@@ -124,10 +106,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="ConfirmPassword">Xác nhận mật khẩu</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" data-val-equalto="Mật khẩu không khớp nhau" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Nhập lại Mật khẩu" type="password">
-                                        <div class="has-error">
-                                            <span class="help-block"><span class="field-validation-valid help-block" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span></span>
-                                        </div>
+                                        <input class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Nhập lại Mật khẩu" type="password">
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +164,7 @@
                                                 <div class="controls col-sm-9 col-sm-offset-3">
                                                     <div class="checkbox">
                                                         <?php echo $heading; ?>&nbsp<label>
-                                                        <input type="checkbox" id="role-sales-1" name="RoleIds[]" value="<?php echo $id ?>">
+                                                        <input type="checkbox" id="role-sales-1" name="roleids[]" value="<?php echo $id ?>">
                                                         <?php echo $name; ?>
                                                         </label>
                                                     </div>
