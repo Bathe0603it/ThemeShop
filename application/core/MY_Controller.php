@@ -5,15 +5,25 @@
         public $method      = null;
         public $edit        = 'edit';
         public $create      = 'create';
+        public $limit       = 25;
+
         function __construct(){
             parent::__construct();
             /** xu ly dang nhap **/
-            $this->load->helper(array('admin_helper','db_helper'));
+            $this->load->helper(array(
+                'admin_helper',
+                'db_helper'
+            ));
             $urlNow = $this->uri->uri_string();
             $segment1 = $this->uri->segment(1);
             $segment2 = $this->uri->segment(2);
             $segment3 = $this->uri->segment(3);
-            $this->load->library(array('form_validation','auth','paginationextends','function_lib'));
+            $this->load->library(array(
+                'form_validation',
+                'auth',
+                'paginationextends',
+                'function_lib'
+            ));
 
             // not exits session logined
             if (!$this->session->has_userdata('logined') && $segment2 != 'logincontroller') {

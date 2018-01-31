@@ -1,7 +1,7 @@
 <?php 
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
-    class PaginationExtends extends CI_Pagination{
+    class PaginationExtend extends CI_Pagination{
         public $limit    = 25;
         public $total    = null;
         public $base_url    = null;
@@ -10,10 +10,18 @@
             $this->CI = & get_instance();
         }
 
-        function get($limit = null, $total = null, $base_url = null){
-            $this->limit    = $limit?$limit:$this->limit;
-            $this->total    = $total?$total:$this->total;
-            $this->base_url    = $base_url?$base_url:$this->uri->uri_string();
+        /**
+        *
+        * Function create PAGINATION
+        * @param string     ---
+        * @return bool|null    ---
+        *
+        **/
+        function get($params = null){
+            $this->limit    = isset($params['limit'])?$params['limit']:$this->limit;
+            $this->total    = isset($params['total'])?$params['total']:$this->total;
+            $this->base_url    = isset($params['base_url'])?$params['base_url']:$this->uri->uri_string();
+
             // Action pagination
             $page   = isset($_GET['page'])?$_GET['page']:1;
             $page   = !empty($page)?$page:1;

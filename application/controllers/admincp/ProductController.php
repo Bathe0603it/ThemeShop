@@ -16,16 +16,31 @@
         }
     
         public function index(){
-            
+            $total  = $this->productModel->getBy();
+            $productList    = $this->productModel->getBy();
+            $paramsPagination    = array(
+                'total' => $total,
+                'base_url'  => $this->uri->uri_string();
+            );
+            $pagination     = $this->paginationextend->get($paramsPagination);
 
-            $productList = $this->productModel->getBy();
-            
             $data['data']   = array(
-                'getAll'    => $getAll,
+                'productList'    => $productList,
+                'pagination'    => $pagination,
             );
             $this->loadView($this->view,$data);
         }
         
+        public function create(){
+            if (is_post()) {
+                $this->postCreate();
+            }
+            $getAll     = $this->productModel->getAll();   // lay danh sach cac quyen he thong
+            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
+            $data['parent_getall'] = $parent_getall;
+            $this->loadView($this->view,$data);
+        }
+
         public function edit(){
             // Kiem tra co ton tai id truyen vao k
             if (!$id = $this->input->get('id')) {
@@ -44,17 +59,7 @@
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
         }
-        
-        public function create(){
-            if (is_post()) {
-                $this->postCreate();
-            }
-            $getAll     = $this->productModel->getAll();   // lay danh sach cac quyen he thong
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
-            $data['parent_getall'] = $parent_getall;
-            $this->loadView($this->view,$data);
-        }
-        
+
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
