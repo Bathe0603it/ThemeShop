@@ -8,9 +8,8 @@
     class ProductController extends MY_Controller
     {
         private $model = 'productModel';
-        protected $limit    = 25;
 
-        public function __construct(){                                                                                                              
+        public function __construct(){                       
             parent::__construct();
             $this->load->model($this->model);
         }
@@ -20,7 +19,7 @@
             $productList    = $this->productModel->getBy();
             $paramsPagination    = array(
                 'total' => $total,
-                'base_url'  => $this->uri->uri_string();
+                'base_url'  => $this->uri->uri_string()
             );
             $pagination     = $this->paginationextend->get($paramsPagination);
 

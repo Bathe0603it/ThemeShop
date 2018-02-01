@@ -36,15 +36,6 @@
                             <textarea bind="content" class="form-control" cols="20" id="content" name="content" placeholder="" rows="2" type="text"></textarea>
                         </div>
                     </div>
-                    <div class="form-group" define="{shownSummary: false}" bind-show="!shownSummary">
-                        <a href="javascript:;" class="link" bind-event-click="shownSummary = !shownSummary">Thêm mô tả ngắn</a>
-                    </div>
-                    <div class="form-group hide" id="div-summary" bind-show="shownSummary">
-                        <label class="control-label strong" for="Summary">Mô tả ngắn</label>
-                        <div class="controls">
-                            <textarea class="form-control" cols="20" id="summary" name="summary" placeholder="" rows="2" type="text"></textarea>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-6" style="z-index:5;">
                             <label class="control-label strong">
@@ -142,6 +133,34 @@
     </div>
     <div class="row">
         <div class="col-md-4 col-lg-3 colection">
+            <h4>Mô tả ngắn</h4>
+        </div>
+        <div class="col-md-8 col-lg-9 colection">
+            <div class="box box-info collapsed-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Thêm mô tả ngắn</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="form-group" id="div-summary">
+                        <label class="control-label strong" for="Summary">Mô tả ngắn</label>
+                        <div class="controls">
+                            <textarea class="form-control" cols="20" id="summary" name="summary" placeholder="" rows="2" type="text"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-3 colection">
             <h4>Danh mục</h4>
             <p class="text-muted">Danh mục được sử dụng để nhóm sản phẩm với nhau.</p>
             <div define="{multipleCollections: new Bizweb.CollectionMultipleDropdown(this, {'type': 'collection','isLoaded':false,'page':1})}" context="multipleCollections">
@@ -212,62 +231,7 @@
         <div class="col-md-8 col-lg-9 variant-panel">
             <div class="panel panel-default panel-light">
                 <div style="padding-bottom:0" class="panel-body form-bordered variants">
-                    <style type="text/css">
-                        .variants-option {
-                        padding: 20px;
-                        }
-                        .variants-option .table-option td, .variants-option .table-option th, .variants-option .table-variant td, .variants-option .table-variant th {
-                        padding: 8px 10px;
-                        }
-                        .variants-option .table-option td:first-child {
-                        padding-left: 0;
-                        }
-                        .table-option .bootstrap-tagsinput {
-                        margin-bottom: 0;
-                        }
-                        .option-value1 .label-info {
-                        background: #29bc94;
-                        }
-                        span.option-value1 {
-                        color: #29bc94;
-                        }
-                        .option-value2 .label-info {
-                        background: #763eaf;
-                        }
-                        span.option-value2 {
-                        color: #763eaf;
-                        }
-                        .option-value3 .label-info {
-                        background: #ff9517;
-                        }
-                        span.option-value3 {
-                        color: #ff9517;
-                        }
-                        .form-bordered .form-group:last-of-type {
-                        border-bottom: none;
-                        margin-bottom: 0;
-                        padding-bottom: 0;
-                        }
-                        .box {
-                        background-color: white;
-                        border: 1px solid #d3dbe2;
-                        padding: 10px;
-                        position: relative;
-                        margin-bottom: 20px;
-                        -webkit-transition: background 0.5s;
-                        transition: background 0.5s;
-                        }
-                        .box.warning {
-                        background-color: #fcf5d9;
-                        color: #9b731d;
-                        border: 1px solid #f2ebcf;
-                        border-right-color: #e2dcc2;
-                        border-bottom-color: #e2dcc2;
-                        }
-                        .table-variant tbody tr td {
-                        vertical-align: middle;
-                        }
-                    </style>
+                    
                     <div context="productVariantOptions" define="{productVariantOptions: new Bizweb.NewProductVariantOptions(this,{&quot;auto_generate&quot;:true,&quot;id&quot;:0,&quot;options&quot;:[{&quot;values&quot;:&quot;&quot;,&quot;product_id&quot;:0,&quot;name&quot;:&quot;Title&quot;,&quot;position&quot;:0,&quot;created_on&quot;:&quot;0001-01-01T00:00:00Z&quot;,&quot;modified_on&quot;:null,&quot;id&quot;:0}],&quot;variants&quot;:[],&quot;variant&quot;:{&quot;id&quot;:0,&quot;next_id&quot;:0,&quot;prev_id&quot;:0,&quot;barcode&quot;:null,&quot;sku&quot;:null,&quot;product_id&quot;:0,&quot;price&quot;:0.0,&quot;compare_at_price&quot;:null,&quot;option1&quot;:&quot;Default Title&quot;,&quot;option2&quot;:null,&quot;option3&quot;:null,&quot;title&quot;:null,&quot;taxable&quot;:false,&quot;inventory_management&quot;:null,&quot;inventory_policy&quot;:&quot;deny&quot;,&quot;inventory_quantity&quot;:1,&quot;requires_shipping&quot;:true,&quot;weight&quot;:0.0,&quot;weight_unit&quot;:&quot;kg&quot;,&quot;image_id&quot;:null,&quot;src&quot;:&quot;&quot;,&quot;position&quot;:0,&quot;created_on&quot;:&quot;0001-01-01T00:00:00Z&quot;,&quot;modified_on&quot;:null,&quot;product&quot;:null,&quot;api_permissions&quot;:null,&quot;inventory_management_list&quot;:null,&quot;is_create&quot;:false}})}">
                         <input bind="auto_generate" id="AutoGenerate" name="AutoGenerate" type="hidden" value="True">
                         <input data-val="true" data-val-number="The field Id must be a number." id="Variant_Id" name="Variant.Id" type="hidden" value="0">

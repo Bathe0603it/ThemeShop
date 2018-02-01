@@ -21,7 +21,7 @@
             $this->load->library(array(
                 'form_validation',
                 'auth',
-                'paginationextends',
+                'paginationextend',
                 'function_lib'
             ));
 
