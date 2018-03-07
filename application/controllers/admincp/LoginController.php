@@ -38,4 +38,9 @@
                 echo 'none';
             }
         }
+
+        public function logout(){
+            $this->session->unset_userdata('logined');
+            return redirect(admin_url());
+        }
     }

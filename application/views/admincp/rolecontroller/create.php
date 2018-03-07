@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label class="control-label strong" for="Description">Mô tả quyền hệ thống</label>
                                     <div class="controls">
-                                        <input class="form-control" data-val="true" id="description" name="Description" placeholder="Nhập mô tả quyền hệ thống" type="text" value="<?php echo set_value('description'); ?>">
+                                        <input class="form-control" data-val="true" id="description" name="description" placeholder="Nhập mô tả quyền hệ thống" type="text" value="<?php echo set_value('description'); ?>">
                                     </div>
                                 </div>
                             </div>

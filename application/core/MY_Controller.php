@@ -26,13 +26,13 @@
             ));
 
             // not exits session logined
-            if (!$this->session->has_userdata('logined') && $segment2 != 'logincontroller') {
+            if (!$this->session->has_userdata('logined') and $segment2 != 'logincontroller') {
                 return redirect(admin_url('logincontroller'));
             }
 
             // exits session Logined and url is login
-            if ($this->session->has_userdata('logined') && $segment2 == 'logincontroller') {
-                return redirect(admin_url('dashboardcontroller/index'));
+            if ($this->session->has_userdata('logined') and $segment2 == 'logincontroller' and $segment3 != 'logout') {
+                return redirect(admin_login_url());
             }
 
             // exits session Logined and url is login

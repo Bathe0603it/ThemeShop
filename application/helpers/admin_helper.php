@@ -17,9 +17,9 @@
         }
     }
     
-    if(!function_exists('admin_template_url')){
-        function admin_template_url($input = null){
-            return base_url('public/admincp/template/'.$input);
+    if(!function_exists('admin_login_url')){
+        function admin_login_url(){
+            return base_url('admincp/logincontroller');
         }
     }
 
@@ -65,7 +65,7 @@
 
     if(!function_exists('rediectIndex')){
         function rediectIndex($input = null){
-            return redirect(base_url('admincp/').getObject());
+            return redirect(base_url('admincp/').getObject().'/index');
         }
     }
 
