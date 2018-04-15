@@ -20,6 +20,16 @@
         <link rel="stylesheet" href="<?php echo admin_template_url();?>dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="<?php echo admin_public_url();?>css/global-style.css">
         <link rel="stylesheet" href="<?php echo admin_public_url();?>plugins/checkbox-style/style.css">
+
+        <!-- jQuery 2.2.3 -->
+        <script src="<?php echo admin_template_url();?>plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <!-- CK Editor -->
+        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+        <script src="<?php echo admin_public_url(); ?>js/functions.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            
+        </script>
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -219,8 +229,7 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <!-- jQuery 2.2.3 -->
-        <script src="<?php echo admin_template_url();?>plugins/jQuery/jquery-2.2.3.min.js"></script>
+        
         <!-- Bootstrap 3.3.6 -->
         <script src="<?php echo admin_template_url();?>bootstrap/js/bootstrap.min.js"></script>
         <!-- Slimscroll -->
@@ -232,16 +241,6 @@
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo admin_template_url();?>dist/js/demo.js"></script>
         <script src="<?php echo admin_public_url();?>js/jsadmin.js"></script>
-        <!-- CK Editor -->
-        <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
-
-        <script>
-            $(function () {
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace('content');
-                //bootstrap WYSIHTML5 - text editor
-            });
-        </script>
+        
     </body>
 </html>

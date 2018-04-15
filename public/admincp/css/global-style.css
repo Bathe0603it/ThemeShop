@@ -44,7 +44,7 @@ a:hover, a:focus{ text-decoration: none; }
 .msgInfo .msg-errors{ background: rgba(218, 25, 11, 0.47);padding: 10px 28px; }
 .msgInfo .msg-error{ background-color: #f4433680;padding: 10px 28px; }
 
-.content-header{ position: fixed;width: 100%;background: #fff !important;z-index: 1;line-height: 25px;border-bottom: 1px solid #dddee0;box-shadow: 0 2px 2px -2px rgba(0,0,0,.5); }
+.content-header{ position: fixed;width: 100%;background: #fff !important;z-index: 10;line-height: 25px;border-bottom: 1px solid #dddee0;box-shadow: 0 2px 2px -2px rgba(0,0,0,.5); }
 .content-header h1, .content-header h2, .content-header h3, .content-header h4, .content-header h5{ margin: 0px; }
 .content-wrapper{ position: relative; }
 .fixTop{ top: 0px; }
