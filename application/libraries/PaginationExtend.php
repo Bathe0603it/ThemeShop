@@ -28,7 +28,6 @@
             $offset = ( $page - 1 )*$this->limit;
 
             /** cau hinh phan trang -2 **/
-            // $this->load->library('pagination');
             $slugPage   = $this->base_url;
             
             $queryString    = str_replace('page='.$page, '', $_SERVER['QUERY_STRING']);

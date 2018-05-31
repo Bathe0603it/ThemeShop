@@ -26,14 +26,14 @@ class MY_Model extends CI_Model
     *
     * Return type query
     * @param object     Return $this->db->result as result
-    * @param array      Get type result
+    * @param string      Get type result
     * @return null   
     *
     **/
     public function show($result , $input = null){
         $result1    = null;
-        if (isset($input['result'])) {
-            switch ($input['result']) {
+        if ($input) {
+            switch ($input) {
                 case 'result_array':
                     $result1 = $result->result_array();
                     break;
@@ -63,7 +63,7 @@ class MY_Model extends CI_Model
     }
 
     public function getInfo($primary_value = null){
-        if (empty($primary_value)) {
+        if (!$primary_value) {
             return false;
         }
         return $this->getWhere(array($this->primary_key => $primary_value));
@@ -78,6 +78,13 @@ class MY_Model extends CI_Model
         return $result->row_array();        
     }
 
+    /**
+    *
+    * Ham tra ve nhieu record bang where
+    * @param string     ---
+    * @return bool|null    ---
+    *
+    **/
     public function getByWhere($params,$not_result = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
@@ -93,10 +100,10 @@ class MY_Model extends CI_Model
     }
 
     public function getLike($params,$params2 = null){
-        $result = $this->db->from($this->table);
-        $this->db->like($params)->get();
+        $this->db->from($this->table);
+        $result = $this->db->like($params)->get();
         if (!empty($params2)) {
-            return $this->show($params2);
+            return $this->show($result , $params2);
         }
         return $this->db->row_array();
     }
@@ -115,6 +122,14 @@ class MY_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    /**
+    *
+    * Hàm trả về query theo điều kiện
+    * @param array     Tham so query
+    * @param array     Tham so query
+    * @return bool|null    ---
+    *
+    **/
     public function getBy($params = null,$params2 = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
@@ -152,10 +167,12 @@ class MY_Model extends CI_Model
             $this->db->order_by($order_by[0], $order_by[1]);
         }
         if (isset($params['limit'])) {
-            $this->db->limit($params['limit'][0], $params['limit'][1]);
-        }
-        else{
-            $this->db->limit($this->limit);
+            if (is_array($params['limit'])) {
+                $this->db->limit($params['limit'][0], $params['limit'][1]);
+            }
+            else{
+                $this->db->limit($params['limit'], $this->limit);
+            }
         }
         $result    = $this->db->get();
         if (!empty($params2)) {

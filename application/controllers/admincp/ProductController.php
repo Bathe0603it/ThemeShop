@@ -2,7 +2,7 @@
     defined('BASEPATH') or exit('No direct script access allowed');
     /**
      * 
-     * function action login admin
+     * Manager Product Admincp
      * 
      * */
     class ProductController extends MY_Controller
@@ -11,51 +11,69 @@
 
         public function __construct(){                       
             parent::__construct();
-            $this->load->model($this->model);
+            $this->load->model(array(
+                $this->model,
+                'categoryModel'
+            ));
         }
     
         public function index(){
-            $total  = $this->productModel->getBy();
-            $productList    = $this->productModel->getBy();
+            // 1. Xu ly du lieu xuong tu url
+            $inputGet   = $this->input->get();
+            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:0):0;
+            $offset = ( $page - 1 )*$this->productModel->limit;
+
+            // 2. Xu ly function hien tai
+            $total  = $this->productModel->countAll();
+            $productList    = $this->productModel->getBy(
+                array(
+                    'limit' => $offset,
+                )
+            );
+
+            // 2.1. Xu ly phan trang
             $paramsPagination    = array(
-                'total' => $total,
+                'total'     => $total,
                 'base_url'  => $this->uri->uri_string()
             );
             $pagination     = $this->paginationextend->get($paramsPagination);
 
+            // 3. Xu ly data to view
             $data['data']   = array(
-                'productList'    => $productList,
+                'productList'   => $productList,
                 'pagination'    => $pagination,
             );
             $this->loadView($this->view,$data);
         }
         
         public function create(){
+            // 1. Xu ly du lieu tu url
+            
+            // 2. Xu ly function now
             if (is_post()) {
                 $this->postCreate();
             }
-            $getAll     = $this->productModel->getAll();   // lay danh sach cac quyen he thong
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
-            $data['parent_getall'] = $parent_getall;
-            $this->loadView($this->view,$data);
+
+            // 3. Xu ly data to view
+            $this->loadView($this->view);
         }
 
         public function edit(){
-            // Kiem tra co ton tai id truyen vao k
+            // 1. Xu ly du lieu tu url
             if (!$id = $this->input->get('id')) {
-                $this->system->flash('msg_error','Chưa chọn bản ghi sửa đổi');
+                $this->system->flash('msg_error', 'Chưa chọn bản ghi sửa đổi');
                 return rediectIndex();
             }
-            if (is_post()) { 
-                // here input
+
+            // 2. Xu ly function now
+            if (is_post()) {
                 $this->postEdit($id);
             }
-            // Thong tin ban ghi hien tai
+
+            // 3. Thong tin ban ghi hien tai
             $data['item']   = $item = $this->productModel->getInfo($id);
 
-            $getAll         = $this->productModel->getAll();   // lay danh sach cac ban ghi
-            $parent_getall  = $this->function_lib->get_parent_to_array($getAll);
-            $data['parent_getall'] = $parent_getall;
+            // 4. Xu ly data to view
             $this->loadView($this->view,$data);
         }
 
@@ -65,8 +83,9 @@
             if ($this->form_validation->run('product_create')) {
                 $arr_insert = $input;
                 $this->productModel->insert($arr_insert);
-                $this->updateLevel();
-                $msg = insertOk('quyền hệ thống');
+
+                // Thong bao
+                $msg = insertOk('Sản Phẩm');
                 $this->system->flash('msg_success',$msg);
             }
             else{
@@ -81,45 +100,14 @@
             if ($this->form_validation->run('product_edit')) {
                 $arr_update = $input;
                 $this->productModel->update($arr_update,$id);
-                $this->updateLevel();
-                $msg = editOk('quyền hệ thống');
+                
+                $msg = editOk('Sản Phẩm');
                 $this->system->flash('msg_success',$msg);
             }
             else{
                 $msg = validation_errors();
                 $this->system->flash('msg_warning',$msg);
             }
-        }
-
-        public function permissionCheck($param){
-            $input  = $this->input->post();
-            // Kiem tra url hien tai da ton tai trong db
-            $id     = $_GET['id'];
-            $permission     = $input['Permission'];
-            $checkData  = $this->productModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
-            return !$checkData?true:false;
-        }
-
-        /**
-        *
-        * 
-        * @param 
-        * @return 
-        *
-        **/
-        public function updateLevel(){
-            $result = $this->productModel->getAll();
-            $recive = $this->function_lib->set_parent_to_number($result);
-            $recive = $this->function_lib->get_parent_to_number($result);
-            foreach ($recive as $key => $value) {
-                foreach ($value as $keyItem => $valueItem) {
-                    $arrUpdate  = array(
-                        'level' => $key
-                    );
-                    $this->productModel->update($arrUpdate,$valueItem['id']);
-                }
-            }
-            return true;
         }
         
         
