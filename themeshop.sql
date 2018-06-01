@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2017 at 12:31 PM
+-- Generation Time: Jun 01, 2018 at 07:50 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Table structure for table `articles`
 --
 
-CREATE TABLE `article` (
+CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE `article` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `article`
+-- Dumping data for table `articles`
 --
 
-INSERT INTO `article` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `orders`, `title`, `keywords`, `description`, `parent`, `state`, `feature`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
+INSERT INTO `articles` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `orders`, `title`, `keywords`, `description`, `parent`, `state`, `feature`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
 (1, 'Như thế nào là Sim phong thủy hợp mệnh Thổ?', 'nhu-the-nao-la-sim-phong-thuy-hop-menh-tho', '<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Tại sao người mệnh thổ n&ecirc;n chọn <a href="https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận. Sim số hợp mệnh kh&ocirc;ng chỉ gi&uacute;p họ an t&acirc;m m&agrave; c&ograve;n l&agrave; hi vọng để c&oacute; th&ecirc;m được nhiều may mắn v&agrave; t&agrave;i lộc cả trong cuộc sống v&agrave; trong c&ocirc;ng danh sự nghiệp. Vậy như thế n&agrave;o l&agrave;<strong> </strong>Sim phong thủy hợp mệnh Thổ? H&atilde;y c&ugrave;ng <a href="https://xemvanmenh.net"><strong>Xem Vận Mệnh</strong></a> t&igrave;m hiểu c&aacute;ch chọn sim hợp mệnh thổ chi tiết nhất nh&eacute;!</span></p>\r\n\r\n<p dir="ltr" style="text-align:center"><img alt="" src="https://xemvanmenh.net/media/images/article/1/sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95%20xem%20v%E1%BA%ADn%20m%E1%BB%87nh(2).jpg" style="height:150px; width:696px" /></p>\r\n\r\n<h2 dir="ltr" style="text-align:justify"><span style="font-size:18px"><span style="color:#FF0000"><strong>C&aacute;ch ti&ecirc;u ch&iacute; gi&uacute;p bạn đ&aacute;nh gi&aacute; sim phong thủy hợp mệnh thổ&nbsp;</strong></span></span></h2>\r\n\r\n<h3 style="text-align:justify"><span style="font-size:16px"><em><strong>Sim phong thủy hợp mệnh Thổ l&agrave; sim tương hợp hoặc tương sinh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Mỗi mệnh sẽ c&oacute; c&aacute;c yếu tố tương sinh, tương hợp kh&aacute;c nhau. Ch&iacute;nh c&aacute;c yếu tố n&agrave;y gi&uacute;p cho mệnh đ&oacute; c&oacute; th&ecirc;m nhiều điều tốt đẹp</span></p>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương hợp</em>: nghĩa l&agrave; sim mang ch&iacute;nh mệnh của người đ&oacute;. Với người mệnh Thổ, Sim phong thủy hợp mệnh Thổ l&agrave; sim mang mệnh Thổ</span></p>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương sinh</em>: nghĩa l&agrave; sim mang mệnh sinh ra mệnh của chủ nh&acirc;n. Theo quy tắc tương sinh, Hỏa sinh Thổ. Do đ&oacute;, nếu chọn 1 sim số mang mệnh Hỏa sẽ rất tốt cho người mệnh Thổ. N&oacute; c&ograve;n được cho l&agrave; tốt hơn sim tương hợp v&igrave; n&oacute; mang yếu tố ph&aacute;t triển, tiến l&ecirc;n chứ kh&ocirc;ng dừng lại hay l&ugrave;i xuống.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>Sim hợp mệnh thổ kh&ocirc;ng được tương khắc với mệnh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ c&ograve;n c&oacute; nghĩa l&agrave; sim kh&ocirc;ng tương khắc với mệnh Thổ. Theo quy tắc tương khắc, Mộc khắc Thổ. Do đ&oacute;, người mệnh Thổ kh&ocirc;ng n&ecirc;n chọn sim mang mệnh Mộc. N&oacute; mang lại nhiều rủi ro, k&eacute;m may mắn.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>Sim phong thủy hợp mệnh Thổ phải đảm bảo c&acirc;n bằng &acirc;m dương</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; sim hợp c&aacute;c mệnh n&oacute;i chung khi c&oacute; sự c&acirc;n bằng &acirc;m dương lớn nhất. Sự c&acirc;n bằng &acirc;m dương l&agrave; c&acirc;n bằng giữa số chẵn v&agrave; số lẻ. Số chẵn mang h&agrave;nh &acirc;m v&agrave; số lẻ mang h&agrave;nh dương. Một số điện thoại c&agrave;ng c&acirc;n bằng chẵn lẽ nghĩa l&agrave; c&agrave;ng c&acirc;n bằng &acirc;m dương th&igrave; c&agrave;ng tốt v&agrave; ngược lại. Sự c&acirc;n bằng &acirc;m dương n&agrave;y c&ograve;n thể hiện cho sự c&acirc;n bằng trong cuộc sống, gi&uacute;p chủ nh&acirc;n của sim số mệnh Thổ c&oacute; th&ecirc;m được nhiều điều may mắn.</span></p>\r\n\r\n<p dir="ltr" style="text-align:center"><span style="font-size:14px"><img alt="" src="https://xemvanmenh.net/media/images/article/1/sim%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg" style="height:200px; width:689px" /></span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:14px"><em><strong>&nbsp;</strong></em></span><span style="font-size:16px"><em><strong>Sim hợp mệnh Thổ phải c&oacute; Số n&uacute;t cao</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Số n&uacute;t của một Sim phong thủy hợp mệnh Thổ cao khi n&oacute; tiến gần đến con số 9 (theo quan niệm của người miền Bắc) v&agrave; số 10 (theo quan niệm của người miền Nam). Số n&uacute;t c&agrave;ng cao th&igrave; phong thủy c&agrave;ng đẹp c&agrave;ng hợp với mệnh. Để t&iacute;nh số n&uacute;t n&agrave;y, bạn chỉ cần cộng c&aacute;c con số trong d&atilde;y sim số lại với nhau rồi lấy số lẻ cuối c&ugrave;ng trong d&atilde;y số kết quả ấy. So với con số 9 -10 để x&aacute;c định được độ cao - thấp của số n&uacute;t ấy.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>D&atilde;y sim hợp mạng thổ phải chứa c&aacute;c con số hợp mệnh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ c&ograve;n l&agrave; sim số chứa nhiều con số hợp với người mệnh Thổ. Mệnh Thổ hợp nhất với c&aacute;c con số 2, 5, 8, 9. Do đ&oacute;, d&atilde;y sim số chứa c&agrave;ng nhiều c&aacute;c con số n&agrave;y th&igrave; phong thủy c&agrave;ng đẹp v&agrave; mang lại nhiều may mắn cho chủ nh&acirc;n.</span></p>\r\n\r\n<p style="text-align:justify"><span style="font-size:14px">T&igrave;m được sim số với những đặc trưng tr&ecirc;n l&agrave; bạn đ&atilde; t&igrave;m được Sim phong thủy hợp mệnh Thổ nhất rồi đấy. Sim hợp mệnh được cho l&agrave; yếu tố may mắn, mang lại hi vọng v&agrave;o những điều tốt đẹp cả về cuộc sống lẫn c&ocirc;ng danh sự nghiệp. Ch&uacute;c bạn sở hữu được sim hợp mệnh Thổ nhất nh&eacute;!</span></p>\r\n\r\n<p style="text-align:center"><span style="font-size:14px"><strong><span style="color:#00FF00">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> </strong></span><span style="font-size:16px"><strong><a href="https://xemvanmenh.net/xem-sim-phong-thuy.html"><span style="color:#FF0000">XEM SIM PHONG THỦY</span></a><span style="color:#FF0000"> HỢP MỆNH CHO NHỮNG NGƯỜI TH&Acirc;N Y&Ecirc;U</span></strong></span><span style="font-size:14px"><strong><span style="color:#FF0000">&nbsp;</span><span style="color:#00FF00">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></strong></span></p>\r\n', '<p><span style="font-size:14px">Tại sao người mệnh thổ n&ecirc;n chọn <a href="https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận....</span></p>\r\n', 'xem%20sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg', 0, 'Như thế nào là Sim phong thủy hợp mệnh Thổ - Sim kích tài vận?', 'sim hợp mệnh thổ, sim phong thủy hợp mệnh thổ, sim kích tài vận', 'Tư vấn chọn sim phong thủy hợp mệnh mệnh thổ chi tiết và đơn giản hơn bao giờ hết. Người mệnh thổ mua ngay sim phong thủy hợp mệnh thổ để chiêu vận may - kích tài lộc', 73, 1, 0, 1, 1491789412, 1, 0),
 (136, '', '', '', '', '', 0, '', '', '', 0, 0, 0, 1, 1499354698, 1, 0),
 (137, '', '', '', '', '', 0, '', '', '', 0, 0, 0, 1, 1499523008, 1, 0),
@@ -63,10 +63,10 @@ INSERT INTO `article` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `or
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Table structure for table `carts`
 --
 
-CREATE TABLE `cart` (
+CREATE TABLE `carts` (
   `id` int(11) NOT NULL,
   `fullname` char(30) COLLATE utf8_unicode_ci NOT NULL,
   `phone` char(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -82,40 +82,54 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_article`
+-- Table structure for table `categorys`
 --
 
-CREATE TABLE `menu_article` (
+CREATE TABLE `categorys` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_articles`
+--
+
+CREATE TABLE `category_articles` (
   `id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu_article`
+-- Dumping data for table `category_articles`
 --
 
-INSERT INTO `menu_article` (`id`, `menu_id`, `article_id`) VALUES
+INSERT INTO `category_articles` (`id`, `menu_id`, `article_id`) VALUES
 (8, 73, 141),
 (9, 74, 141);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_product`
+-- Table structure for table `category_products`
 --
 
-CREATE TABLE `menu_product` (
+CREATE TABLE `category_products` (
   `id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `menu_product`
+-- Dumping data for table `category_products`
 --
 
-INSERT INTO `menu_product` (`id`, `menu_id`, `product_id`) VALUES
+INSERT INTO `category_products` (`id`, `menu_id`, `product_id`) VALUES
 (1, 67, 5),
 (2, 69, 5),
 (3, 65, 6),
@@ -146,6 +160,30 @@ INSERT INTO `menu_product` (`id`, `menu_id`, `product_id`) VALUES
 (79, 65, 15),
 (80, 69, 15),
 (81, 76, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_relationships`
+--
+
+CREATE TABLE `category_relationships` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `category_taxonomy_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_taxonomy`
+--
+
+CREATE TABLE `category_taxonomy` (
+  `id` int(11) NOT NULL,
+  `taxonomy` varchar(255) NOT NULL,
+  `description` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -212,10 +250,10 @@ INSERT INTO `pay_users` (`id`, `name`, `email`, `phone`, `address`, `city`, `not
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -229,7 +267,6 @@ CREATE TABLE `product` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `keywords` text COLLATE utf8_unicode_ci,
   `description` text COLLATE utf8_unicode_ci,
-  `parent` int(11) NOT NULL DEFAULT '0',
   `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `feature` tinyint(1) NOT NULL DEFAULT '0',
   `hidden_price` tinyint(1) NOT NULL DEFAULT '0',
@@ -240,31 +277,32 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-INSERT INTO `product` (`id`, `name`, `slug`, `giaban`, `giakhuyenmai`, `summary`, `content`, `parameter`, `avatar`, `orders`, `title`, `keywords`, `description`, `parent`, `status`, `feature`, `hidden_price`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
-(12, 'Dung Dịch Tẩy Tế Bào Chết', 'dung-dich-tay-te-bao-chet', 200000, 185000, '', '<p><strong>Paula’s Choice là hãng mỹ phẩm danh giá đến từ nước Mỹ xinh đẹp.</strong>&nbsp;Dựa trên kinh nghiệm thực tế,&nbsp;<strong>nguyên liệu cam kết từ 100% thiên nhiên, không hoá chất tẩy rửa, công thức bào chế vượt trội trên nền công nghệ tiên tiến,</strong>&nbsp;Paula’s Choice liên tục tung ra những dòng sản phẩm chăm sóc da, trang điểm chuyên nghiệp vừa an toàn, vừa hiệu quả. Sau thành công của 20 cuốn sách vang danh thế giới, bà đã đúc kết hàng chục năm nghiên cứu về thành phần có trong mỹ phẩm để đưa ra một dòng sản phẩm của riêng mình – thương hiệu mỹ phẩm Paula’s Choice được thành lập vào năm 1995.</p>\r\n\r\n<p>Paula’s Choice không đánh trọng tâm vào các loại kem dưỡng hay sản phẩm trang điểm mà còn tung ra thị trường dòng sản phẩm trị liệu, bao gồm trị mụn, se khít lỗ chân lông, trị nám, tàn nhang, trị sẹo… nhằm&nbsp;<strong>mang đến cho quý khách hàng một làn da đẹp hoàn hảo.</strong></p>\r\n', '', 'kem-lot-chong-nang-spf50-pa_-30ml_1_img_300x300_b798dd_fit_center.jpg', 0, 'Dung Dịch Tẩy Tế Bào Chết', '', '', 65, '1', 1, 0, 1, 1500560704, 1, 0),
-(13, 'Son Dưỡng Môi SPF10 - 3.5g', 'son-duong-moi-spf10-3-5g', 50000, 50000, '', '<p>Người ta thường để ý và chăm sóc cho những vết nhăn quanh mắt ngay từ năm 25 tuổi, vậy còn những nếp nhăn ở môi? Đôi môi cũng là khu vực dễ phải chịu nhiều sự tác động tiêu cực từ phía môi trường, mỹ phẩm, các thực phẩm hàng ngày. Nếp nhăn sẽ không thể xuất hiện nếu bề mặt của đôi môi luôn mềm mại, căng mịn và có đủ lượng nước cần thiết. Đối với những bạn gái có thói quen liếm môi, bạn nên từ bỏ thói quen này càng sớm càng tốt. Liếm môi sẽ giúp bạn chống khô môi tạm thời, nhưng khi lớp nước bọt khô đi, một lớp tinh bột có trong nước bọt sẽ bám lại trên môi và khiến môi trở nên khô và nứt nẻ nhiều hơn, điều này sẽ tạo điều kiện cho nếp nhăn xuất hiện. Do đó, ngoài cải thiện những thói quen không tốt dễ gây ra nếp nhăn ở môi như: không tẩy tế bào chết cho môi, hút thuốc, dùng ống hút, không bảo vệ môi khi ra ngoài trời, thì hãy bỏ túi một thỏi son dưỡng môi có độ ẩm cao để giúp đôi môi luôn được ẩm mượt suốt cả ngày.&nbsp;<strong>Son Dưỡng Môi SPF10 Wrinkle Care Stick Lip Balm Missha&nbsp;</strong>sẽ giúp bạn dưỡng ẩm và cải thiện nếp nhăn ở môi một cách tốt nhất.</p>', '', '', 0, 'Son Dưỡng Môi SPF10 - 3.5g', '', '', 65, '1', 1, 0, 1, 1500561725, 1, 0),
-(14, 'Sản phẩm kẻ chân mày 1', 'san-pham-ke-chan-may-1', 11111000, 3333000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>', '', 'son-moi-sieu-mem-muot-mau-do-7712-3_5g_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm kẻ chân mày 1', '', '', 69, '1', 1, 0, 1, 1500562125, 1, 0),
-(15, 'Sản phẩm kẻ chân mày 2', 'san-pham-ke-chan-may-2', 90000, 9000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>\r\n', '', 'tay-te-bao-chet-da-mat-fresh-skin-apricot-scrub-170gr-100220037_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm kẻ chân mày 2', '', '', 69, '1', 0, 0, 1, 1500562201, 1, 0),
-(16, 'Sản phẩm son môi', 'san-pham-son-moi', 8000, 8000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>', '', 'son-moi-sieu-mem-muot-mau-do-7712-3_5g_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm son môi', '', '', 70, '1', 1, 0, 1, 1500562374, 1, 0),
-(17, 'sản phẩm phấn mặt', 'san-pham-phan-mat', 200000, 100000, 'aaa', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>\r\n', '', 'iphone-7-plus-128gb-de-400x460.png', 0, 'sản phẩm phấn mặt', '', '', 67, '1', 1, 0, 1, 1500562433, 1, 0),
-(18, '', '', 0, 0, '', NULL, '', NULL, 0, NULL, NULL, NULL, 0, '0', 0, 0, 1, 1502070732, 1, 0);
+INSERT INTO `products` (`id`, `name`, `slug`, `giaban`, `giakhuyenmai`, `summary`, `content`, `parameter`, `avatar`, `orders`, `title`, `keywords`, `description`, `status`, `feature`, `hidden_price`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
+(12, 'Dung Dịch Tẩy Tế Bào Chết', 'dung-dich-tay-te-bao-chet', 200000, 185000, '', '<p><strong>Paula’s Choice là hãng mỹ phẩm danh giá đến từ nước Mỹ xinh đẹp.</strong>&nbsp;Dựa trên kinh nghiệm thực tế,&nbsp;<strong>nguyên liệu cam kết từ 100% thiên nhiên, không hoá chất tẩy rửa, công thức bào chế vượt trội trên nền công nghệ tiên tiến,</strong>&nbsp;Paula’s Choice liên tục tung ra những dòng sản phẩm chăm sóc da, trang điểm chuyên nghiệp vừa an toàn, vừa hiệu quả. Sau thành công của 20 cuốn sách vang danh thế giới, bà đã đúc kết hàng chục năm nghiên cứu về thành phần có trong mỹ phẩm để đưa ra một dòng sản phẩm của riêng mình – thương hiệu mỹ phẩm Paula’s Choice được thành lập vào năm 1995.</p>\r\n\r\n<p>Paula’s Choice không đánh trọng tâm vào các loại kem dưỡng hay sản phẩm trang điểm mà còn tung ra thị trường dòng sản phẩm trị liệu, bao gồm trị mụn, se khít lỗ chân lông, trị nám, tàn nhang, trị sẹo… nhằm&nbsp;<strong>mang đến cho quý khách hàng một làn da đẹp hoàn hảo.</strong></p>\r\n', '', 'kem-lot-chong-nang-spf50-pa_-30ml_1_img_300x300_b798dd_fit_center.jpg', 0, 'Dung Dịch Tẩy Tế Bào Chết', '', '', '1', 1, 0, 1, 1500560704, 1, 0),
+(13, 'Son Dưỡng Môi SPF10 - 3.5g', 'son-duong-moi-spf10-3-5g', 50000, 50000, '', '<p>Người ta thường để ý và chăm sóc cho những vết nhăn quanh mắt ngay từ năm 25 tuổi, vậy còn những nếp nhăn ở môi? Đôi môi cũng là khu vực dễ phải chịu nhiều sự tác động tiêu cực từ phía môi trường, mỹ phẩm, các thực phẩm hàng ngày. Nếp nhăn sẽ không thể xuất hiện nếu bề mặt của đôi môi luôn mềm mại, căng mịn và có đủ lượng nước cần thiết. Đối với những bạn gái có thói quen liếm môi, bạn nên từ bỏ thói quen này càng sớm càng tốt. Liếm môi sẽ giúp bạn chống khô môi tạm thời, nhưng khi lớp nước bọt khô đi, một lớp tinh bột có trong nước bọt sẽ bám lại trên môi và khiến môi trở nên khô và nứt nẻ nhiều hơn, điều này sẽ tạo điều kiện cho nếp nhăn xuất hiện. Do đó, ngoài cải thiện những thói quen không tốt dễ gây ra nếp nhăn ở môi như: không tẩy tế bào chết cho môi, hút thuốc, dùng ống hút, không bảo vệ môi khi ra ngoài trời, thì hãy bỏ túi một thỏi son dưỡng môi có độ ẩm cao để giúp đôi môi luôn được ẩm mượt suốt cả ngày.&nbsp;<strong>Son Dưỡng Môi SPF10 Wrinkle Care Stick Lip Balm Missha&nbsp;</strong>sẽ giúp bạn dưỡng ẩm và cải thiện nếp nhăn ở môi một cách tốt nhất.</p>', '', '', 0, 'Son Dưỡng Môi SPF10 - 3.5g', '', '', '1', 1, 0, 1, 1500561725, 1, 0),
+(14, 'Sản phẩm kẻ chân mày 1', 'san-pham-ke-chan-may-1', 11111000, 3333000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>', '', 'son-moi-sieu-mem-muot-mau-do-7712-3_5g_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm kẻ chân mày 1', '', '', '1', 1, 0, 1, 1500562125, 1, 0),
+(15, 'Sản phẩm kẻ chân mày 2', 'san-pham-ke-chan-may-2', 90000, 9000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>\r\n', '', 'tay-te-bao-chet-da-mat-fresh-skin-apricot-scrub-170gr-100220037_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm kẻ chân mày 2', '', '', '1', 0, 0, 1, 1500562201, 1, 0),
+(16, 'Sản phẩm son môi', 'san-pham-son-moi', 8000, 8000, '', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>', '', 'son-moi-sieu-mem-muot-mau-do-7712-3_5g_img_300x300_b798dd_fit_center.jpg', 0, 'Sản phẩm son môi', '', '', '1', 1, 0, 1, 1500562374, 1, 0),
+(17, 'sản phẩm phấn mặt', 'san-pham-phan-mat', 200000, 100000, 'aaa', '<p>Đôi môi khô của bạn sẽ mềm mịn hẳn nếu sử dụng Vaseline thường xuyên. Cung cấp chất dinh dưỡng, mang lại cho bạn làn da mềm mại. Nó có chức năng vừa là son dưỡng môi + trị nứt nẻ. Vaseline cho bạn một đôi môi và làn da mềm, mượt mà.</p>\r\n\r\n<p><strong>Vaseline</strong>&nbsp;là thương hiệu ra đời từ năm 1870. Thương hiệu này được biết đến lần đầu với sản phẩm sáp Vaseline do&nbsp;Robert Chesebrough tìm ra sau khi ông ghé thăm một mỏ dầu. Từ đó thương hiệu này đã làm một cuộc cách mạng và được sử dụng khắp mọi nơi trên toàn thế giới. Hiện nay, thương hiệu này đang được quản lý bởi tập đoàn Unilever. Các sản phẩm chăm sóc da của thương hiệu&nbsp;<strong>Vaseline</strong>&nbsp;đã có mặt ở 60 nước trên toàn thế giới và được bày bán ở hệ thống các siêu thị trên cả nước và được các chị em phụ nữ tin tưởng và sử dụng hàng ngày.</p>\r\n\r\n<p>Hiện&nbsp;<strong>Hasaki</strong>&nbsp;có các dòng sau:</p>\r\n\r\n<p>- Hương Hoa Hồng (Rosy)</p>\r\n', '', 'iphone-7-plus-128gb-de-400x460.png', 0, 'sản phẩm phấn mặt', '', '', '1', 1, 0, 1, 1500562433, 1, 0),
+(18, '', '', 0, 0, '', NULL, '', NULL, 0, NULL, NULL, NULL, '0', 0, 0, 1, 1502070732, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `role` (
+CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci COMMENT 'Mô tả về quyền',
   `permission` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'link permission',
   `category` int(11) NOT NULL,
   `parent` int(11) NOT NULL,
+  `level` int(11) NOT NULL DEFAULT '0',
   `groupsystem` varchar(255) CHARACTER SET utf8 NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -272,43 +310,21 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `role`
+-- Dumping data for table `roles`
 --
 
-INSERT INTO `role` (`id`, `name`, `description`, `permission`, `category`, `parent`, `groupsystem`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Trang chủ', 'Điều hướng vào trang chủ', 'admincp/dashboardcontroller/index', 1, 0, '0', NULL, NULL, NULL),
-(2, 'Sản phẩm', 'Cho phếp quản lý sản phẩm', 'admincp/productcontroller', 1, 0, '0', NULL, NULL, NULL),
-(3, 'Danh mục', 'Quản lý danh mục', 'admincp/categorycontroller', 1, 0, '0', NULL, NULL, NULL),
-(4, 'Khuyến mãi', 'Quản lý khuyến mãi bao gồm tạo các mã giảm giá', 'admincp/discountnextcontroller', 1, 0, '1', NULL, NULL, NULL),
-(5, 'Báo cáo', 'Quản lý báo cáo website', 'admincp/verbcontroller', 1, 0, '0', NULL, NULL, NULL),
-(6, 'Thêm sản phẩm', 'Thêm nhanh sản phẩm', 'admincp/productcontroller/create', 1, 2, '0', NULL, NULL, NULL),
-(7, 'Sửa sản phẩm', 'Cho phép sửa sản phẩm với id được chọn', 'admincp/productcontroller/edit', 1, 2, '0', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `slide`
---
-
-CREATE TABLE `slide` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `state` tinyint(1) NOT NULL DEFAULT '1',
-  `created_by` int(11) NOT NULL,
-  `created_date` int(11) NOT NULL,
-  `orders` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `slide`
---
-
-INSERT INTO `slide` (`id`, `name`, `image`, `link`, `state`, `created_by`, `created_date`, `orders`) VALUES
-(1, 'slide1', 'image-footer-list.png', 'http://abc.com', 0, 1, 1500305774, 0),
-(3, 'Mỗi ngày 1 cuốn sách', '1.jpg', 'https://www.google.com.vn/', 1, 1, 1500305666, 2),
-(4, 'Cuốn sách mỗi ngày một', '2.jpg', 'https://chat.zalo.me/', 1, 1, 1500305724, 0);
+INSERT INTO `roles` (`id`, `name`, `description`, `permission`, `category`, `parent`, `level`, `groupsystem`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Trang chủ', 'Điều hướng vào trang chủ', 'admincp/dashboardcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
+(2, 'Sản phẩm', 'Cho phếp quản lý sản phẩm', 'admincp/productcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
+(3, 'Danh mục', 'Quản lý danh mục', 'admincp/categorycontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
+(4, 'Khuyến mãi', 'Quản lý khuyến mãi bao gồm tạo các mã giảm giá', 'admincp/discountnextcontroller/index', 1, 0, 0, '1', NULL, NULL, NULL),
+(5, 'Báo cáo', 'Quản lý báo cáo website', 'admincp/verbcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
+(6, 'Thêm sản phẩm', 'Thêm nhanh sản phẩm', 'admincp/productcontroller/create', 1, 2, 1, '0', NULL, NULL, NULL),
+(7, 'Sửa sản phẩm', 'Cho phép sửa sản phẩm với id được chọn', 'admincp/productcontroller/edit', 1, 2, 1, '0', NULL, NULL, NULL),
+(8, 'Danh sách sản phẩm 1', 'Hiển thị danh sách sản phẩm', 'admincp/productcontroller/index', 0, 2, 1, '0', NULL, NULL, NULL),
+(9, 'Quản lý quyền hệ thống', 'Quản lý quyền hệ thống', 'admincp/rolecontroller', 0, 0, 0, '2', NULL, NULL, NULL),
+(10, 'Danh sách quyền hệ thống', 'Danh sách quyền hệ thống', 'admincp/rolecontroller/index', 0, 9, 5, '2', NULL, NULL, NULL),
+(11, 'Thêm quyền hệ thống', 'Thêm mới quyền hệ thống', 'admincp/rolecontroller/create', 0, 9, 5, '2', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -342,35 +358,49 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `permission`, `fullname`, `gender`, `birthday`, `address`, `tel`, `description`, `status`, `receive`, `remember_token`, `login_timer`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'bathe0603nd', 'bathe0603nd@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', 'a,b', 'Mr.Bathepro', '1', '2017-08-16', '32/107 Linh Nam street - Ha Noi', '01694254791', '', 'active', '', NULL, '2017-09-13 08:21:31', '2017-09-03 17:00:00', '2017-09-03 17:00:00', '2017-09-03 17:00:00'),
-(2, 'admincp', 'admincp@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', 'a,b', 'Mr.Admin', '1', '2017-09-06', 'Ha Noi', '0123', '', 'active', '', NULL, '2017-09-13 08:21:31', '2017-09-12 17:00:00', '2017-09-12 17:00:00', '2017-09-12 17:00:00');
+(1, 'bathe0603nd', 'bathe0603nd@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', 'Mr.Bathepro', '1', '2017-08-16', '32/107 Linh Nam street - Ha Noi', '01694254791', '', 'active', '', NULL, '2017-12-11 16:06:42', '2017-09-03 17:00:00', '2017-09-03 17:00:00', '2017-09-03 17:00:00'),
+(2, 'admincp', 'admincp@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', 'Mr.Admin', '1', '2017-09-06', 'Ha Noi', '0123', '', 'active', '', NULL, '2017-12-11 16:06:46', '2017-09-12 17:00:00', '2017-09-12 17:00:00', '2017-09-12 17:00:00'),
+(3, 'Batheit', 'adminpro@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', '', '', NULL, 'bathe0603nd@gmail.com', '01694254799', '', 'active', '', NULL, '2017-12-10 15:13:02', NULL, NULL, NULL),
+(4, 'Bathepro', 'bathepc@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2","6","7","8","3","5","4"]', '', '', NULL, 'Ha Noi', '123456789', '', 'active', '', NULL, '2018-01-05 16:32:01', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `article`
+-- Indexes for table `articles`
 --
-ALTER TABLE `article`
+ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
+-- Indexes for table `carts`
 --
-ALTER TABLE `cart`
+ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu_article`
+-- Indexes for table `categorys`
 --
-ALTER TABLE `menu_article`
+ALTER TABLE `categorys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu_product`
+-- Indexes for table `category_articles`
 --
-ALTER TABLE `menu_product`
+ALTER TABLE `category_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_products`
+--
+ALTER TABLE `category_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `category_relationships`
+--
+ALTER TABLE `category_relationships`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -386,21 +416,15 @@ ALTER TABLE `pay_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Indexes for table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Indexes for table `roles`
 --
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `slide`
---
-ALTER TABLE `slide`
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -415,25 +439,35 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `article`
+-- AUTO_INCREMENT for table `articles`
 --
-ALTER TABLE `article`
+ALTER TABLE `articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT for table `carts`
 --
-ALTER TABLE `cart`
+ALTER TABLE `carts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `menu_article`
+-- AUTO_INCREMENT for table `categorys`
 --
-ALTER TABLE `menu_article`
+ALTER TABLE `categorys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `category_articles`
+--
+ALTER TABLE `category_articles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `menu_product`
+-- AUTO_INCREMENT for table `category_products`
 --
-ALTER TABLE `menu_product`
+ALTER TABLE `category_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `category_relationships`
+--
+ALTER TABLE `category_relationships`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pay_cart`
 --
@@ -445,25 +479,20 @@ ALTER TABLE `pay_cart`
 ALTER TABLE `pay_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT for table `roles`
 --
-ALTER TABLE `role`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `slide`
---
-ALTER TABLE `slide`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
