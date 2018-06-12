@@ -22,7 +22,8 @@
                 'form_validation',
                 'auth',
                 'paginationextend',
-                'function_lib'
+                'function_lib',
+                'recusive_lib'
             ));
 
             // not exits session logined

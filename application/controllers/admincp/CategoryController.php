@@ -5,59 +5,70 @@
      * Manager Product Admincp
      * 
      * */
-    class ProductController extends MY_Controller
+    class CategoryController extends MY_Controller
     {
-        private $model = 'productModel';
+        private $model = 'categoryModel';
 
         public function __construct(){                       
             parent::__construct();
+
             $this->load->model(array(
                 $this->model,
-                'categoryModel'
+                'categoryRelationshipModel',
+                'categoryTaxonomyModel'
             ));
         }
     
         public function index(){
-            // 1. Xu ly du lieu xuong tu url
+            /** 1. Xu ly du lieu xuong tu url **/
             $inputGet   = $this->input->get();
-            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:0):0;
-            $offset = ( $page - 1 )*$this->productModel->limit;
+            $page   = isset( $inputGet['page'] ) ? ( $inputGet['page'] ? $inputGet['page'] : 0 ) : 0;
+            $offset = ( $page - 1 ) * $this->categoryModel->limit;
 
-            // 2. Xu ly function hien tai
-            $total  = $this->productModel->countAll();
-            $productList    = $this->productModel->getBy(
+            /*--- 2. Xu ly function hien tai ---*/
+            $total  = $this->categoryModel->countAll();
+            $catList    = $this->categoryModel->getBy(
                 array(
                     'limit' => $offset,
+                    'order_by' => array('sort', 'asc'),
                 )
             );
+            $catList = $this->recusive_lib->set_parent_to_array($catList);
+            $catList = $this->recusive_lib->get_parent_to_array();
 
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
                 'total'     => $total,
                 'base_url'  => $this->uri->uri_string()
             );
-            $pagination     = $this->paginationextend->get($paramsPagination);
+            $pagination     = $this->paginationextend->get( $paramsPagination );
 
-            // 3. Xu ly data to view
+            /*--- 3. Xu ly data to view ---*/
             $data['data']   = array(
-                'productList'   => $productList,
+                'cat_list'   => $catList,
                 'pagination'    => $pagination,
             );
-            $this->loadView($this->view,$data);
+            $this->loadView($this->view, $data);
         }
         
         public function create(){
-            // 1. Xu ly du lieu tu url
+            /*--- 1. Xu ly du lieu tu url ---*/
             
             // 2. Xu ly function now
             if (is_post()) {
                 $this->postCreate();
             }
-            $arrCat = $this->categoryModel->getAll();
+            $listCat = $this->categoryModel->getBy(
+                array(
+                    'order_by' => array('sort', 'asc')
+                )
+            );
+            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
+            $recListCat = $this->recusive_lib->get_parent_to_array();
 
             // 3. Xu ly data to view
             $data = array(
-                'arr_cat' => $arrCat,
+                'arr_cat' => $recListCat,
             );
             $this->loadView($this->view, $data);
         }
@@ -73,10 +84,16 @@
             if (is_post()) {
                 $this->postEdit($id);
             }
-            $arrCat = $this->categoryModel->getAll();
+            $listCat = $this->categoryModel->getBy(
+                array(
+                    'order_by' => array('sort', 'asc')
+                )
+            );
+            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
+            $recListCat = $this->recusive_lib->get_parent_to_array();
 
             // 3. Thong tin ban ghi hien tai
-            $data['item']   = $item = $this->productModel->getInfo($id);
+            $data['item']   = $item = $this->categoryModel->getInfo($id);
 
             // 4. Xu ly data to view
             $data = array(
@@ -88,12 +105,18 @@
         private function postCreate(){
             // xu ly formvalidate
             $input  = $this->input->post();
-            if ($this->form_validation->run('product_create')) {
+            if ($this->form_validation->run('cat_create')) {
                 $arr_insert = $input;
-                $this->productModel->insert($arr_insert);
-
+                // Add into categorys
+                $idCat = $this->categoryModel->insert($arr_insert);
+                // Add into category_taxonomy
+                $idCatRel = $this->categoryRelationshipModel->insert( array(
+                    'category_id' => $idCat,
+                    'category_taxonomy_id' => $arr_insert['taxonomy'],
+                ) );
+                
                 // Thong bao
-                $msg = insertOk('Sản Phẩm');
+                $msg = insertOk('Danh Mục');
                 $this->system->flash('msg_success',$msg);
             }
             else{
@@ -107,9 +130,9 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('product_edit')) {
                 $arr_update = $input;
-                $this->productModel->update($arr_update,$id);
+                $this->categoryModel->update($arr_update,$id);
                 
-                $msg = editOk('Sản Phẩm');
+                $msg = editOk('Danh mục');
                 $this->system->flash('msg_success',$msg);
             }
             else{
