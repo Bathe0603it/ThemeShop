@@ -2,7 +2,7 @@
     defined('BASEPATH') or exit('No direct script access allowed');
     /**
      * 
-     * Manager Product Admincp
+     * Manager Category Admincp
      * 
      * */
     class CategoryController extends MY_Controller
@@ -25,7 +25,7 @@
             $page   = isset( $inputGet['page'] ) ? ( $inputGet['page'] ? $inputGet['page'] : 0 ) : 0;
             $offset = ( $page - 1 ) * $this->categoryModel->limit;
 
-            /*--- 2. Xu ly function hien tai ---*/
+            /** 2. Xu ly function hien tai **/
             $total  = $this->categoryModel->countAll();
             $catList    = $this->categoryModel->getBy(
                 array(
@@ -35,7 +35,6 @@
             );
             $catList = $this->recusive_lib->set_parent_to_array($catList);
             $catList = $this->recusive_lib->get_parent_to_array();
-
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
                 'total'     => $total,
@@ -43,7 +42,7 @@
             );
             $pagination     = $this->paginationextend->get( $paramsPagination );
 
-            /*--- 3. Xu ly data to view ---*/
+            /** 3. Xu ly data to view **/
             $data['data']   = array(
                 'cat_list'   => $catList,
                 'pagination'    => $pagination,
@@ -52,19 +51,14 @@
         }
         
         public function create(){
-            /*--- 1. Xu ly du lieu tu url ---*/
+            /** 1. Xu ly du lieu tu url **/
             
-            // 2. Xu ly function now
+            /** 2. Xu ly function now **/
             if (is_post()) {
                 $this->postCreate();
             }
-            $listCat = $this->categoryModel->getBy(
-                array(
-                    'order_by' => array('sort', 'asc')
-                )
-            );
-            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
-            $recListCat = $this->recusive_lib->get_parent_to_array();
+            
+            $recListCat = $this->getCatRecusive();
 
             // 3. Xu ly data to view
             $data = array(
@@ -84,20 +78,15 @@
             if (is_post()) {
                 $this->postEdit($id);
             }
-            $listCat = $this->categoryModel->getBy(
-                array(
-                    'order_by' => array('sort', 'asc')
-                )
-            );
-            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
-            $recListCat = $this->recusive_lib->get_parent_to_array();
+            $recListCat = $this->getCatRecusive();
 
             // 3. Thong tin ban ghi hien tai
-            $data['item']   = $item = $this->categoryModel->getInfo($id);
+            $item = $this->categoryModel->getInfo($id);
 
             // 4. Xu ly data to view
             $data = array(
-                'arr_cat' => $arrCat,
+                'arr_cat' => $recListCat,
+                'item' => $item
             );
             $this->loadView($this->view, $data);
         }
@@ -128,7 +117,7 @@
         private function postEdit($id){
             // xu ly formvalidate
             $input  = $this->input->post();
-            if ($this->form_validation->run('product_edit')) {
+            if ($this->form_validation->run('cat_edit')) {
                 $arr_update = $input;
                 $this->categoryModel->update($arr_update,$id);
                 
@@ -139,6 +128,16 @@
                 $msg = validation_errors();
                 $this->system->flash('msg_warning',$msg);
             }
+        }
+
+        private function getCatRecusive(){
+            $listCat = $this->categoryModel->getBy(
+                array(
+                    'order_by' => array('sort', 'asc')
+                )
+            );
+            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
+            $recListCat = $this->recusive_lib->get_parent_to_array();
         }
         
         
