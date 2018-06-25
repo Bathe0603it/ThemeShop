@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2018 at 07:50 PM
+-- Generation Time: Jun 25, 2018 at 02:42 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -90,7 +90,8 @@ CREATE TABLE `categorys` (
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `parent_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL
+  `count` int(11) NOT NULL,
+  `sort` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -182,7 +183,58 @@ CREATE TABLE `category_relationships` (
 CREATE TABLE `category_taxonomy` (
   `id` int(11) NOT NULL,
   `taxonomy` varchar(255) NOT NULL,
-  `description` int(11) NOT NULL
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category_taxonomy`
+--
+
+INSERT INTO `category_taxonomy` (`id`, `taxonomy`, `description`) VALUES
+(1, 'category-product', 'Loại danh mục sản phẩm'),
+(2, 'category-article', 'Loại danh mục bài viết'),
+(3, 'page', 'Là loại trang đơn');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(11) NOT NULL,
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `description` text NOT NULL,
+  `location` varchar(320) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_taxonomy`
+--
+
+CREATE TABLE `menu_taxonomy` (
+  `id` int(11) NOT NULL,
+  `aritcle_id` int(11) DEFAULT '0',
+  `product_id` int(11) NOT NULL DEFAULT '0',
+  `category_id` int(11) NOT NULL DEFAULT '0',
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_tree`
+--
+
+CREATE TABLE `menu_tree` (
+  `id` int(11) NOT NULL,
+  `menu_taxonomy_id` int(11) NOT NULL DEFAULT '0',
+  `parent` int(11) NOT NULL DEFAULT '0',
+  `type` varchar(120) NOT NULL,
+  `menu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -404,6 +456,30 @@ ALTER TABLE `category_relationships`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category_taxonomy`
+--
+ALTER TABLE `category_taxonomy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_taxonomy`
+--
+ALTER TABLE `menu_taxonomy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `menu_tree`
+--
+ALTER TABLE `menu_tree`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pay_cart`
 --
 ALTER TABLE `pay_cart`
@@ -467,6 +543,26 @@ ALTER TABLE `category_products`
 -- AUTO_INCREMENT for table `category_relationships`
 --
 ALTER TABLE `category_relationships`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `category_taxonomy`
+--
+ALTER TABLE `category_taxonomy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_taxonomy`
+--
+ALTER TABLE `menu_taxonomy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_tree`
+--
+ALTER TABLE `menu_tree`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pay_cart`
