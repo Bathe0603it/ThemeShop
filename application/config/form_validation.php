@@ -169,7 +169,7 @@ $config = array(
         array(
             'field' => 'permission',
             'label' => 'Đường dẫn',
-            'rules' => 'trim|required|max_length[255]|is_unique[role.permission]',
+            'rules' => 'trim|required|max_length[255]|is_unique[roles.permission]',
             'errors' => array(
                 'required'  => '%s không được để trống.',
                 'max_length'    => '%s có chiều dài không lớn hơn 255',
