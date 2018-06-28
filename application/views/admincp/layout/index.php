@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="<?php echo admin_template_url();?>dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="<?php echo admin_public_url();?>css/global-style.css">
         <link rel="stylesheet" href="<?php echo admin_public_url();?>plugins/checkbox-style/style.css">
+        <!-- font site -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <!-- jQuery 2.2.3 -->
         <script src="<?php echo admin_template_url();?>plugins/jQuery/jquery-2.2.3.min.js"></script>

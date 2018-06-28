@@ -3,12 +3,11 @@
     
     class MenuModel extends MY_Model{
         public $table = 'menus';
-        public $filed = array(
-        	'name',
-        	'slug',
-        	'description',
-        	'location'
-        );
+        private $slug;
+        private $description;
+        private $location;
+        private $name;
+        
         public function __construct(){
         	parent::__construct();
             $this->load->database();

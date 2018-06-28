@@ -30,20 +30,23 @@
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Thông tin sản phẩm</h3>
+                        </div>
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="name">Tên sản phẩm</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter name product">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter name product">
                             </div>
                             <div class="form-group">
-                                <p><label for="content">Nội dung</label></p>
+                                <label for="content">Nội dung</label>
                                 <textarea id="content" name="content"></textarea>
                                 <script type="text/javascript">get_editor('content');</script>
                             </div>
                             <div class="form-group">
                                 <a href="#">Thêm mô tả ngắn</a>
                                 <section class="hidden_extend">
-                                    <textarea class="summary" id="summary" name="summary">This is my textarea to be replaced with CKEditor.</textarea>
+                                    <textarea class="summary" id="summary" name="summary"></textarea>
                                 </section>
                                 <script type="text/javascript">get_editor('summary');</script>
                             </div>
@@ -69,6 +72,45 @@
                                 <input type="file" class="form-control" id="name" placeholder="Enter name product">
                             </div>
                             
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Giá sản phẩm</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!-- text input -->
+                            <div class="row">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="">Giá</label>
+                                        <input type="code" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Giảm giá</label>
+                                        <input type="text" name="phantram" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                        <section class="clearfix">
+                                            <span class="fLeft">Giá đã bao gồm VAT &nbsp</span>
+                                            <input class="tgl tgl-ios" value="1" id="cb2" type="checkbox"/>
+                                            <label class="fLeft tgl-btn" for="cb2"></label>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -114,6 +156,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <section class="clearfix">
+                                        <span class="fLeft">Cho phép tiếp tục đặt hàng khi hết hàng &nbsp</span>
+                                        <input class="tgl tgl-ios" value="1" id="cb3" type="checkbox"/>
+                                        <label class="fLeft tgl-btn" for="cb3"></label>
+                                    </section>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -135,8 +186,8 @@
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
-                                        <p><label for="">Thẻ tiêu đề</label><span class="text-right">1/70</span></p>
-                                        <input type="code" class="form-control" placeholder="Enter ...">
+                                        <p><label for="">Thẻ tiêu đề </label><span class="text-right"><b data-bind="(object.seo_title || titlePlaceholder()).length">0</b>/70</span></p>
+                                        <input type="code" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
@@ -172,13 +223,12 @@
                         </div>
                         <div class="box-body">
                             <div class="form-group">
-                                
-                                <input type="radio" name="status" id="hidden" placeholder="Enter name product"><label for="hidden">Ẩn</label>
+                                <input type="radio" name="status" id="display" placeholder="Enter name product"><label for="display">Hiển thị</label>
                             </div>
                             <div class="form-group">
-                                
-                                <input type="radio" name="status" id="display" placeholder="Enter name product"><label for="display">Hiện</label>
+                                <input type="radio" name="status" id="hidden" placeholder="Enter name product"><label for="hidden">Ẩn</label>
                             </div>
+                            
                             <div class="form-group">
                                 <label for="">Thời gian hiển thị</label>
                                 <input type="text" class="form-control" placeholder="Username">
@@ -188,9 +238,39 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Danh mục & Tags</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="">Danh mục</label>
+                                <select class="form-control">
+                                    <option>Danh mục sách</option>
+                                    <option>Danh mục điện thoại</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tags</label>
+                                <input type="" class="form-control" name="">
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-right">
+                <button class="btn btn-primary" type="button" name="button" form="create_new_product">Lưu</button>
+            </div>
+            
+        </div>
+    </div>
 </section>
 <!-- /.content -->
 </form>
