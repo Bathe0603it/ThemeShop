@@ -1,9 +1,17 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        Tài khoản
-        <small>Danh sách các quyền hệ thống</small>
-    </h1>
+    <div class="row">
+        <div class="col-md-8 col-xs-12">
+            <h1>
+                Sản phẩm
+                <small>Danh sách các sản phẩm</small>
+            </h1>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <button class="btn btn-primary" type="button" name="button" form="create_new_product">Thêm mới sản phẩm</button>
+        </div>
+    </div>
+    
 </section>
 <!-- Main content -->
 <section class="content">

@@ -1,3 +1,7 @@
+<!-- Plugin tags -->
+<link rel="stylesheet" href="<?php echo admin_public_url(); ?>plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css">
+<script src="<?php echo admin_public_url(); ?>plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js"></script>
+
 <form method="post">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -223,12 +227,12 @@
                         </div>
                         <div class="box-body">
                             <div class="form-group">
-                                <input type="radio" name="status" id="display" placeholder="Enter name product"><label for="display">Hiển thị</label>
+                                <section class="clearfix">
+                                    <span class="fLeft">Hiển thị &nbsp</span>
+                                    <input class="tgl tgl-ios" value="1" id="cb4" type="checkbox"/>
+                                    <label class="fLeft tgl-btn" for="cb4"></label>
+                                </section>
                             </div>
-                            <div class="form-group">
-                                <input type="radio" name="status" id="hidden" placeholder="Enter name product"><label for="hidden">Ẩn</label>
-                            </div>
-                            
                             <div class="form-group">
                                 <label for="">Thời gian hiển thị</label>
                                 <input type="text" class="form-control" placeholder="Username">
@@ -254,7 +258,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Tags</label>
-                                <input type="" class="form-control" name="">
+                                <input type="text" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput" />
+
                             </div>
                         </div>
                         <!-- /.box-body -->
