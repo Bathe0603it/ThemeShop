@@ -1,33 +1,16 @@
 $(document).ready(function(){
-    $(".viewMoreLuansim").click(function() {
-    	var sosim = $(this).attr('data-sim');
-        var frm = document.form_boi_sim_hidden;
-        frm.sosim.value	= sosim;
-     	document.form_boi_sim_hidden.submit();
-     	return false;
-    });
-    $(".btnSimHopLuanSim").click(function() {
-        /*var link = $(this).attr('href');
-        alert(link);
-        var frm = document.search_tra_cuu_sim_hop_tuoi;
-        document.search_tra_cuu_sim_hop_tuoi.submit();*/
-        $('.btnXemsimphongthuyHoptuoi').click();
-        return false;
-    });
-    var btn_ac_click_value = true;
-    $('.btn_ac_click').click(function(){
-        if(btn_ac_click_value){
-            $('.show_acount').stop().slideDown("slow");
-            btn_ac_click_value = false;
-        }else{
-            $('.show_acount'). stop().slideUp("slow");
-            btn_ac_click_value = true;
-        }
-    });
-    /*var h = $("body").css("width");
-    h = parseInt(h);
-    alert(h);*/
 
+    /** Dem chieu dai 1 chuoi **/
+    /*
+        <label class="" id="for-label">0</label>
+        <input type="text" name="" class="countText" data-for="for-label">
+    */
+    $('.countText').keyup(function(){
+        var str = $(this).val();
+        var dataFor = $(this).attr('data-for');
+        $('#'+dataFor).text( str.length );
+    });
+    
 });
 
 function back_page(){
