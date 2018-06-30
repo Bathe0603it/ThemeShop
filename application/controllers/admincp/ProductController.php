@@ -20,7 +20,7 @@
         public function index(){
             // 1. Xu ly du lieu xuong tu url
             $inputGet   = $this->input->get();
-            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:0):0;
+            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:1):1;
             $offset = ( $page - 1 )*$this->productModel->limit;
 
             // 2. Xu ly function hien tai
