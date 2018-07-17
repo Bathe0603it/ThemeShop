@@ -38,6 +38,9 @@
             );
             $pagination     = $this->paginationextend->get($paramsPagination);
 
+            /** Danh sách danh mục **/
+            
+
             // 3. Xu ly data to view
             $data['data']   = array(
                 'productList'   => $productList,
