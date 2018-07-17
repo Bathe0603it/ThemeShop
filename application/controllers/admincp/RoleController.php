@@ -14,8 +14,8 @@
         
         public function index(){
             $getAll = $this->roleModel->getAll();
-            $parent_getall  = $this->function_lib->set_parent_to_array($getAll);
-            $parent_getall  = $this->function_lib->get_parent_to_array();
+            $parent_getall  = $this->recusive_lib->set_parent_to_array($getAll);
+            $parent_getall  = $this->recusive_lib->get_parent_to_array();
 
             $data['data']   = array(
                 'parent_getall' => $parent_getall,
@@ -25,7 +25,7 @@
 
         public function test(){
             $getAll         = $this->roleModel->getAll();   // lay danh sach cac ban ghi
-            $parent_getall  = $this->function_lib->setAbc($getAll);
+            $parent_getall  = $this->recusive_lib->setAbc($getAll);
 
             dd($parent_getall);
         }
@@ -44,7 +44,7 @@
             $data['item']   = $item = $this->roleModel->getInfo($id);
 
             $getAll         = $this->roleModel->getAll();   // lay danh sach cac ban ghi
-            $parent_getall  = $this->function_lib->get_parent_to_array_heading($getAll);
+            $parent_getall  = $this->recusive_lib->get_parent_to_array_have_return($getAll);
 
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
@@ -55,7 +55,7 @@
                 $this->postCreate();
             }
             $getAll     = $this->roleModel->getAll();   // lay danh sach cac quyen he thong
-            $parent_getall  = $this->function_lib->get_parent_to_array_heading($getAll);
+            $parent_getall  = $this->recusive_lib->get_parent_to_array_have_return($getAll);
 
             $data['parent_getall'] = $parent_getall;
             $this->loadView($this->view,$data);
@@ -111,8 +111,8 @@
         **/
         public function updateLevel(){
             $result = $this->roleModel->getAll();
-            $this->function_lib->set_parent_to_number($result);
-            $recive = $this->function_lib->get_parent_to_number($result);
+            $this->recusive_lib->set_parent_to_number($result);
+            $recive = $this->recusive_lib->get_parent_to_number($result);
             foreach ($recive as $key => $value) {
                 foreach ($value as $keyItem => $valueItem) {
                     $arrUpdate  = array(

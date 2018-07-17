@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2018 at 02:42 AM
+-- Generation Time: Jul 17, 2018 at 06:52 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -97,40 +97,40 @@ CREATE TABLE `categorys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_articles`
+-- Table structure for table `categorys_article`
 --
 
-CREATE TABLE `category_articles` (
+CREATE TABLE `categorys_article` (
   `id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_articles`
+-- Dumping data for table `categorys_article`
 --
 
-INSERT INTO `category_articles` (`id`, `menu_id`, `article_id`) VALUES
+INSERT INTO `categorys_article` (`id`, `menu_id`, `article_id`) VALUES
 (8, 73, 141),
 (9, 74, 141);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_products`
+-- Table structure for table `categorys_product`
 --
 
-CREATE TABLE `category_products` (
+CREATE TABLE `categorys_product` (
   `id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_products`
+-- Dumping data for table `categorys_product`
 --
 
-INSERT INTO `category_products` (`id`, `menu_id`, `product_id`) VALUES
+INSERT INTO `categorys_product` (`id`, `menu_id`, `product_id`) VALUES
 (1, 67, 5),
 (2, 69, 5),
 (3, 65, 6),
@@ -165,10 +165,10 @@ INSERT INTO `category_products` (`id`, `menu_id`, `product_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_relationships`
+-- Table structure for table `categorys_relationship`
 --
 
-CREATE TABLE `category_relationships` (
+CREATE TABLE `categorys_relationship` (
   `id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `category_taxonomy_id` int(11) NOT NULL
@@ -177,20 +177,20 @@ CREATE TABLE `category_relationships` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_taxonomy`
+-- Table structure for table `categorys_taxonomy`
 --
 
-CREATE TABLE `category_taxonomy` (
+CREATE TABLE `categorys_taxonomy` (
   `id` int(11) NOT NULL,
   `taxonomy` varchar(255) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category_taxonomy`
+-- Dumping data for table `categorys_taxonomy`
 --
 
-INSERT INTO `category_taxonomy` (`id`, `taxonomy`, `description`) VALUES
+INSERT INTO `categorys_taxonomy` (`id`, `taxonomy`, `description`) VALUES
 (1, 'category-product', 'Loại danh mục sản phẩm'),
 (2, 'category-article', 'Loại danh mục bài viết'),
 (3, 'page', 'Là loại trang đơn');
@@ -368,7 +368,7 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`, `description`, `permission`, `category`, `parent`, `level`, `groupsystem`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Trang chủ', 'Điều hướng vào trang chủ', 'admincp/dashboardcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
 (2, 'Sản phẩm', 'Cho phếp quản lý sản phẩm', 'admincp/productcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
-(3, 'Danh mục', 'Quản lý danh mục', 'admincp/categorycontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
+(3, 'Danh mục', 'Quản lý danh mục', '#admincp/categorycontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
 (4, 'Khuyến mãi', 'Quản lý khuyến mãi bao gồm tạo các mã giảm giá', 'admincp/discountnextcontroller/index', 1, 0, 0, '1', NULL, NULL, NULL),
 (5, 'Báo cáo', 'Quản lý báo cáo website', 'admincp/verbcontroller/index', 1, 0, 0, '0', NULL, NULL, NULL),
 (6, 'Thêm sản phẩm', 'Thêm nhanh sản phẩm', 'admincp/productcontroller/create', 1, 2, 1, '0', NULL, NULL, NULL),
@@ -376,7 +376,10 @@ INSERT INTO `roles` (`id`, `name`, `description`, `permission`, `category`, `par
 (8, 'Danh sách sản phẩm 1', 'Hiển thị danh sách sản phẩm', 'admincp/productcontroller/index', 0, 2, 1, '0', NULL, NULL, NULL),
 (9, 'Quản lý quyền hệ thống', 'Quản lý quyền hệ thống', 'admincp/rolecontroller', 0, 0, 0, '2', NULL, NULL, NULL),
 (10, 'Danh sách quyền hệ thống', 'Danh sách quyền hệ thống', 'admincp/rolecontroller/index', 0, 9, 5, '2', NULL, NULL, NULL),
-(11, 'Thêm quyền hệ thống', 'Thêm mới quyền hệ thống', 'admincp/rolecontroller/create', 0, 9, 5, '2', NULL, NULL, NULL);
+(11, 'Thêm quyền hệ thống', 'Thêm mới quyền hệ thống', 'admincp/rolecontroller/create', 0, 9, 5, '2', NULL, NULL, NULL),
+(12, 'Quản lý menu', 'Quản lý danh sách menu', 'admincp/menucontroller/index', 0, 0, 0, '2', NULL, NULL, NULL),
+(13, 'Thêm danh mục', 'Thêm danh mục  sản phẩm, bài viết...', 'admincp/categorycontroller/create', 0, 3, 2, '1', NULL, NULL, NULL),
+(14, 'Danh sách', 'Danh sách danh mục', 'admincp/categorycontroller/index', 0, 3, 2, '1', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -438,27 +441,27 @@ ALTER TABLE `categorys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_articles`
+-- Indexes for table `categorys_article`
 --
-ALTER TABLE `category_articles`
+ALTER TABLE `categorys_article`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_products`
+-- Indexes for table `categorys_product`
 --
-ALTER TABLE `category_products`
+ALTER TABLE `categorys_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_relationships`
+-- Indexes for table `categorys_relationship`
 --
-ALTER TABLE `category_relationships`
+ALTER TABLE `categorys_relationship`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_taxonomy`
+-- Indexes for table `categorys_taxonomy`
 --
-ALTER TABLE `category_taxonomy`
+ALTER TABLE `categorys_taxonomy`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -530,24 +533,24 @@ ALTER TABLE `carts`
 ALTER TABLE `categorys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `category_articles`
+-- AUTO_INCREMENT for table `categorys_article`
 --
-ALTER TABLE `category_articles`
+ALTER TABLE `categorys_article`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `category_products`
+-- AUTO_INCREMENT for table `categorys_product`
 --
-ALTER TABLE `category_products`
+ALTER TABLE `categorys_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 --
--- AUTO_INCREMENT for table `category_relationships`
+-- AUTO_INCREMENT for table `categorys_relationship`
 --
-ALTER TABLE `category_relationships`
+ALTER TABLE `categorys_relationship`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `category_taxonomy`
+-- AUTO_INCREMENT for table `categorys_taxonomy`
 --
-ALTER TABLE `category_taxonomy`
+ALTER TABLE `categorys_taxonomy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `menus`
@@ -583,7 +586,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `user`
 --

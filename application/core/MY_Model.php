@@ -184,17 +184,17 @@ class MY_Model extends CI_Model
     /**
      * Fetch an array of records based on an array of primary values.
      */
-    public function getMany($params, $param2 = null)
+    public function getMany($whereIn, $params = null)
     {
-        if (isset($param2['select'])) {
-            $this->db->select($param2['select']);
+        if (isset($params['select'])) {
+            $this->db->select($params['select']);
         }
-        $this->db->from($this->table)->where_in($this->primary_key,$params);    
-        if (isset($param2['limit'])) {
-            $this->db->limit($param2['limit'][0],$param2['limit'][1]);
+        $this->db->from($this->table)->where_in($this->primary_key,$whereIn);    
+        if (isset($params['limit'])) {
+            $this->db->limit($params['limit'][0],$params['limit'][1]);
         }
-        if (isset($param2['result'])) {
-            return $this->show($this->db->get(),$param2);
+        if (isset($params['result'])) {
+            return $this->show($this->db->get(),$params);
         }
         return $this->db->get()->result_array();
     }

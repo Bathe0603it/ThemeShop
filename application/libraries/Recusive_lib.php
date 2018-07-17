@@ -40,7 +40,7 @@
                 foreach ($menu_tmp as $item)
                 {
                     $this->menu_child = $this->load->view('site/tuvi_ngay_thang_nam/table', array('item'=>$item,'heading'=>$heading), true);
-                    $this->set_parent_to_compornent($input, $item['id'],$heading.'|--');
+                    $this->set_parent_to_compornent($input, $item['id'],$heading.'|----');
                 }
             }
         }
@@ -84,7 +84,7 @@
                     $this->menu_arr[$item['id']]    = $item;
                     $this->menu_arr[$item['id']]['heading'] = $heading;
                      
-                    $this->set_parent_to_array($input, $item['id'],$heading.'--');
+                    $this->set_parent_to_array($input, $item['id'],$heading.'|----');
                 }
                 
             }
@@ -197,7 +197,7 @@
                     $this->menu_arr[$item['id']]    = $item;
                     $this->menu_arr[$item['id']]['heading'] = $heading;
                      
-                    $this->get_parent_to_array_heading($input, $item['id'],$heading.'--');
+                    $this->get_parent_to_array_have_return($input, $item['id'],$heading.'|----');
                 }
             }
             return $this->menu_arr;
@@ -228,7 +228,7 @@
                     $this->arr_list[$item['id']]    = $item;
                     $this->arr_list[$item['id']]['heading']    = $heading;
                      
-                    $this->setAbc($input, $item['id'],$heading.'|--');
+                    $this->setAbc($input, $item['id'],$heading.'|----');
                 }
             }
             return $this->arr_list;

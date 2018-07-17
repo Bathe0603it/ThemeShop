@@ -87,8 +87,10 @@ class Auth {
 
 		// Lay quyen he thong
 		$this->CI->load->model('roleModel');
-        $getUrl = $this->CI->roleModel->getMany($permission,array(
-        												'select'	=> 'id, level, permission, name, category, parent, groupsystem'));
+        /*$getUrl = $this->CI->roleModel->getMany($permission,array(
+        												'select'	=> 'id, level, permission, name, category, parent, groupsystem')
+    	);*/
+    	$getUrl = $this->CI->roleModel->getAll();
         return $getUrl;
 	}
 

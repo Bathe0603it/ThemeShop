@@ -59,12 +59,12 @@
             $data['view']   = !empty($url)?$url:$this->view;
             
             $arrPermission  = $this->auth->getPermission();
-            $data['recursivePermission']    = $recursivePermission = $this->function_lib->getListRecursive($arrPermission);
+            $data['recursivePermission']    = $recursivePermission = $this->recusive_lib->getListRecursive($arrPermission);
             $data['logined']    = $this->auth->info()?$this->auth->info():'';
-
+            
             // get permission of administrator
             $arrPermission  = $this->auth->getPermission();
-            $data['permissions'] = $this->function_lib->getListRecursive($arrPermission);
+            $data['permissions'] = $this->recusive_lib->getListRecursive($arrPermission);
             $this->load->view('admincp/layout/index',$data);
         }
     }

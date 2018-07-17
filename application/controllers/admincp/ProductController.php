@@ -15,6 +15,9 @@
                 $this->model,
                 'categoryModel'
             ));
+            $this->load->library(array(
+                'category_lib'
+            ));
         }
     
         public function index(){
@@ -56,8 +59,8 @@
             if (is_post()) {
                 $this->postCreate();
             }
-            $arrCat = $this->categoryModel->getAll();
-
+            $arrCat = $this->category_lib->categoryRecusive();
+            
             // 3. Xu ly data to view
             $data = array(
                 'arr_cat' => $arrCat,
