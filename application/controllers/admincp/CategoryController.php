@@ -17,6 +17,10 @@
                 'categoryRelationshipModel',
                 'categoryTaxonomyModel'
             ));
+
+            $this->load->library(array(
+                'category_lib'
+            ));
         }
     
         public function index(){
@@ -58,7 +62,7 @@
                 $this->postCreate();
             }
             
-            $recListCat = $this->getCatRecusive();
+            $recListCat = $this->category_lib->categoryRecusive();
 
             // 3. Xu ly data to view
             $data = array(
@@ -78,7 +82,7 @@
             if (is_post()) {
                 $this->postEdit($id);
             }
-            $recListCat = $this->getCatRecusive();
+            $recListCat = $this->category_lib->categoryRecusive();
 
             // 3. Thong tin ban ghi hien tai
             $item = $this->categoryModel->getInfo($id);
@@ -96,8 +100,10 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('cat_create')) {
                 $arr_insert = $input;
+
                 // Add into categorys
                 $idCat = $this->categoryModel->insert($arr_insert);
+
                 // Add into category_taxonomy
                 $idCatRel = $this->categoryRelationshipModel->insert( array(
                     'category_id' => $idCat,
@@ -120,6 +126,16 @@
             if ($this->form_validation->run('cat_edit')) {
                 $arr_update = $input;
                 $this->categoryModel->update($arr_update,$id);
+
+                // Add into category_taxonomy
+                $idCatRel = $this->categoryRelationshipModel->updateWhere( 
+                    array(
+                        'category_taxonomy_id' => $arr_insert['taxonomy']
+                    ), // update
+                    array(
+                        'category_id' => $id
+                    ) // where
+                );
                 
                 $msg = editOk('Danh mục');
                 $this->system->flash('msg_success',$msg);
@@ -129,16 +145,4 @@
                 $this->system->flash('msg_warning',$msg);
             }
         }
-
-        private function getCatRecusive(){
-            $listCat = $this->categoryModel->getBy(
-                array(
-                    'order_by' => array('sort', 'asc')
-                )
-            );
-            $recListCat = $this->recusive_lib->set_parent_to_array($listCat);
-            $recListCat = $this->recusive_lib->get_parent_to_array();
-        }
-        
-        
     }

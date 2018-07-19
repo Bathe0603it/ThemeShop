@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 17, 2018 at 06:52 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th7 19, 2018 lúc 12:54 PM
+-- Phiên bản máy phục vụ: 10.1.25-MariaDB
+-- Phiên bản PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,16 +19,187 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `themeshop`
+-- Cơ sở dữ liệu: `themeshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
+-- Cấu trúc bảng cho bảng `carts`
 --
 
-CREATE TABLE `articles` (
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL,
+  `fullname` char(30) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` char(15) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `sim` char(12) COLLATE utf8_unicode_ci NOT NULL,
+  `giaban` int(11) NOT NULL,
+  `created_date` int(11) NOT NULL,
+  `state` tinyint(4) NOT NULL,
+  `ip` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categorys`
+--
+
+CREATE TABLE `categorys` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `count` int(11) NOT NULL,
+  `sort` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categorys_relationship`
+--
+
+CREATE TABLE `categorys_relationship` (
+  `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `category_taxonomy_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categorys_taxonomy`
+--
+
+CREATE TABLE `categorys_taxonomy` (
+  `id` int(11) NOT NULL,
+  `taxonomy` varchar(255) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `categorys_taxonomy`
+--
+
+INSERT INTO `categorys_taxonomy` (`id`, `taxonomy`, `description`) VALUES
+(1, 'category-product', 'Loại danh mục sản phẩm'),
+(2, 'category-post', 'Loại danh mục bài viết'),
+(3, 'page', 'Là loại trang đơn');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(11) NOT NULL,
+  `name` varchar(320) NOT NULL,
+  `slug` varchar(320) NOT NULL,
+  `description` text NOT NULL,
+  `location` varchar(320) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `menu_taxonomy`
+--
+
+CREATE TABLE `menu_taxonomy` (
+  `id` int(11) NOT NULL,
+  `aritcle_id` int(11) DEFAULT '0',
+  `product_id` int(11) NOT NULL DEFAULT '0',
+  `category_id` int(11) NOT NULL DEFAULT '0',
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `menu_tree`
+--
+
+CREATE TABLE `menu_tree` (
+  `id` int(11) NOT NULL,
+  `menu_taxonomy_id` int(11) NOT NULL DEFAULT '0',
+  `parent` int(11) NOT NULL DEFAULT '0',
+  `type` varchar(120) NOT NULL,
+  `menu_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `pay_cart`
+--
+
+CREATE TABLE `pay_cart` (
+  `id` int(11) NOT NULL,
+  `pay_user_id` int(11) NOT NULL,
+  `pay_user_product` int(11) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `pay_cart`
+--
+
+INSERT INTO `pay_cart` (`id`, `pay_user_id`, `pay_user_product`, `qty`) VALUES
+(19, 20, 20, 1),
+(20, 20, 21, 9),
+(21, 21, 20, 1),
+(22, 22, 18, 1),
+(23, 23, 19, 1),
+(24, 24, 20, 2),
+(25, 24, 21, 1),
+(26, 24, 19, 1),
+(27, 25, 14, 7),
+(28, 25, 17, 1),
+(29, 26, 13, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `pay_users`
+--
+
+CREATE TABLE `pay_users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `note` text NOT NULL,
+  `state` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `pay_users`
+--
+
+INSERT INTO `pay_users` (`id`, `name`, `email`, `phone`, `address`, `city`, `note`, `state`, `created_at`, `updated_at`) VALUES
+(20, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 10:12:26', '2017-07-25 10:12:26'),
+(21, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 10:17:37', '2017-07-25 10:17:37'),
+(22, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 1, '2017-07-25 15:04:11', '2017-07-25 10:18:45'),
+(23, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 15:11:43', '2017-07-25 15:11:43'),
+(24, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 16:35:46', '2017-07-25 16:35:46'),
+(25, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-27 11:34:02', '2017-07-27 11:34:02'),
+(26, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '1', 0, '2017-07-27 12:04:39', '2017-07-27 12:04:39');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `posts`
+--
+
+CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -47,11 +220,11 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `articles`
+-- Đang đổ dữ liệu cho bảng `posts`
 --
 
-INSERT INTO `articles` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `orders`, `title`, `keywords`, `description`, `parent`, `state`, `feature`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
-(1, 'Như thế nào là Sim phong thủy hợp mệnh Thổ?', 'nhu-the-nao-la-sim-phong-thuy-hop-menh-tho', '<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Tại sao người mệnh thổ n&ecirc;n chọn <a href="https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận. Sim số hợp mệnh kh&ocirc;ng chỉ gi&uacute;p họ an t&acirc;m m&agrave; c&ograve;n l&agrave; hi vọng để c&oacute; th&ecirc;m được nhiều may mắn v&agrave; t&agrave;i lộc cả trong cuộc sống v&agrave; trong c&ocirc;ng danh sự nghiệp. Vậy như thế n&agrave;o l&agrave;<strong> </strong>Sim phong thủy hợp mệnh Thổ? H&atilde;y c&ugrave;ng <a href="https://xemvanmenh.net"><strong>Xem Vận Mệnh</strong></a> t&igrave;m hiểu c&aacute;ch chọn sim hợp mệnh thổ chi tiết nhất nh&eacute;!</span></p>\r\n\r\n<p dir="ltr" style="text-align:center"><img alt="" src="https://xemvanmenh.net/media/images/article/1/sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95%20xem%20v%E1%BA%ADn%20m%E1%BB%87nh(2).jpg" style="height:150px; width:696px" /></p>\r\n\r\n<h2 dir="ltr" style="text-align:justify"><span style="font-size:18px"><span style="color:#FF0000"><strong>C&aacute;ch ti&ecirc;u ch&iacute; gi&uacute;p bạn đ&aacute;nh gi&aacute; sim phong thủy hợp mệnh thổ&nbsp;</strong></span></span></h2>\r\n\r\n<h3 style="text-align:justify"><span style="font-size:16px"><em><strong>Sim phong thủy hợp mệnh Thổ l&agrave; sim tương hợp hoặc tương sinh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Mỗi mệnh sẽ c&oacute; c&aacute;c yếu tố tương sinh, tương hợp kh&aacute;c nhau. Ch&iacute;nh c&aacute;c yếu tố n&agrave;y gi&uacute;p cho mệnh đ&oacute; c&oacute; th&ecirc;m nhiều điều tốt đẹp</span></p>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương hợp</em>: nghĩa l&agrave; sim mang ch&iacute;nh mệnh của người đ&oacute;. Với người mệnh Thổ, Sim phong thủy hợp mệnh Thổ l&agrave; sim mang mệnh Thổ</span></p>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương sinh</em>: nghĩa l&agrave; sim mang mệnh sinh ra mệnh của chủ nh&acirc;n. Theo quy tắc tương sinh, Hỏa sinh Thổ. Do đ&oacute;, nếu chọn 1 sim số mang mệnh Hỏa sẽ rất tốt cho người mệnh Thổ. N&oacute; c&ograve;n được cho l&agrave; tốt hơn sim tương hợp v&igrave; n&oacute; mang yếu tố ph&aacute;t triển, tiến l&ecirc;n chứ kh&ocirc;ng dừng lại hay l&ugrave;i xuống.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>Sim hợp mệnh thổ kh&ocirc;ng được tương khắc với mệnh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ c&ograve;n c&oacute; nghĩa l&agrave; sim kh&ocirc;ng tương khắc với mệnh Thổ. Theo quy tắc tương khắc, Mộc khắc Thổ. Do đ&oacute;, người mệnh Thổ kh&ocirc;ng n&ecirc;n chọn sim mang mệnh Mộc. N&oacute; mang lại nhiều rủi ro, k&eacute;m may mắn.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>Sim phong thủy hợp mệnh Thổ phải đảm bảo c&acirc;n bằng &acirc;m dương</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; sim hợp c&aacute;c mệnh n&oacute;i chung khi c&oacute; sự c&acirc;n bằng &acirc;m dương lớn nhất. Sự c&acirc;n bằng &acirc;m dương l&agrave; c&acirc;n bằng giữa số chẵn v&agrave; số lẻ. Số chẵn mang h&agrave;nh &acirc;m v&agrave; số lẻ mang h&agrave;nh dương. Một số điện thoại c&agrave;ng c&acirc;n bằng chẵn lẽ nghĩa l&agrave; c&agrave;ng c&acirc;n bằng &acirc;m dương th&igrave; c&agrave;ng tốt v&agrave; ngược lại. Sự c&acirc;n bằng &acirc;m dương n&agrave;y c&ograve;n thể hiện cho sự c&acirc;n bằng trong cuộc sống, gi&uacute;p chủ nh&acirc;n của sim số mệnh Thổ c&oacute; th&ecirc;m được nhiều điều may mắn.</span></p>\r\n\r\n<p dir="ltr" style="text-align:center"><span style="font-size:14px"><img alt="" src="https://xemvanmenh.net/media/images/article/1/sim%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg" style="height:200px; width:689px" /></span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:14px"><em><strong>&nbsp;</strong></em></span><span style="font-size:16px"><em><strong>Sim hợp mệnh Thổ phải c&oacute; Số n&uacute;t cao</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Số n&uacute;t của một Sim phong thủy hợp mệnh Thổ cao khi n&oacute; tiến gần đến con số 9 (theo quan niệm của người miền Bắc) v&agrave; số 10 (theo quan niệm của người miền Nam). Số n&uacute;t c&agrave;ng cao th&igrave; phong thủy c&agrave;ng đẹp c&agrave;ng hợp với mệnh. Để t&iacute;nh số n&uacute;t n&agrave;y, bạn chỉ cần cộng c&aacute;c con số trong d&atilde;y sim số lại với nhau rồi lấy số lẻ cuối c&ugrave;ng trong d&atilde;y số kết quả ấy. So với con số 9 -10 để x&aacute;c định được độ cao - thấp của số n&uacute;t ấy.</span></p>\r\n\r\n<h3 dir="ltr" style="text-align:justify"><span style="font-size:16px"><em><strong>D&atilde;y sim hợp mạng thổ phải chứa c&aacute;c con số hợp mệnh</strong></em></span></h3>\r\n\r\n<p dir="ltr" style="text-align:justify"><span style="font-size:14px">Sim phong thủy hợp mệnh Thổ c&ograve;n l&agrave; sim số chứa nhiều con số hợp với người mệnh Thổ. Mệnh Thổ hợp nhất với c&aacute;c con số 2, 5, 8, 9. Do đ&oacute;, d&atilde;y sim số chứa c&agrave;ng nhiều c&aacute;c con số n&agrave;y th&igrave; phong thủy c&agrave;ng đẹp v&agrave; mang lại nhiều may mắn cho chủ nh&acirc;n.</span></p>\r\n\r\n<p style="text-align:justify"><span style="font-size:14px">T&igrave;m được sim số với những đặc trưng tr&ecirc;n l&agrave; bạn đ&atilde; t&igrave;m được Sim phong thủy hợp mệnh Thổ nhất rồi đấy. Sim hợp mệnh được cho l&agrave; yếu tố may mắn, mang lại hi vọng v&agrave;o những điều tốt đẹp cả về cuộc sống lẫn c&ocirc;ng danh sự nghiệp. Ch&uacute;c bạn sở hữu được sim hợp mệnh Thổ nhất nh&eacute;!</span></p>\r\n\r\n<p style="text-align:center"><span style="font-size:14px"><strong><span style="color:#00FF00">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> </strong></span><span style="font-size:16px"><strong><a href="https://xemvanmenh.net/xem-sim-phong-thuy.html"><span style="color:#FF0000">XEM SIM PHONG THỦY</span></a><span style="color:#FF0000"> HỢP MỆNH CHO NHỮNG NGƯỜI TH&Acirc;N Y&Ecirc;U</span></strong></span><span style="font-size:14px"><strong><span style="color:#FF0000">&nbsp;</span><span style="color:#00FF00">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></strong></span></p>\r\n', '<p><span style="font-size:14px">Tại sao người mệnh thổ n&ecirc;n chọn <a href="https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận....</span></p>\r\n', 'xem%20sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg', 0, 'Như thế nào là Sim phong thủy hợp mệnh Thổ - Sim kích tài vận?', 'sim hợp mệnh thổ, sim phong thủy hợp mệnh thổ, sim kích tài vận', 'Tư vấn chọn sim phong thủy hợp mệnh mệnh thổ chi tiết và đơn giản hơn bao giờ hết. Người mệnh thổ mua ngay sim phong thủy hợp mệnh thổ để chiêu vận may - kích tài lộc', 73, 1, 0, 1, 1491789412, 1, 0),
+INSERT INTO `posts` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `orders`, `title`, `keywords`, `description`, `parent`, `state`, `feature`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
+(1, 'Như thế nào là Sim phong thủy hợp mệnh Thổ?', 'nhu-the-nao-la-sim-phong-thuy-hop-menh-tho', '<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Tại sao người mệnh thổ n&ecirc;n chọn <a href=\"https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html\"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận. Sim số hợp mệnh kh&ocirc;ng chỉ gi&uacute;p họ an t&acirc;m m&agrave; c&ograve;n l&agrave; hi vọng để c&oacute; th&ecirc;m được nhiều may mắn v&agrave; t&agrave;i lộc cả trong cuộc sống v&agrave; trong c&ocirc;ng danh sự nghiệp. Vậy như thế n&agrave;o l&agrave;<strong> </strong>Sim phong thủy hợp mệnh Thổ? H&atilde;y c&ugrave;ng <a href=\"https://xemvanmenh.net\"><strong>Xem Vận Mệnh</strong></a> t&igrave;m hiểu c&aacute;ch chọn sim hợp mệnh thổ chi tiết nhất nh&eacute;!</span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:center\"><img alt=\"\" src=\"https://xemvanmenh.net/media/images/article/1/sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95%20xem%20v%E1%BA%ADn%20m%E1%BB%87nh(2).jpg\" style=\"height:150px; width:696px\" /></p>\r\n\r\n<h2 dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:18px\"><span style=\"color:#FF0000\"><strong>C&aacute;ch ti&ecirc;u ch&iacute; gi&uacute;p bạn đ&aacute;nh gi&aacute; sim phong thủy hợp mệnh thổ&nbsp;</strong></span></span></h2>\r\n\r\n<h3 style=\"text-align:justify\"><span style=\"font-size:16px\"><em><strong>Sim phong thủy hợp mệnh Thổ l&agrave; sim tương hợp hoặc tương sinh</strong></em></span></h3>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Mỗi mệnh sẽ c&oacute; c&aacute;c yếu tố tương sinh, tương hợp kh&aacute;c nhau. Ch&iacute;nh c&aacute;c yếu tố n&agrave;y gi&uacute;p cho mệnh đ&oacute; c&oacute; th&ecirc;m nhiều điều tốt đẹp</span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương hợp</em>: nghĩa l&agrave; sim mang ch&iacute;nh mệnh của người đ&oacute;. Với người mệnh Thổ, Sim phong thủy hợp mệnh Thổ l&agrave; sim mang mệnh Thổ</span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">&nbsp; &nbsp; &nbsp; &nbsp; - <em>Sim tương sinh</em>: nghĩa l&agrave; sim mang mệnh sinh ra mệnh của chủ nh&acirc;n. Theo quy tắc tương sinh, Hỏa sinh Thổ. Do đ&oacute;, nếu chọn 1 sim số mang mệnh Hỏa sẽ rất tốt cho người mệnh Thổ. N&oacute; c&ograve;n được cho l&agrave; tốt hơn sim tương hợp v&igrave; n&oacute; mang yếu tố ph&aacute;t triển, tiến l&ecirc;n chứ kh&ocirc;ng dừng lại hay l&ugrave;i xuống.</span></p>\r\n\r\n<h3 dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:16px\"><em><strong>Sim hợp mệnh thổ kh&ocirc;ng được tương khắc với mệnh</strong></em></span></h3>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Sim phong thủy hợp mệnh Thổ c&ograve;n c&oacute; nghĩa l&agrave; sim kh&ocirc;ng tương khắc với mệnh Thổ. Theo quy tắc tương khắc, Mộc khắc Thổ. Do đ&oacute;, người mệnh Thổ kh&ocirc;ng n&ecirc;n chọn sim mang mệnh Mộc. N&oacute; mang lại nhiều rủi ro, k&eacute;m may mắn.</span></p>\r\n\r\n<h3 dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:16px\"><em><strong>Sim phong thủy hợp mệnh Thổ phải đảm bảo c&acirc;n bằng &acirc;m dương</strong></em></span></h3>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Sim phong thủy hợp mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; sim hợp c&aacute;c mệnh n&oacute;i chung khi c&oacute; sự c&acirc;n bằng &acirc;m dương lớn nhất. Sự c&acirc;n bằng &acirc;m dương l&agrave; c&acirc;n bằng giữa số chẵn v&agrave; số lẻ. Số chẵn mang h&agrave;nh &acirc;m v&agrave; số lẻ mang h&agrave;nh dương. Một số điện thoại c&agrave;ng c&acirc;n bằng chẵn lẽ nghĩa l&agrave; c&agrave;ng c&acirc;n bằng &acirc;m dương th&igrave; c&agrave;ng tốt v&agrave; ngược lại. Sự c&acirc;n bằng &acirc;m dương n&agrave;y c&ograve;n thể hiện cho sự c&acirc;n bằng trong cuộc sống, gi&uacute;p chủ nh&acirc;n của sim số mệnh Thổ c&oacute; th&ecirc;m được nhiều điều may mắn.</span></p>\r\n\r\n<p dir=\"ltr\" style=\"text-align:center\"><span style=\"font-size:14px\"><img alt=\"\" src=\"https://xemvanmenh.net/media/images/article/1/sim%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg\" style=\"height:200px; width:689px\" /></span></p>\r\n\r\n<h3 dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\"><em><strong>&nbsp;</strong></em></span><span style=\"font-size:16px\"><em><strong>Sim hợp mệnh Thổ phải c&oacute; Số n&uacute;t cao</strong></em></span></h3>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Số n&uacute;t của một Sim phong thủy hợp mệnh Thổ cao khi n&oacute; tiến gần đến con số 9 (theo quan niệm của người miền Bắc) v&agrave; số 10 (theo quan niệm của người miền Nam). Số n&uacute;t c&agrave;ng cao th&igrave; phong thủy c&agrave;ng đẹp c&agrave;ng hợp với mệnh. Để t&iacute;nh số n&uacute;t n&agrave;y, bạn chỉ cần cộng c&aacute;c con số trong d&atilde;y sim số lại với nhau rồi lấy số lẻ cuối c&ugrave;ng trong d&atilde;y số kết quả ấy. So với con số 9 -10 để x&aacute;c định được độ cao - thấp của số n&uacute;t ấy.</span></p>\r\n\r\n<h3 dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:16px\"><em><strong>D&atilde;y sim hợp mạng thổ phải chứa c&aacute;c con số hợp mệnh</strong></em></span></h3>\r\n\r\n<p dir=\"ltr\" style=\"text-align:justify\"><span style=\"font-size:14px\">Sim phong thủy hợp mệnh Thổ c&ograve;n l&agrave; sim số chứa nhiều con số hợp với người mệnh Thổ. Mệnh Thổ hợp nhất với c&aacute;c con số 2, 5, 8, 9. Do đ&oacute;, d&atilde;y sim số chứa c&agrave;ng nhiều c&aacute;c con số n&agrave;y th&igrave; phong thủy c&agrave;ng đẹp v&agrave; mang lại nhiều may mắn cho chủ nh&acirc;n.</span></p>\r\n\r\n<p style=\"text-align:justify\"><span style=\"font-size:14px\">T&igrave;m được sim số với những đặc trưng tr&ecirc;n l&agrave; bạn đ&atilde; t&igrave;m được Sim phong thủy hợp mệnh Thổ nhất rồi đấy. Sim hợp mệnh được cho l&agrave; yếu tố may mắn, mang lại hi vọng v&agrave;o những điều tốt đẹp cả về cuộc sống lẫn c&ocirc;ng danh sự nghiệp. Ch&uacute;c bạn sở hữu được sim hợp mệnh Thổ nhất nh&eacute;!</span></p>\r\n\r\n<p style=\"text-align:center\"><span style=\"font-size:14px\"><strong><span style=\"color:#00FF00\">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> </strong></span><span style=\"font-size:16px\"><strong><a href=\"https://xemvanmenh.net/xem-sim-phong-thuy.html\"><span style=\"color:#FF0000\">XEM SIM PHONG THỦY</span></a><span style=\"color:#FF0000\"> HỢP MỆNH CHO NHỮNG NGƯỜI TH&Acirc;N Y&Ecirc;U</span></strong></span><span style=\"font-size:14px\"><strong><span style=\"color:#FF0000\">&nbsp;</span><span style=\"color:#00FF00\">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span></strong></span></p>\r\n', '<p><span style=\"font-size:14px\">Tại sao người mệnh thổ n&ecirc;n chọn <a href=\"https://xemvanmenh.net/nhu-the-nao-la-sim-phong-thuy-hop-menh-tho-A1.html\"><strong>Sim phong thủy hợp mệnh thổ</strong></a>, bạn đ&atilde; biết chưa? Những người mệnh Thổ n&oacute;i ri&ecirc;ng v&agrave; c&aacute;c mệnh kh&aacute;c n&oacute;i chung thường rất quan t&acirc;m đến c&aacute;c yếu tố hợp với tuổi của m&igrave;nh. Trong đ&oacute; phải kể đến sim số, ai cũng muốn sở hữu một dẫy sim phong thủy hợp mệnh gi&uacute;p chủ sở hữu k&iacute;ch t&agrave;i vận....</span></p>\r\n', 'xem%20sim%20phong%20th%E1%BB%A7y%20h%E1%BB%A3p%20m%E1%BB%87nh%20th%E1%BB%95.jpg', 0, 'Như thế nào là Sim phong thủy hợp mệnh Thổ - Sim kích tài vận?', 'sim hợp mệnh thổ, sim phong thủy hợp mệnh thổ, sim kích tài vận', 'Tư vấn chọn sim phong thủy hợp mệnh mệnh thổ chi tiết và đơn giản hơn bao giờ hết. Người mệnh thổ mua ngay sim phong thủy hợp mệnh thổ để chiêu vận may - kích tài lộc', 73, 1, 0, 1, 1491789412, 1, 0),
 (136, '', '', '', '', '', 0, '', '', '', 0, 0, 0, 1, 1499354698, 1, 0),
 (137, '', '', '', '', '', 0, '', '', '', 0, 0, 0, 1, 1499523008, 1, 0),
 (138, '', '', '', '', '', 0, '', '', '', 0, 0, 0, 1, 1499573979, 1, 0),
@@ -63,246 +236,7 @@ INSERT INTO `articles` (`id`, `name`, `slug`, `content`, `summary`, `avatar`, `o
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
---
-
-CREATE TABLE `carts` (
-  `id` int(11) NOT NULL,
-  `fullname` char(30) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` char(15) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `message` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `sim` char(12) COLLATE utf8_unicode_ci NOT NULL,
-  `giaban` int(11) NOT NULL,
-  `created_date` int(11) NOT NULL,
-  `state` tinyint(4) NOT NULL,
-  `ip` varchar(50) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorys`
---
-
-CREATE TABLE `categorys` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL,
-  `sort` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorys_article`
---
-
-CREATE TABLE `categorys_article` (
-  `id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  `article_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `categorys_article`
---
-
-INSERT INTO `categorys_article` (`id`, `menu_id`, `article_id`) VALUES
-(8, 73, 141),
-(9, 74, 141);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorys_product`
---
-
-CREATE TABLE `categorys_product` (
-  `id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `categorys_product`
---
-
-INSERT INTO `categorys_product` (`id`, `menu_id`, `product_id`) VALUES
-(1, 67, 5),
-(2, 69, 5),
-(3, 65, 6),
-(4, 67, 6),
-(5, 65, 7),
-(6, 67, 7),
-(7, 65, 7),
-(8, 67, 7),
-(9, 65, 7),
-(10, 67, 7),
-(28, 65, 11),
-(29, 68, 11),
-(30, 70, 11),
-(35, 65, 13),
-(36, 69, 13),
-(37, 66, 13),
-(38, 65, 14),
-(39, 69, 14),
-(46, 70, 16),
-(47, 71, 16),
-(72, 65, 12),
-(73, 67, 12),
-(74, 71, 12),
-(75, 66, 17),
-(76, 71, 17),
-(77, 76, 17),
-(78, 77, 17),
-(79, 65, 15),
-(80, 69, 15),
-(81, 76, 15);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorys_relationship`
---
-
-CREATE TABLE `categorys_relationship` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `category_taxonomy_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categorys_taxonomy`
---
-
-CREATE TABLE `categorys_taxonomy` (
-  `id` int(11) NOT NULL,
-  `taxonomy` varchar(255) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `categorys_taxonomy`
---
-
-INSERT INTO `categorys_taxonomy` (`id`, `taxonomy`, `description`) VALUES
-(1, 'category-product', 'Loại danh mục sản phẩm'),
-(2, 'category-article', 'Loại danh mục bài viết'),
-(3, 'page', 'Là loại trang đơn');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menus`
---
-
-CREATE TABLE `menus` (
-  `id` int(11) NOT NULL,
-  `name` varchar(320) NOT NULL,
-  `slug` varchar(320) NOT NULL,
-  `description` text NOT NULL,
-  `location` varchar(320) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu_taxonomy`
---
-
-CREATE TABLE `menu_taxonomy` (
-  `id` int(11) NOT NULL,
-  `aritcle_id` int(11) DEFAULT '0',
-  `product_id` int(11) NOT NULL DEFAULT '0',
-  `category_id` int(11) NOT NULL DEFAULT '0',
-  `type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu_tree`
---
-
-CREATE TABLE `menu_tree` (
-  `id` int(11) NOT NULL,
-  `menu_taxonomy_id` int(11) NOT NULL DEFAULT '0',
-  `parent` int(11) NOT NULL DEFAULT '0',
-  `type` varchar(120) NOT NULL,
-  `menu_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pay_cart`
---
-
-CREATE TABLE `pay_cart` (
-  `id` int(11) NOT NULL,
-  `pay_user_id` int(11) NOT NULL,
-  `pay_user_product` int(11) NOT NULL,
-  `qty` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `pay_cart`
---
-
-INSERT INTO `pay_cart` (`id`, `pay_user_id`, `pay_user_product`, `qty`) VALUES
-(19, 20, 20, 1),
-(20, 20, 21, 9),
-(21, 21, 20, 1),
-(22, 22, 18, 1),
-(23, 23, 19, 1),
-(24, 24, 20, 2),
-(25, 24, 21, 1),
-(26, 24, 19, 1),
-(27, 25, 14, 7),
-(28, 25, 17, 1),
-(29, 26, 13, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pay_users`
---
-
-CREATE TABLE `pay_users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `note` text NOT NULL,
-  `state` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `pay_users`
---
-
-INSERT INTO `pay_users` (`id`, `name`, `email`, `phone`, `address`, `city`, `note`, `state`, `created_at`, `updated_at`) VALUES
-(20, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 10:12:26', '2017-07-25 10:12:26'),
-(21, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 10:17:37', '2017-07-25 10:17:37'),
-(22, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 1, '2017-07-25 15:04:11', '2017-07-25 10:18:45'),
-(23, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 15:11:43', '2017-07-25 15:11:43'),
-(24, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-25 16:35:46', '2017-07-25 16:35:46'),
-(25, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '', 0, '2017-07-27 11:34:02', '2017-07-27 11:34:02'),
-(26, 'Bathepro', 'adminpro@gmail.com', '1694254799', '275 Nguyen Trai strees, Ha Noi', 'Hà Nội', '1', 0, '2017-07-27 12:04:39', '2017-07-27 12:04:39');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -329,7 +263,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `slug`, `giaban`, `giakhuyenmai`, `summary`, `content`, `parameter`, `avatar`, `orders`, `title`, `keywords`, `description`, `status`, `feature`, `hidden_price`, `follow`, `created_date`, `created_by`, `update_date`) VALUES
@@ -344,7 +278,7 @@ INSERT INTO `products` (`id`, `name`, `slug`, `giaban`, `giakhuyenmai`, `summary
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
 CREATE TABLE `roles` (
@@ -362,7 +296,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `description`, `permission`, `category`, `parent`, `level`, `groupsystem`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -384,7 +318,7 @@ INSERT INTO `roles` (`id`, `name`, `description`, `permission`, `category`, `par
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -409,189 +343,168 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `permission`, `fullname`, `gender`, `birthday`, `address`, `tel`, `description`, `status`, `receive`, `remember_token`, `login_timer`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'bathe0603nd', 'bathe0603nd@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', 'Mr.Bathepro', '1', '2017-08-16', '32/107 Linh Nam street - Ha Noi', '01694254791', '', 'active', '', NULL, '2017-12-11 16:06:42', '2017-09-03 17:00:00', '2017-09-03 17:00:00', '2017-09-03 17:00:00'),
-(2, 'admincp', 'admincp@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', 'Mr.Admin', '1', '2017-09-06', 'Ha Noi', '0123', '', 'active', '', NULL, '2017-12-11 16:06:46', '2017-09-12 17:00:00', '2017-09-12 17:00:00', '2017-09-12 17:00:00'),
-(3, 'Batheit', 'adminpro@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2"]', '', '', NULL, 'bathe0603nd@gmail.com', '01694254799', '', 'active', '', NULL, '2017-12-10 15:13:02', NULL, NULL, NULL),
-(4, 'Bathepro', 'bathepc@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '["1","2","6","7","8","3","5","4"]', '', '', NULL, 'Ha Noi', '123456789', '', 'active', '', NULL, '2018-01-05 16:32:01', NULL, NULL, NULL);
+(1, 'bathe0603nd', 'bathe0603nd@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '[\"1\",\"2\"]', 'Mr.Bathepro', '1', '2017-08-16', '32/107 Linh Nam street - Ha Noi', '01694254791', '', 'active', '', NULL, '2017-12-11 16:06:42', '2017-09-03 17:00:00', '2017-09-03 17:00:00', '2017-09-03 17:00:00'),
+(2, 'admincp', 'admincp@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '[\"1\",\"2\"]', 'Mr.Admin', '1', '2017-09-06', 'Ha Noi', '0123', '', 'active', '', NULL, '2017-12-11 16:06:46', '2017-09-12 17:00:00', '2017-09-12 17:00:00', '2017-09-12 17:00:00'),
+(3, 'Batheit', 'adminpro@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '[\"1\",\"2\"]', '', '', NULL, 'bathe0603nd@gmail.com', '01694254799', '', 'active', '', NULL, '2017-12-10 15:13:02', NULL, NULL, NULL),
+(4, 'Bathepro', 'bathepc@gmail.com', '2cb5674e3f7d9c18807ec58c064f556c', '[\"1\",\"2\",\"6\",\"7\",\"8\",\"3\",\"5\",\"4\"]', '', '', NULL, 'Ha Noi', '123456789', '', 'active', '', NULL, '2018-01-05 16:32:01', NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `articles`
---
-ALTER TABLE `articles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `carts`
+-- Chỉ mục cho bảng `carts`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorys`
+-- Chỉ mục cho bảng `categorys`
 --
 ALTER TABLE `categorys`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorys_article`
---
-ALTER TABLE `categorys_article`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categorys_product`
---
-ALTER TABLE `categorys_product`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `categorys_relationship`
+-- Chỉ mục cho bảng `categorys_relationship`
 --
 ALTER TABLE `categorys_relationship`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categorys_taxonomy`
+-- Chỉ mục cho bảng `categorys_taxonomy`
 --
 ALTER TABLE `categorys_taxonomy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menus`
+-- Chỉ mục cho bảng `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu_taxonomy`
+-- Chỉ mục cho bảng `menu_taxonomy`
 --
 ALTER TABLE `menu_taxonomy`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu_tree`
+-- Chỉ mục cho bảng `menu_tree`
 --
 ALTER TABLE `menu_tree`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pay_cart`
+-- Chỉ mục cho bảng `pay_cart`
 --
 ALTER TABLE `pay_cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pay_users`
+-- Chỉ mục cho bảng `pay_users`
 --
 ALTER TABLE `pay_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Chỉ mục cho bảng `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
+-- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `pys_user_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `articles`
---
-ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
---
--- AUTO_INCREMENT for table `carts`
+-- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `categorys`
+-- AUTO_INCREMENT cho bảng `categorys`
 --
 ALTER TABLE `categorys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `categorys_article`
---
-ALTER TABLE `categorys_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `categorys_product`
---
-ALTER TABLE `categorys_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
---
--- AUTO_INCREMENT for table `categorys_relationship`
+-- AUTO_INCREMENT cho bảng `categorys_relationship`
 --
 ALTER TABLE `categorys_relationship`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `categorys_taxonomy`
+-- AUTO_INCREMENT cho bảng `categorys_taxonomy`
 --
 ALTER TABLE `categorys_taxonomy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `menus`
+-- AUTO_INCREMENT cho bảng `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `menu_taxonomy`
+-- AUTO_INCREMENT cho bảng `menu_taxonomy`
 --
 ALTER TABLE `menu_taxonomy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `menu_tree`
+-- AUTO_INCREMENT cho bảng `menu_tree`
 --
 ALTER TABLE `menu_tree`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `pay_cart`
+-- AUTO_INCREMENT cho bảng `pay_cart`
 --
 ALTER TABLE `pay_cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
--- AUTO_INCREMENT for table `pay_users`
+-- AUTO_INCREMENT cho bảng `pay_users`
 --
 ALTER TABLE `pay_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+--
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -279,7 +279,7 @@ class MY_Model extends CI_Model
     /**
      * Update many records, based on an array of primary values.
      */
-    public function updateManyWhere( $data, $primary_values)
+    public function updateManyByPrimarykey( $data, $primary_values)
     {
         return $result = $this->db->set($data)
                                     ->where_in($this->primary_key,$primary_value)
