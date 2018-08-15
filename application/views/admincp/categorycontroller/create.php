@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col-md-8 col-xs-12">
             <h1>
-                Tài khoản
-                <small>Thêm mới quyền hệ thống</small>
+                Thêm mới danh mục
+                <small>Quản lý các danh mục</small>
             </h1>
         </div>
         <div class="col-md-4 col-xs-12">
@@ -18,10 +18,6 @@
 <section class="content">
     <!-- /.row -->
     <div class="row">
-        <div class="col-md-3 col-xs-12">
-            <h4>Thông tin hệ thống</h4>
-            <p class="text-muted">Tất cả thông tin liên quan đến hệ thống.</p>
-        </div>
         <div class="col-md-9 col-xs-12">
             <div class="panel panel-default panel-light">
                 <div class="box box-info">
@@ -91,6 +87,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-3 col-xs-12">
+            <h4>Thông tin danh mục</h4>
+            <p class="text-muted">Tất cả thông tin liên quan đến hệ thống.</p>
         </div>
     </div>
 </section>
