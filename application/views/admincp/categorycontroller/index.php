@@ -1,8 +1,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Tài khoản
-        <small>Danh sách các quyền hệ thống</small>
+        Danh mục
+        <small>Danh sách các danh mục</small>
     </h1>
 </section>
 <!-- Main content -->
