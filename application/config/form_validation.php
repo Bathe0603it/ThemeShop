@@ -209,27 +209,6 @@ $config = array(
                 'max_length' => '%s có chiều dài không lớn hơn 255 Kí tự',
             )
         ),
-
-        array(
-            'field' => 'slug',
-            'label' => 'Thông tin Slug',
-            'rules' => 'trim|required|is_unique[categorys.slug]',
-            'errors' => array(
-                'required' => '%s không được để trống.',
-                'is_unique'     => '%s đã tồn tại',
-                'max_length' => '%s có số ký tự tối đa là 100')
-        ),
-
-        array(
-            'field' => 'parent',
-            'label' => 'Thông tin Parent',
-            'rules' => 'trim|required',
-            'errors' => array(
-                'required' => 'Bạn chưa chọ %s .',
-            )
-        ),
-
-        
-
     ),
+
 );

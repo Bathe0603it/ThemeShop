@@ -18,8 +18,12 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?php echo admin_template_url();?>dist/css/skins/_all-skins.min.css">
+
         <link rel="stylesheet" href="<?php echo admin_public_url();?>css/global-style.css">
+
+        <!-- CSS ADD -->
         <link rel="stylesheet" href="<?php echo admin_public_url();?>plugins/checkbox-style/style.css">
+
         <!-- font site -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 

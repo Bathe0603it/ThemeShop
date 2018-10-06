@@ -31,5 +31,5 @@
     var do_action_msg = function(){
         $('.msgInfo').hide('slow');
     };
-    setTimeout(do_action_msg, 3000);
+    setTimeout(do_action_msg, 5000);
 </script>

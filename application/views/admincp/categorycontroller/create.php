@@ -93,37 +93,33 @@
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
+            
             <div class="row">
                 <div class="col-md-12 col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Trạng thái</h3>
+                            <h3 class="box-title">Thông tin</h3>
                         </div>
                         <div class="box-body">
                             <div class="form-group">
-                                <section class="clearfix">
-                                    <span class="fLeft">Hiển thị &nbsp</span>
-                                    <input class="tgl tgl-ios" value="1" id="cb4" type="checkbox"/>
-                                    <label class="fLeft tgl-btn" for="cb4"></label>
-                                </section>
+                                <label>Danh mục cha</label>
+                                <select class="form-control">
+                                    <option value="">Danh mục gốc</option>
+                                    <?php if ($rcsCategory): ?>
+                                        <?php foreach ($rcsCategory as $key => $value): ?>
+                                            <?php
+                                                $name = $value['name'];
+                                                $heading = $value['heading']; 
+                                                $id = $value['id'];
+                                            ?>
+                                            <option value="<?php echo $id; ?>"><?php echo $heading.' '.$name; ?></option>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
+                                    
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Thời gian hiển thị</label>
-                                <input type="text" class="form-control" placeholder="Username">
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Ảnh danh mục</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="form-group">
+                                <label>Ảnh danh mục</label>
                                 <input type="file" class="form-control" id="name" placeholder="Enter name product">
                             </div>
                         </div>
@@ -135,14 +131,23 @@
                 <div class="col-md-12 col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Khung giao diện</h3>
+                            <h3 class="box-title">Khung giao diện & Trạng thái</h3>
                         </div>
                         <div class="box-body">
                             <div class="form-group">
+                                <label>Khung giao diện</label>
                                 <select class="form-control">
                                     <option>Mặc định</option>
                                     <option>Danh mục điện thoại</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <section class="clearfix">
+                                    <span class="fLeft">Hiển thị &nbsp</span>
+                                    <input class="tgl tgl-ios" value="1" id="cb4" type="checkbox"/>
+                                    <label class="fLeft tgl-btn" for="cb4"></label>
+                                </section>
                             </div>
                         </div>
                         <!-- /.box-body -->
