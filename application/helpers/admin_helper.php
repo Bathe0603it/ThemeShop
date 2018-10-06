@@ -63,6 +63,23 @@
         }
     }
 
+    if(!function_exists('category_taxonomy')){
+        function category_taxonomy($input = null){
+            $arr = array(
+                'category-product'  => 'Loại danh mục sản phẩm',
+                'category-post'     => 'Nội dung',
+                'page'              => 'Là loại trang đơn',
+            );
+            if (!empty($input) || $input == 0) {
+                if (array_key_exists($input, $arr)) {
+                    return $arr[$input];
+                }
+                return false;
+            }
+            return $arr;
+        }
+    }
+
     if(!function_exists('rediectIndex')){
         function rediectIndex($input = null){
             return redirect(base_url('admincp/').getObject().'/index');
