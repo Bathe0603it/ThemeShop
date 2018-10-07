@@ -102,8 +102,19 @@
                         </div>
                         <div class="box-body">
                             <div class="form-group">
+                                <label>Phân loại danh mục</label>
+                                <select class="form-control" name="taxonomy">
+                                    <?php if (category_taxonomy()): ?>
+                                        <?php foreach (category_taxonomy() as $key => $value): ?>
+                                            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Danh mục cha</label>
-                                <select class="form-control">
+                                <select class="form-control" name="parent">
                                     <option value="">Danh mục gốc</option>
                                     <?php if ($rcsCategory): ?>
                                         <?php foreach ($rcsCategory as $key => $value): ?>

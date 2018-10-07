@@ -66,11 +66,11 @@
     if(!function_exists('category_taxonomy')){
         function category_taxonomy($input = null){
             $arr = array(
-                'category-product'  => 'Loại danh mục sản phẩm',
-                'category-post'     => 'Nội dung',
+                'category-post'     => 'Loại danh mục QL Nội dung',
+                'category-product'  => 'Loại danh mục Ql Sản phẩm',
                 'page'              => 'Là loại trang đơn',
             );
-            if (!empty($input) || $input == 0) {
+            if ($input) {
                 if (array_key_exists($input, $arr)) {
                     return $arr[$input];
                 }
