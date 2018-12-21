@@ -26,8 +26,13 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="<?php echo admin_template_url();?>index2.html"><b>Admin</b>LTE</a>
+                <a href="<?php echo admin_template_url();?>index2.html"><b>Admin</b>SH</a>
             </div>
+            <?php if ($this->system->hasFlash('errors')): ?>
+                <div class="callout callout-danger">
+                    <?php echo $this->system->flash('errors'); ?>
+                </div>
+            <?php endif ?>
             <!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Nhập <b>thông tin</b> đăng nhập của bạn</p>

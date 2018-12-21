@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('session', 'pagination', 'system', 'recusive_lib');
+$autoload['libraries'] = array('session', 'pagination', 'paginationextend', 'system', 'recusive_lib');
 
 /*
 | -------------------------------------------------------------------

@@ -37,7 +37,7 @@ $config = array(
         array(
             'field' => 'email',
             'label' => 'Thông tin Email',
-            'rules' => 'trim|required|min_length[6]|max_length[100]|valid_email|is_unique[user.email]',
+            'rules' => 'trim|required|min_length[6]|max_length[100]|valid_email|is_unique[users.email]',
             'errors' => array(
                 'required' => '%s không được để trống.',
                 'valid_email'   => '%s nhập đúng định dạng.',
@@ -84,9 +84,9 @@ $config = array(
                 'max_length' => '%s có số ký tự tối đa là 80')),
 
         array(
-            'field' => 'confirm_password',
+            'field' => 'confirmpassword',
             'label' => 'Password',
-            'rules' => 'trim|required|min_length[6]|max_length[80]|matches[Password]',
+            'rules' => 'trim|required|min_length[6]|max_length[80]|matches[password]',
             'errors' => array(
                 'required' => '%s không được để trống.',
                 'min_length' => '%s phải có số ký tự tối thiểu là 6',

@@ -156,7 +156,7 @@
                                 <label>Trạng thái</label>
                                 <section class="clearfix">
                                     <span class="fLeft">Hiển thị &nbsp</span>
-                                    <input class="tgl tgl-ios" value="1" id="cb4" type="checkbox"/>
+                                    <input class="tgl tgl-ios" value="publish" id="cb4" type="checkbox" name="status" />
                                     <label class="fLeft tgl-btn" for="cb4"></label>
                                 </section>
                             </div>

@@ -34,9 +34,9 @@
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
-                            <th>User</th>
-                            <th>Tel</th>
-                            <th>Đăng nhập gần nhất</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Danh mục</th>
                         </tr>
                         <?php if (!empty($data['parent_getall'])): ?>
                             <?php foreach ($data['parent_getall'] as $key => $value): ?>
@@ -52,13 +52,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
+                    <?php echo $data['pagination']; ?>
                 </div>
             </div>
             <!-- /.box -->

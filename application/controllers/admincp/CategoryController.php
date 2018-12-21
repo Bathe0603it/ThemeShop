@@ -103,12 +103,6 @@
 
                 // Add into categorys
                 $idCat = $this->categoryModel->insert($arr_insert);
-
-                // Add into category_taxonomy
-                $idCatRel = $this->categoryTaxonomyModel->insert( array(
-                    'category_id' => $idCat,
-                    'category_taxonomy_id' => $arr_insert['taxonomy'],
-                ) );
                 
                 // Thong bao
                 $msg = insertOk('Danh Mục');

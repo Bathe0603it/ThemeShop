@@ -13,12 +13,20 @@
         }
         
         public function index(){
+            /** Process **/
             $getAll = $this->roleModel->getAll();
             $parent_getall  = $this->recusive_lib->set_parent_to_array($getAll);
             $parent_getall  = $this->recusive_lib->get_parent_to_array();
 
+            /** Pagination **/
+            $pagination     = $this->paginationextend->get(array(
+                'total' => count($getAll)
+            ));
+
+            /** Pramas **/
             $data['data']   = array(
                 'parent_getall' => $parent_getall,
+                'pagination'    => $pagination,
             );
             $this->loadView($this->view,$data);
         }

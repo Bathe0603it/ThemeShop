@@ -29,13 +29,13 @@
                     redirect(admin_url('dashboardcontroller/index'));
                 }
                 else{
-                    echo 'login false';
+                    $this->system->flash('errors', '<div id="login_error">  <strong>LỖI</strong>: Mật khẩu mà bạn đã nhập cho người dùng <strong>Administrator</strong> chưa đúng. <a href="'.admin_url('logincontroller/lostpassword').'">Bạn quên mật khẩu?</a><br></div>');
                 }
                 //return 'false';
             }
             else
             {
-                echo 'none';
+                $this->system->flash('errors', '<div id="login_error"><strong>LỖI</strong>:'.validation_errors().'</div>');
             }
         }
 

@@ -42,7 +42,7 @@ class Auth {
 		// Query time
 		$this->CI->db->where('email', $username);
 		$this->CI->db->where('password', $password);
-		$query = $this->CI->db->get('user');
+		$query = $this->CI->db->get('users');
 		
 		if ($query->num_rows() == 1)
 		{
@@ -104,6 +104,13 @@ class Auth {
 	public function checkPermission($url){
 		// Quyen hien tai
 		$info 	= $this->info();
+
+		// Check master user
+		if ($info['permission'] == 'master') {
+			return true;
+		}
+
+		// Check user when user is not master
 		$permission 	= json_decode($info['permission']);
 
 		// Lay quyen he thong

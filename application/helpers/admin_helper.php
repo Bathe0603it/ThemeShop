@@ -39,7 +39,7 @@
         function get_status($input = null){
             $arr = array(
                 'publish'   => 'Đã đăng',
-                'pending'   => 'Chờ xét duyệt',
+                // 'pending'   => 'Chờ xét duyệt',
                 'draft'     => 'Bản nháp',
                 'trash'     => 'Trong thùng rác',
                 'destroy'   => 'Phá hủy(xóa hoàn toàn)',
