@@ -13,14 +13,24 @@
         }
         
         public function index(){
+            /** Action get parameter **/
+            $getQuery   = $this->input->get();
+
             /** Process **/
-            $getAll = $this->roleModel->getAll();
-            $parent_getall  = $this->recusive_lib->set_parent_to_array($getAll);
+            $countAll   = $this->roleModel->countAll();
+            $list   = $this->roleModel->getByLike(
+                array(
+                    'limit' => array(
+                        
+                    ),
+                )
+            );
+            $parent_getall  = $this->recusive_lib->set_parent_to_array($list);
             $parent_getall  = $this->recusive_lib->get_parent_to_array();
 
             /** Pagination **/
             $pagination     = $this->paginationextend->get(array(
-                'total' => count($getAll)
+                'total' => $countAll
             ));
 
             /** Pramas **/

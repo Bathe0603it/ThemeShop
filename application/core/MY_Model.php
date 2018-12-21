@@ -94,7 +94,7 @@ class MY_Model extends CI_Model
             $this->db->limit($params['limit'][0],$params['limit'][1]);
         }
         if ($not_result) {
-            return $this->db;    
+            return $this->show($this->db->get() , $not_result);
         }
         return $this->db->get()->result_array();
     }
@@ -112,12 +112,12 @@ class MY_Model extends CI_Model
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
-        $this->db->from($this->table)->where($params);    
+        $this->db->from($this->table)->like($params['like']);    
         if (isset($params['limit'])) {
             $this->db->limit($params['limit'][0],$params['limit'][1]);
         }
         if ($not_result) {
-            return $this->db;    
+            return $this->show($this->db->get() , $not_result);    
         }
         return $this->db->get()->result_array();
     }
@@ -184,7 +184,7 @@ class MY_Model extends CI_Model
     /**
      * Fetch an array of records based on an array of primary values.
      */
-    public function getMany($whereIn, $params = null)
+    public function getManyWhere($whereIn, $params = null)
     {
         if (isset($params['select'])) {
             $this->db->select($params['select']);
@@ -229,6 +229,10 @@ class MY_Model extends CI_Model
             return $this->db->from($this->table)->order_by($params['order_by'][0],$params['order_by'][1])->get()->result_array();
         }
         return $this->db->from($this->table)->order_by($this->order_by[0],$this->order_by[1])->get()->result_array();
+    }
+
+    public function countAll(){
+        return $this->db->from($this->table)->get()->num_rows();
     }
 
     /**
