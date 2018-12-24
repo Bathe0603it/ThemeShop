@@ -138,7 +138,7 @@ class MY_Model extends CI_Model
         }
 
         /** Settable **/
-        $this->db->from($this->table);
+        $this->db->from($this->table.'s');
 
         /** Set where **/
         if (isset($params['where']) and $params['where']) {
@@ -192,7 +192,7 @@ class MY_Model extends CI_Model
             'price', 'desc'
         );
         */
-        if (isset($params['order_by']) and $params['order_by'] and $params2 != 'num_rows') {
+        if (isset($params['order_by']) and $params['order_by']) {
             if (is_array($params['order_by'][0])) {
                 foreach ($params['order_by'] as $key => $value) {
                     $this->db->order_by($value['order_by'][0],$value['order_by'][1]);

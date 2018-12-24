@@ -23,18 +23,22 @@
             $searchParam    = (isset($getQuery['search']) and $getQuery['search'])?$getQuery['search']:null;
             $orderParam = (isset($getQuery['order']) and $getQuery['order'])?$getQuery['order']:null;
             $arrCount   = array(
-                
-            );
-            $countAll   = $this->roleModel->countAll();
-            $countList  = $this->roleModel->getCountBy();
-            $list   = $this->roleModel->getBy(
-                array(
-                    'limit' => $offset,
-                    'order_by'  => array(
-                        'id', 'asc'
-                    )
+                'like'  => array(
+                    'name'  => $searchParam
                 )
             );
+            $arrQuery   = array(
+                'like'  => array(
+                    'name'  => $searchParam
+                ),
+                'limit' => $offset,
+                'order_by'  => array(
+                    'id', 'asc'
+                )
+            );
+            $countAll   = $this->roleModel->countAll();
+            $countList  = $this->roleModel->getCountBy($arrCount);
+            $list   = $this->roleModel->getBy($arrQuery);
             $parent_getall  = $this->recusive_lib->set_parent_to_array($list);
             $parent_getall  = $this->recusive_lib->get_parent_to_array();
 
