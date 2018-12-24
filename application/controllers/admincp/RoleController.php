@@ -15,22 +15,27 @@
         public function index(){
             /** Action get parameter **/
             $getQuery   = $this->input->get();
+            $page   = isset($getQuery['page'])?($getQuery['page']?$getQuery['page']:1):1;
+            $offset = ( $page - 1 )*limit();
 
             /** Process **/
             $countAll   = $this->roleModel->countAll();
-            $list   = $this->roleModel->getByLike(
+            // $countList  = $this->roleModel->getBy();
+            $list   = $this->roleModel->getBy(
                 array(
                     'limit' => array(
-                        
+                        $offset, limit() 
                     ),
+                    'order_by'  => array(
+                        'id', 'asc'
+                    )
                 )
             );
             $parent_getall  = $this->recusive_lib->set_parent_to_array($list);
             $parent_getall  = $this->recusive_lib->get_parent_to_array();
-
             /** Pagination **/
             $pagination     = $this->paginationextend->get(array(
-                'total' => $countAll
+                'total' => $countList
             ));
 
             /** Pramas **/

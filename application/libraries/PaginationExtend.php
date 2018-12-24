@@ -2,7 +2,7 @@
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
     class PaginationExtend extends CI_Pagination{
-        public $limit    = 2;
+        public $limit    = CONSERT;
         public $total    = 0;
         public $base_url = null;
         public $record   = 100;
@@ -10,6 +10,7 @@
 
         function __construct(){
             $this->CI = & get_instance();
+            $this->limit = limit();
         }
 
         function get($params = null){

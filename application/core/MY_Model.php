@@ -13,13 +13,14 @@ class MY_Model extends CI_Model
     protected $table;
     protected $primary_key = 'id';
     protected $order_by = null;
-    protected $limit = 20;
+    public $limit = CONSERT;
 
     public function __construct()
     {
         parent::__construct();
         $this->order_by = array($this->primary_key,'desc');
         $this->load->database();
+        $this->limit = limit();
     }
 
     /**
@@ -85,13 +86,13 @@ class MY_Model extends CI_Model
     * @return bool|null    ---
     *
     **/
-    public function getByWhere($params,$not_result = null){
+    public function getByWhere($params, $limit = null, $not_result = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
         $this->db->from($this->table)->where($params);    
-        if (isset($params['limit'])) {
-            $this->db->limit($params['limit'][0],$params['limit'][1]);
+        if (isset($limit['limit']) and $limit) {
+            $this->db->limit($limit['limit'][0],$limit['limit'][1]);
         }
         if ($not_result) {
             return $this->show($this->db->get() , $not_result);
@@ -99,7 +100,7 @@ class MY_Model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function getLike($params,$params2 = null){
+    public function getLike($params, $params2 = null){
         $this->db->from($this->table);
         $result = $this->db->like($params)->get();
         if (!empty($params2)) {
@@ -108,13 +109,13 @@ class MY_Model extends CI_Model
         return $this->db->row_array();
     }
 
-    public function getByLike($params,$not_result = null){
+    public function getByLike($params, $limit = null, $not_result = null){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
         $this->db->from($this->table)->like($params['like']);    
-        if (isset($params['limit'])) {
-            $this->db->limit($params['limit'][0],$params['limit'][1]);
+        if (isset($limit) and $limit) {
+            $this->db->limit($limit['limit'][0],$limit['limit'][1]);
         }
         if ($not_result) {
             return $this->show($this->db->get() , $not_result);    
@@ -131,26 +132,67 @@ class MY_Model extends CI_Model
     *
     **/
     public function getBy($params = null,$params2 = null){
+
+        /** Selected **/
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
-        $this->db->from($this->table);
+
+        /** Settable **/
+        $this->db->from($this->table.'s');
+
+        /** Set where **/
         if (isset($params['where'])) {
             $this->db->where($params['where']);
         }
+
+        /*
+        $like = array(
+            array('a', 'b', 'before'),
+            array('c', 'd', 'after'),
+        );
+        $like = array(
+            'name' => 'a',  
+            'age'  => 'b',  
+        );
+        */
         if (isset($params['like'])) { 
-            if (is_array($params['like'][0])) { // neu phan tu thu nhat la mang
+            if (isset($params['like'][0]) and $params['like'][0]) {
+                foreach ($params['like'] as $key => $value) {
+                    isset($value[2])?$this->db->like($value[0], $value[1], $values[2]):$this->db->like($value[0], $value[1]);
+                }
+            }
+            else{
                 $this->db->like($params['like']);
             }
-            else{   // phan tu thu nhat la chuoi
-                if (isset($params[2])) {    // ton tai phan tu thu 3
-                    $this->db->like($params[0],$params[1]);
-                }
-                else{
-                    $this->db->like($params[0],$params[1],$params[2]);
-                }
+        }
+
+        /** Set limited - lay x gia tri bat dau tu y gia tri**/
+        /*
+        $limit = array(
+            1, 2
+        );
+        $limit = 1;
+        */
+        if (isset($params['limit'])) {
+            if (isset($params['limit'][1])) {
+                $this->db->limit($params['limit'][0], $params['limit'][1]);
+            }
+            else{
+                $this->db->limit( $this->limit, $params['limit']);
             }
         }
+
+        /** Set orderby **/
+        /*
+        $orderby = array(
+            array('price', 'desc'),
+            array('id', 'asc'),
+        );
+        $oderby = array(
+            'price', 'desc'
+        );
+        */
         if (isset($params['order_by'])) {
             if (is_array($params['order_by'][0])) {
                 foreach ($params['order_by'] as $key => $value) {
@@ -166,15 +208,11 @@ class MY_Model extends CI_Model
             $order_by = empty($this->order_by) ? array($this->primary_key, 'desc') : $this->order_by;
             $this->db->order_by($order_by[0], $order_by[1]);
         }
-        if (isset($params['limit'])) {
-            if (is_array($params['limit'])) {
-                $this->db->limit($params['limit'][0], $params['limit'][1]);
-            }
-            else{
-                $this->db->limit($params['limit'], $this->limit);
-            }
-        }
+
+        /** Get **/
         $result    = $this->db->get();
+
+        /** Result **/
         if (!empty($params2)) {
             return $this->show($result , $params2);
         }
@@ -229,10 +267,6 @@ class MY_Model extends CI_Model
             return $this->db->from($this->table)->order_by($params['order_by'][0],$params['order_by'][1])->get()->result_array();
         }
         return $this->db->from($this->table)->order_by($this->order_by[0],$this->order_by[1])->get()->result_array();
-    }
-
-    public function countAll(){
-        return $this->db->from($this->table)->get()->num_rows();
     }
 
     /**

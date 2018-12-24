@@ -285,4 +285,8 @@
             return trim($title, $separator);
         }
     }
+
+    function limit(){
+        return 8;
+    }
 ?>

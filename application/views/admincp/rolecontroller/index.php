@@ -33,15 +33,16 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>ID</th>
+                            <th>No.x</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Danh mục</th>
                         </tr>
                         <?php if (!empty($data['parent_getall'])): ?>
+                            <?php $i = 0; ?>
                             <?php foreach ($data['parent_getall'] as $key => $value): ?>
                                 <tr>
-                                    <td><?php echo $value['id']; ?></td>
+                                    <td><?php echo ++$i; ?></td>
                                     <td><?php echo $value['heading'] ?> <a href="<?php echo admin_url($this->object.'/'.$this->edit.'?id='.$value['id']); ?>"><?php echo $value['name'] ?></a></td>
                                     <td><?php echo $value['description']; ?></td>
                                     <td><?php echo getGroupSystem($value['groupsystem']); ?></td>
