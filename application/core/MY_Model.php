@@ -13,14 +13,13 @@ class MY_Model extends CI_Model
     protected $table;
     protected $primary_key = 'id';
     protected $order_by = null;
-    public $limit = CONSERT;
+    public $limit = LIMIT;
 
     public function __construct()
     {
         parent::__construct();
         $this->order_by = array($this->primary_key,'desc');
         $this->load->database();
-        $this->limit = limit();
     }
 
     /**
@@ -134,15 +133,15 @@ class MY_Model extends CI_Model
     public function getBy($params = null,$params2 = null){
 
         /** Selected **/
-        if (isset($params['select'])) {
+        if (isset($params['select']) and $params['select']) {
             $this->db->select($params['select']);
         }
 
         /** Settable **/
-        $this->db->from($this->table.'s');
+        $this->db->from($this->table);
 
         /** Set where **/
-        if (isset($params['where'])) {
+        if (isset($params['where']) and $params['where']) {
             $this->db->where($params['where']);
         }
 
@@ -156,7 +155,7 @@ class MY_Model extends CI_Model
             'age'  => 'b',  
         );
         */
-        if (isset($params['like'])) { 
+        if (isset($params['like']) and $params['like']) { 
             if (isset($params['like'][0]) and $params['like'][0]) {
                 foreach ($params['like'] as $key => $value) {
                     isset($value[2])?$this->db->like($value[0], $value[1], $values[2]):$this->db->like($value[0], $value[1]);
@@ -174,8 +173,8 @@ class MY_Model extends CI_Model
         );
         $limit = 1;
         */
-        if (isset($params['limit'])) {
-            if (isset($params['limit'][1])) {
+        if (isset($params['limit']) and $params['limit']) {
+            if (isset($params['limit'][1]) and $params['limit'][1]) {
                 $this->db->limit($params['limit'][0], $params['limit'][1]);
             }
             else{
@@ -193,7 +192,7 @@ class MY_Model extends CI_Model
             'price', 'desc'
         );
         */
-        if (isset($params['order_by'])) {
+        if (isset($params['order_by']) and $params['order_by'] and $params2 != 'num_rows') {
             if (is_array($params['order_by'][0])) {
                 foreach ($params['order_by'] as $key => $value) {
                     $this->db->order_by($value['order_by'][0],$value['order_by'][1]);
@@ -204,9 +203,11 @@ class MY_Model extends CI_Model
             }
         }
         else{
-            //mặc định sẽ sắp xếp theo id giảm dần 
-            $order_by = empty($this->order_by) ? array($this->primary_key, 'desc') : $this->order_by;
-            $this->db->order_by($order_by[0], $order_by[1]);
+            if ($params2 != 'num_rows') {
+                //mặc định sẽ sắp xếp theo id giảm dần 
+                $order_by = empty($this->order_by) ? array($this->primary_key, 'desc') : $this->order_by;
+                $this->db->order_by($order_by[0], $order_by[1]);
+            }
         }
 
         /** Get **/
@@ -217,6 +218,10 @@ class MY_Model extends CI_Model
             return $this->show($result , $params2);
         }
         return $result->result_array();
+    }
+
+    public function getCountBy($params = null){
+        return $this->getBy($params, 'num_rows');
     }
 
     /**

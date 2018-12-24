@@ -16,16 +16,20 @@
             /** Action get parameter **/
             $getQuery   = $this->input->get();
             $page   = isset($getQuery['page'])?($getQuery['page']?$getQuery['page']:1):1;
-            $offset = ( $page - 1 )*limit();
+            $offset = ( $page - 1 )*LIMIT;
 
             /** Process **/
+            $limitParam = (isset($getQuery['limit']) and $getQuery['limit'])?$getQuery['limit']:null;
+            $searchParam    = (isset($getQuery['search']) and $getQuery['search'])?$getQuery['search']:null;
+            $orderParam = (isset($getQuery['order']) and $getQuery['order'])?$getQuery['order']:null;
+            $arrCount   = array(
+                
+            );
             $countAll   = $this->roleModel->countAll();
-            // $countList  = $this->roleModel->getBy();
+            $countList  = $this->roleModel->getCountBy();
             $list   = $this->roleModel->getBy(
                 array(
-                    'limit' => array(
-                        $offset, limit() 
-                    ),
+                    'limit' => $offset,
                     'order_by'  => array(
                         'id', 'asc'
                     )
@@ -33,6 +37,7 @@
             );
             $parent_getall  = $this->recusive_lib->set_parent_to_array($list);
             $parent_getall  = $this->recusive_lib->get_parent_to_array();
+
             /** Pagination **/
             $pagination     = $this->paginationextend->get(array(
                 'total' => $countList

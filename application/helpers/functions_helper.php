@@ -287,6 +287,6 @@
     }
 
     function limit(){
-        return 8;
+        return LIMIT;
     }
 ?>

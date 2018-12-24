@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-const CONSERT = 5;
+// const CONSERT = 5;
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING

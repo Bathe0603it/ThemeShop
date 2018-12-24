@@ -2,7 +2,7 @@
     if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 
     class PaginationExtend extends CI_Pagination{
-        public $limit    = CONSERT;
+        public $limit    = LIMIT;
         public $total    = 0;
         public $base_url = null;
         public $record   = 100;
@@ -10,7 +10,6 @@
 
         function __construct(){
             $this->CI = & get_instance();
-            $this->limit = limit();
         }
 
         function get($params = null){
@@ -70,7 +69,7 @@
             $config['per_page'] = $this->record; // xác định số record ở mỗi trang  
             // $config['uri_segment'] = $giatri_get; // xác định segment chứa page number
             $config['num_links'] = $this->num_links;   // số link hiển thị trong phân trang đứng trước trang được chọn
-            // $config['use_page_numbers'] = TRUE;
+            $config['use_page_numbers'] = TRUE; // page = 10, 20, 30
             $config['page_query_string'] = TRUE;
             $config['query_string_segment'] = 'page';
             /** end -1 **/
