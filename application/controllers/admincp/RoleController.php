@@ -31,7 +31,10 @@
                 'like'  => array(
                     'name'  => $searchParam
                 ),
-                'limit' => $offset,
+                'limit' => array(
+                    $limitParam,
+                    $offset
+                ),
                 'order_by'  => array(
                     'id', 'asc'
                 )
