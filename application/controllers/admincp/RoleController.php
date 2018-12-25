@@ -19,7 +19,7 @@
             $offset = ( $page - 1 )*LIMIT;
 
             /** Process **/
-            $limitParam = (isset($getQuery['limit']) and $getQuery['limit'])?$getQuery['limit']:null;
+            $limitParam = (isset($getQuery['limit']) and $getQuery['limit'])?$getQuery['limit']:LIMIT;
             $searchParam    = (isset($getQuery['search']) and $getQuery['search'])?$getQuery['search']:null;
             $orderParam = (isset($getQuery['order']) and $getQuery['order'])?$getQuery['order']:null;
             $arrCount   = array(
@@ -56,13 +56,6 @@
                 'pagination'    => $pagination,
             );
             $this->loadView($this->view,$data);
-        }
-
-        public function test(){
-            $getAll         = $this->roleModel->getAll();   // lay danh sach cac ban ghi
-            $parent_getall  = $this->recusive_lib->setAbc($getAll);
-
-            dd($parent_getall);
         }
         
         public function edit(){
@@ -128,13 +121,13 @@
             }
         }
 
-        public function permissionCheck($param){
+        public function permissionCheck(){
             $input  = $this->input->post();
             // Kiem tra url hien tai da ton tai trong db
             $id     = $_GET['id'];
-            $permission     = $input['Permission'];
+            $permission     = $input['permission'];
             $checkData  = $this->roleModel->getWhere(array( 'permission' => $permission , 'id<>' => $id ));
-            return !$checkData?true:false;
+            return $checkData?true:false;   // neu tim thay 1 ban ghi cung permission va khac item id return true as "tim thay" else "khong tim thay"
         }
 
         /**

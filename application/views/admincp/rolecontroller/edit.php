@@ -61,6 +61,7 @@
                                     <span class="text-muted">(tùy chọn)</span>
                                     <div class="controls">
                                         <select class="form-control" name="parent" placeholder="Chọn danh mục quyền">
+                                            <option value="0">Danh mục chính</option>
                                             <?php if ($parent_getall): ?>
                                                 <?php foreach ($parent_getall as $key => $value): ?>
                                                     <option value="<?php echo $value['id'] ?>" <?php echo $item['parent']==$value['id']?'selected=""':''; ?>> <?php echo $value['heading'].' '.$value['name'] ?></option>

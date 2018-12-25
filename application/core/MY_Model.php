@@ -86,12 +86,9 @@ class MY_Model extends CI_Model
     *
     **/
     public function getByWhere($params, $limit = null, $not_result = null){
-        if (isset($params['select'])) {
-            $this->db->select($params['select']);
-        }
         $this->db->from($this->table)->where($params);    
-        if (isset($limit['limit']) and $limit) {
-            $this->db->limit($limit['limit'][0],$limit['limit'][1]);
+        if ($limit) {
+            $this->db->limit($limit[0],$limit[1]);
         }
         if ($not_result) {
             return $this->show($this->db->get() , $not_result);
@@ -131,14 +128,13 @@ class MY_Model extends CI_Model
     *
     **/
     public function getBy($params = null,$params2 = null){
-
         /** Selected **/
         if (isset($params['select']) and $params['select']) {
             $this->db->select($params['select']);
         }
 
         /** Settable **/
-        $this->db->from($this->table.'s');
+        $this->db->from($this->table);
 
         /** Set where **/
         if (isset($params['where']) and $params['where']) {
