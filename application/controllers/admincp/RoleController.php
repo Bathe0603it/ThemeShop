@@ -14,14 +14,14 @@
         
         public function index(){
             /** Action get parameter **/
-            $getQuery   = $this->input->get();
-            $page   = isset($getQuery['page'])?($getQuery['page']?$getQuery['page']:1):1;
+            $inputGet   = $this->input->get();
+            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:1):1;
             $offset = ( $page - 1 )*LIMIT;
 
             /** Process **/
-            $limitParam = (isset($getQuery['limit']) and $getQuery['limit'])?$getQuery['limit']:LIMIT;
-            $searchParam    = (isset($getQuery['search']) and $getQuery['search'])?$getQuery['search']:null;
-            $orderParam = (isset($getQuery['order']) and $getQuery['order'])?$getQuery['order']:null;
+            $limitParam = (isset($inputGet['limit']) and $inputGet['limit'])?$inputGet['limit']:LIMIT;
+            $searchParam    = (isset($inputGet['search']) and $inputGet['search'])?$inputGet['search']:null;
+            $orderParam = (isset($inputGet['order']) and $inputGet['order'])?$inputGet['order']:null;
             $arrCount   = array(
                 'like'  => array(
                     'name'  => $searchParam

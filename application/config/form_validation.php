@@ -20,7 +20,6 @@ $config = array(
                 'required' => '%s không được để trống.',
                 'min_length' => '%s phải có số ký tự tối thiểu là 6',
                 'max_length' => '%s có số ký tự tối đa là 12')),
-
     ),
 
     /** User create **/
@@ -92,7 +91,6 @@ $config = array(
                 'min_length' => '%s phải có số ký tự tối thiểu là 6',
                 'matches'   => '%s không khớp nhau',
                 'max_length' => '%s có số ký tự tối đa là 80')),
-
     ),
 
     /** User Edit **/
@@ -153,7 +151,6 @@ $config = array(
                 'min_length' => '%s phải có số ký tự tối thiểu là 6',
                 'matches'   => '%s password không khớp',
                 'max_length' => '%s có số ký tự tối đa là 80')),
-
     ),
 
     /** Role create **/
@@ -211,4 +208,38 @@ $config = array(
         ),
     ),
 
+    /** Product create **/
+    'product_create' => array(
+        array(
+            'field' => 'name',
+            'label' => 'Tên sản phẩm',
+            'rules' => 'trim|required|max_length[320]',
+            'errors' => array(
+                'required' => '%s không được để trống.',
+                'max_length' => '%s có chiều dài không lớn hơn {param}',
+            )
+        )
+    ),
+
+    'product_edit' => array(
+        array(
+            'field' => 'name',
+            'label' => 'Tên sản phẩm',
+            'rules' => 'trim|required|max_length[320]',
+            'errors' => array(
+                'required' => '%s không được để trống.',
+                'max_length' => '%s có chiều dài không lớn hơn {param}',
+            )
+        ),
+
+        array(
+            'field' => '',
+            'label' => 'Tên sản phẩm',
+            'rules' => 'trim|required|max_length[320]',
+            'errors' => array(
+                'required' => '%s không được để trống.',
+                'max_length' => '%s có chiều dài không lớn hơn {param}',
+            )
+        ),
+    ),
 );
