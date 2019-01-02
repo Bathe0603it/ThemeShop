@@ -289,4 +289,19 @@
     function limit(){
         return LIMIT;
     }
+
+    /**
+     *  content to string
+     *
+     *  @param string content 
+     *  @access public
+     *  @return string
+     */
+    function htmlToPlainText($str){ 
+        $str = html_entity_decode($str, ENT_QUOTES | ENT_XML1, 'UTF-8'); 
+        $str = htmlspecialchars_decode($str); 
+        $str = html_entity_decode($str); 
+        $str = strip_tags($str); 
+        return $str; 
+    }
 ?>
