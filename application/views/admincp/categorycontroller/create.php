@@ -119,7 +119,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Danh mục cha</label>
+                                <label>Danh mục hiện tại</label>
                                 <select class="form-control" name="parent">
                                     <option value="">Danh mục gốc</option>
                                     <?php if ($rcsCategory): ?>
