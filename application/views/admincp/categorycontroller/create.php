@@ -65,13 +65,19 @@
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
                                         <p><label for="">Thẻ tiêu đề </label><span class="text-right"><b data-bind="(object.seo_title || titlePlaceholder()).length">0</b>/70</span></p>
-                                        <input type="code" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter ...">
+                                        <input name="meta_title" type="text" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter title...">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                        <p><label for="">Thẻ keywords</label><span class="text-right">1/320</span></p>
+                                        <textarea name="meta_keywords" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
                                         <p><label for="">Thẻ mô tả</label><span class="text-right">1/320</span></p>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea name="meta_description" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +86,8 @@
                                     <div class="form-group">
                                         <label for="">Đường dẫn / Alias</label>
                                         <div class="input-group">
-                                            <span class="input-group-addon">http://batheweb/</span>
-                                            <input type="text" class="form-control" placeholder="Username">
+                                            <span class="input-group-addon"><?php echo base_url(); ?></span>
+                                            <input name="slug" type="text" class="form-control" placeholder="Url customer...">
                                         </div>
                                     </div>
                                 </div>
