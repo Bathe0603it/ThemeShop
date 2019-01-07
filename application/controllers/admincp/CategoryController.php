@@ -33,8 +33,8 @@
             $total  = $this->categoryModel->countAll();
             $catList    = $this->categoryModel->getBy(
                 array(
-                    'limit' => $offset,
-                    'order_by' => array('sort', 'asc'),
+                    'limit'     => $offset,
+                    'order_by'  => array('sort', 'asc'),
                 )
             );
             $catList = $this->recusive_lib->set_parent_to_array($catList);

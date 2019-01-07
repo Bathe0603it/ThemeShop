@@ -10,7 +10,7 @@
         public $prefix      = 'admincp';
         public $urlNow      = null;
 
-        function __construct(){
+        public function __construct(){
             parent::__construct();
             $this->urlNow = $this->uri->uri_string();
             $segment1 = $this->uri->segment(1);
@@ -22,7 +22,7 @@
             
         }
 
-        function adminLoginProcess(){
+        public function adminLoginProcess(){
             // Value default
             $segment1 = $this->uri->segment(1);
             $segment2 = $this->uri->segment(2);
@@ -61,8 +61,6 @@
                     return redirect(admin_url('dashboardcontroller/index'));
                 }
             }
-
-            
             
             /** xu ly view **/
             $this->object   = $this->router->fetch_class();
@@ -70,18 +68,46 @@
             $this->view = 'admincp/' . $this->object .'/' . $this->method;
         }
          
-        function loadView($url = null, $data = null){
+        public function loadView($url = null, $data = null){
             // Url view
-            $data['view']   = !empty($url)?$url:$this->view;
-            
-            $arrPermission  = $this->auth->getPermission();
-            $data['recursivePermission']    = $recursivePermission = $this->recusive_lib->getListRecursive($arrPermission);
-            $data['logined']    = $this->auth->info()?$this->auth->info():'';
+            $view   = !empty($url)?$url:$this->view;
+
+            // Info login
+            $logined    = $this->auth->info()?$this->auth->info():'';
             
             // get permission of administrator
-            $arrPermission  = $this->auth->getPermission();
-            $data['permissions'] = $this->recusive_lib->getListRecursive($arrPermission);
+            $arrPermissions = $this->auth->getPermission();
+            $permissions    = $this->recusive_lib->getListRecursive($arrPermissions);
+
+            // Id parent main Navigation
+            $activeMain   = $this->checkMainNavigation($arrPermissions);
+
+            // View
+            $data['view']       = $view;
+            $data['logined']    = $logined;
+            $data['arrPermissions'] = $arrPermissions;
+            $data['permissions']    = $permissions;
+            $data['activeMain'] = $activeMain;
             $this->load->view('admincp/layout/index',$data);
+        }
+
+        /**
+         *  check id parent url
+         *
+         *  @param array array permissions
+         *  @access private
+         *  @return int
+         */     
+        private function checkMainNavigation($arrPermissions){
+            $urlNow = $this->uri->uri_string();
+            $parent = 0;
+            // Check parent
+            foreach ($arrPermissions as $key => $value) {
+                if ($urlNow == $value['permission']) {
+                    $parent = $value['parent']?$value['parent']:$value['id'];
+                }
+            }
+            return $parent;
         }
     }
 ?>

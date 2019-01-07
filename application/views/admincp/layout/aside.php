@@ -20,8 +20,9 @@
                         $name_record = $value['name'];
                         $link_record = base_url($value['permission']).''; 
                         $id_record   = $value['id'];
+                        $checkActiveMain    = $id_record==$activeMain?'active':'';
                     ?>
-                    <li class="treeview">
+                    <li class="treeview <?php echo $checkActiveMain; ?>">
                         <a href="<?php echo $link_record; ?>">
                         <i class="fa fa-files-o"></i>
                         <span><?php echo $name_record; ?></span>
