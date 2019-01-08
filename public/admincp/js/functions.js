@@ -10,6 +10,10 @@ $(document).ready(function(){
         var dataFor = $(this).attr('data-for');
         $('#'+dataFor).text( str.length );
     });
+
+    $('.show-box').click(function(){
+        $(this).parent().children('.box-hidden').slideDown();
+    });
     
 });
 

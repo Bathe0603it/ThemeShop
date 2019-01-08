@@ -73,10 +73,10 @@
             $view   = !empty($url)?$url:$this->view;
 
             // Info login
-            $logined    = $this->auth->info()?$this->auth->info():'';
+            $logined    = $this->auth->getInfo()?$this->auth->getInfo():'';
             
             // get permission of administrator
-            $arrPermissions = $this->auth->getPermission();
+            $arrPermissions = $this->auth->getPermissionDisplay();
             $permissions    = $this->recusive_lib->getListRecursive($arrPermissions);
 
             // Id parent main Navigation

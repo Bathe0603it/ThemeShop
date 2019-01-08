@@ -119,25 +119,30 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Danh mục hiện tại</label>
-                                <select class="form-control" name="parent">
-                                    <option value="">Danh mục gốc</option>
-                                    <?php if ($rcsCategory): ?>
-                                        <?php foreach ($rcsCategory as $key => $value): ?>
-                                            <?php
-                                                $name = $value['name'];
-                                                $heading = $value['heading']; 
-                                                $id = $value['id'];
-                                            ?>
-                                            <option value="<?php echo $id; ?>"><?php echo $heading.' '.$name; ?></option>
-                                        <?php endforeach ?>
-                                    <?php endif ?>
-                                    
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label>Ảnh danh mục</label>
                                 <input type="file" class="form-control" id="name" placeholder="Enter name product">
+                            </div>
+                            <div class="form-group">
+                                <section class="">
+                                    <a href="javascript:void(0);" class="show-box">Thêm danh mục <i class="fa fa-sort-down"></i></a>
+                                    <section class="box-hidden">
+                                        <label>Danh mục hiện tại</label>
+                                        <select class="form-control" name="parent">
+                                            <option value="">Danh mục gốc</option>
+                                            <?php if ($rcsCategory): ?>
+                                                <?php foreach ($rcsCategory as $key => $value): ?>
+                                                    <?php
+                                                        $name = $value['name'];
+                                                        $heading = $value['heading']; 
+                                                        $id = $value['id'];
+                                                    ?>
+                                                    <option value="<?php echo $id; ?>"><?php echo $heading.' '.$name; ?></option>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
+                                            
+                                        </select>
+                                    </section>
+                                </section>
                             </div>
                         </div>
                         <!-- /.box-body -->

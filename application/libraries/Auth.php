@@ -74,15 +74,15 @@ class Auth {
 	* @return array|null	---
 	*
 	**/
-	public function info(){
+	public function getInfo(){
 		if ($this->logged_in()) {
 			return $result	= $this->CI->session->userdata('logined');
 		}
 		return redirect(admin_url('logincontroller'));
 	}
 
-	public function getPermission(){
-		$info 	= $this->info();
+	public function getPermission($notDisplay = false){
+		$info 	= $this->getInfo();
 		$permission 	= json_decode($info['permission']);
 
 		// Lay quyen he thong
@@ -90,8 +90,19 @@ class Auth {
         /*$getUrl = $this->CI->roleModel->getMany($permission,array(
         												'select'	=> 'id, level, permission, name, category, parent, groupsystem')
     	);*/
-    	$getUrl = $this->CI->roleModel->getAll();
+    	if ($notDisplay) {
+    		$getUrl = $this->CI->roleModel->getByWhere(array(
+    			'display' => 1
+    		));
+    	} else {
+    		$getUrl = $this->CI->roleModel->getAll();
+    	}
+    	
         return $getUrl;
+	}
+
+	public function getPermissionDisplay(){
+		return $this->getPermission(true);
 	}
 
 	/**
@@ -103,7 +114,7 @@ class Auth {
 	**/
 	public function checkPermission($url){
 		// Quyen hien tai
-		$info 	= $this->info();
+		$info 	= $this->getInfo();
 
 		// Check master user
 		if ($info['permission'] == 'master') {

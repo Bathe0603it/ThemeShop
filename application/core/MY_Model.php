@@ -85,7 +85,7 @@ class MY_Model extends CI_Model
     * @return bool|null    ---
     *
     **/
-    public function getByWhere($params, $limit = null, $not_result = null){
+    public function getByWhere($params, $limit = null, $not_result = false){
         $this->db->from($this->table)->where($params);    
         if ($limit) {
             $this->db->limit($limit[0],$limit[1]);
@@ -105,7 +105,7 @@ class MY_Model extends CI_Model
         return $this->db->row_array();
     }
 
-    public function getByLike($params, $limit = null, $not_result = null){
+    public function getByLike($params, $limit = null, $not_result = false){
         if (isset($params['select'])) {
             $this->db->select($params['select']);
         }
