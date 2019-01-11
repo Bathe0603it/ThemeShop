@@ -38,7 +38,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="content">Mô tả</label>
-                                            <textarea id="content" name="content"></textarea>
+                                            <textarea id="content" name="content"><?php echo set_value('content'); ?></textarea>
                                             <script type="text/javascript">get_editor('content');</script>
                                         </div>
                                     </div>
@@ -65,19 +65,19 @@
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
                                         <p><label for="">Thẻ tiêu đề </label><span class="text-right"><b data-bind="(object.seo_title || titlePlaceholder()).length">0</b>/70</span></p>
-                                        <input name="meta_title" type="text" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter title...">
+                                        <input name="meta_title" value="<?php echo set_value('meta_title'); ?>" type="text" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter title...">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
                                         <p><label for="">Thẻ keywords</label><span class="text-right">1/320</span></p>
-                                        <textarea name="meta_keywords" class="form-control"></textarea>
+                                        <textarea name="meta_keywords" class="form-control"><?php echo set_value('meta_keywords'); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
                                         <p><label for="">Thẻ mô tả</label><span class="text-right">1/320</span></p>
-                                        <textarea name="meta_description" class="form-control"></textarea>
+                                        <textarea name="meta_description" class="form-control"><?php echo set_value('meta_description'); ?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                         <label for="">Đường dẫn / Alias</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><?php echo base_url(); ?></span>
-                                            <input name="slug" type="text" class="form-control" placeholder="Url customer...">
+                                            <input name="slug" value="<?php echo set_value('slug'); ?>" type="text" class="form-control" placeholder="Url customer...">
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                 <select class="form-control" name="taxonomy">
                                     <?php if (category_taxonomy()): ?>
                                         <?php foreach (category_taxonomy() as $key => $value): ?>
-                                            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                            <option <?php echo set_select('taxonomy', $key); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option>
                                         <?php endforeach ?>
                                     <?php endif ?>
                                     
@@ -120,7 +120,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh danh mục</label>
-                                <input type="file" class="form-control" id="name" placeholder="Enter name product">
+                                <input name="image" value="<?php echo set_value('meta_image'); ?>" type="file" class="form-control" id="name" placeholder="Enter name product">
                             </div>
                             <div class="form-group">
                                 <section class="">
@@ -128,7 +128,7 @@
                                     <section class="box-hidden">
                                         <label>Danh mục hiện tại</label>
                                         <select class="form-control" name="parent">
-                                            <option value="">Danh mục gốc</option>
+                                            <option value="0">Danh mục gốc</option>
                                             <?php if ($rcsCategory): ?>
                                                 <?php foreach ($rcsCategory as $key => $value): ?>
                                                     <?php
@@ -136,7 +136,7 @@
                                                         $heading = $value['heading']; 
                                                         $id = $value['id'];
                                                     ?>
-                                                    <option value="<?php echo $id; ?>"><?php echo $heading.' '.$name; ?></option>
+                                                    <option value="<?php echo $id; ?>" <?php echo set_select('parent', $id); ?>><?php echo $heading.' '.$name; ?></option>
                                                 <?php endforeach ?>
                                             <?php endif ?>
                                             
@@ -158,7 +158,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label>Khung giao diện</label>
-                                <select class="form-control">
+                                <select class="form-control" name="layout">
                                     <option>Mặc định</option>
                                     <option>Danh mục điện thoại</option>
                                 </select>
