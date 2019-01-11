@@ -126,3 +126,19 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{ font-family: 'Roboto', san
 .show-box{ display: inline-flex;font-weight: bold; }
 .show-box i, .show-box .fa{ padding-left: 5px; }
 .box-hidden{ display: none; }
+
+.cpnUpload{ max-height: 500px;overflow: hidden;text-align: center;background: #fafbfc;border: 1px solid #D9E0E7;padding: 5px 0px; }
+.cpnUpload img{ display: inline-block;width: 60%;margin: 0px auto; }
+.cpnUpload .minibox{ position: relative;overflow: hidden;display: inline-block;width: 100%; }
+.cpnUpload .minibox label{ border: 1px solid #2f71a9;
+  color: #fff;
+  background-color: #357ebd;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold; }
+.cpnUpload .minibox input[type=file]{ font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0; }

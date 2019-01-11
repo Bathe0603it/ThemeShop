@@ -120,7 +120,14 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh danh mục</label>
-                                <input name="image" value="<?php echo set_value('meta_image'); ?>" type="file" class="form-control" id="name" placeholder="Enter name product">
+                                <section class="cpnUpload">
+                                    <img src="<?php echo admin_public_url('images/upload-image.png'); ?>">
+                                    <div class="minibox">
+                                        <label>Upload ảnh</label>
+                                        <input name="image" value="<?php echo set_value('meta_image'); ?>" type="file" class="form-control" id="name" placeholder="Enter name product">
+                                    </div>
+                                </section>
+                                
                             </div>
                             <div class="form-group">
                                 <section class="">
