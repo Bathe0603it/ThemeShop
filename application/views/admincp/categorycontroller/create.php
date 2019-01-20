@@ -119,17 +119,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh danh mục<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&nbsp;&times;</a></label>
-                                <section class="cpnUpload">
-                                    <div class="custom-file-container" data-upload-id="myFirstImage">
-                                        <img src="<?php echo admin_public_url('images/upload-image.png'); ?>">
-                                        <div class="minibox">
-                                            <label class="custom-file-container__custom-file__custom-file-control">Upload ảnh</label>
-                                            <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" name="image">
-                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                        </div>
-                                        <div class="custom-file-container__image-preview"></div>
-                                    </div>
+                                <label>Ảnh danh mục</label>
+                                <section class="cpnUpload custom-file-container"data-upload-id="myFirstImage">
+                                    <label>Chọn 1 ảnh danh mục<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&nbsp;&times;</a></label>
+                                    <label class="custom-file-container__custom-file" >
+                                        <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                        <span class="custom-file-container__custom-file__custom-file-control">Up load ảnh</span>
+                                    </label>
+                                    <div class="custom-file-container__image-preview"></div>
                                 </section>
                                 
                             </div>

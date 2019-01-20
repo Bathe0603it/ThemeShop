@@ -29,11 +29,11 @@
     height: 250px;
     width: 100%;
     border-radius: 4px;
-    background-size: cover;
+    background-size: 50%;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: #fff;
-    overflow: scroll; }
+    /*overflow: scroll;*/ }
   .custom-file-container__image-multi-preview {
     position: relative;
     box-sizing: border-box;
