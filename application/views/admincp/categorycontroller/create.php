@@ -119,12 +119,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh danh mục</label>
+                                <label>Ảnh danh mục<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&nbsp;&times;</a></label>
                                 <section class="cpnUpload">
-                                    <img src="<?php echo admin_public_url('images/upload-image.png'); ?>">
-                                    <div class="minibox">
-                                        <label>Upload ảnh</label>
-                                        <input name="image" value="<?php echo set_value('meta_image'); ?>" type="file" class="form-control" id="name" placeholder="Enter name product">
+                                    <div class="custom-file-container" data-upload-id="myFirstImage">
+                                        <img src="<?php echo admin_public_url('images/upload-image.png'); ?>">
+                                        <div class="minibox">
+                                            <label class="custom-file-container__custom-file__custom-file-control">Upload ảnh</label>
+                                            <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" name="image">
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                        </div>
+                                        <div class="custom-file-container__image-preview"></div>
                                     </div>
                                 </section>
                                 
@@ -188,3 +192,4 @@
 </section>
 <!-- /.content -->
 </form>
+<script type="text/javascript" src="<?php echo admin_public_url();?>plugins/file-upload-with-preview-master/dist/run-one-image.js"></script>

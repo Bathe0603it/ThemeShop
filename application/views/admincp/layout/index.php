@@ -27,11 +27,17 @@
         <!-- font site -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
+        <!-- CSS UPLOAD FILE -->
+        <link rel="stylesheet" href="<?php echo admin_public_url();?>plugins/file-upload-with-preview-master/dist/file-upload-with-preview.css">
+
         <!-- jQuery 2.2.3 -->
         <script src="<?php echo admin_template_url();?>plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- CK Editor -->
         <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
         <script src="<?php echo admin_public_url(); ?>js/functions.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="<?php echo admin_public_url();?>plugins/file-upload-with-preview-master/dist/file-upload-with-preview.js"></script>
+        
         <script type="text/javascript">
             
         </script>
@@ -247,6 +253,8 @@
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo admin_template_url();?>dist/js/demo.js"></script>
         <script src="<?php echo admin_public_url();?>js/jsadmin.js"></script>
+
+        
         
     </body>
 </html>
