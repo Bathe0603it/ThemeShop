@@ -19,7 +19,8 @@
             ));
 
             $this->load->library(array(
-                'category_lib'
+                'category_lib',
+                'upload_lib'
             ));
         }
     
@@ -101,9 +102,22 @@
             if ($this->form_validation->run('cat_create')) {
                 $arr_insert = $input;
 
+                $arr_insert['slug'] = slug($input['name']);
+                
+                // Upload image
+                if (isset($_FILES['image']) and $_FILES['image']['name']) {
+                    if ($this->upload_lib->doUpload(array('name' => 'image', 'path' => 'categorys'))) {
+                        $infoImage              = $this->upload_lib->info;
+                        $arr_insert['image']    = $infoImage['file_name'];
+                    }
+                    else{
+                        $this->system->flash('msg_warning',$this->upload_lib->errors);
+                    }
+                }
+
                 // Add into categorys
                 $idCat = $this->categoryModel->insert($arr_insert);
-                
+
                 // Thong bao
                 $msg = insertOk('Danh Mục');
                 $this->system->flash('msg_success',$msg);

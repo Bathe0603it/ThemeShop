@@ -80,6 +80,24 @@
         }
     }
 
+    if(!function_exists('category_layout')){
+        function category_layout($input = null){
+            $arr = array(
+                'default'   => 'Layout mặc định',
+                'single'    => 'Layout trang đơn',
+                'list'      => 'Layout danh sách',
+                'image'     => 'Layout ảnh',
+            );
+            if ($input) {
+                if (array_key_exists($input, $arr)) {
+                    return $arr[$input];
+                }
+                return false;
+            }
+            return $arr;
+        }
+    }
+
     if(!function_exists('rediectIndex')){
         function rediectIndex($input = null){
             return redirect(base_url('admincp/').getObject().'/index');

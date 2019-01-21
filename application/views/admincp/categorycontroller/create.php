@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="row">
@@ -124,7 +124,7 @@
                                     <label>Chọn 1 ảnh danh mục<a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&nbsp;&times;</a></label>
                                     <label class="custom-file-container__custom-file" >
                                         <input name="image" type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*">
-                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                        <input type="hidden" value="10485760" />
                                         <span class="custom-file-container__custom-file__custom-file-control">Up load ảnh</span>
                                     </label>
                                     <div class="custom-file-container__image-preview"></div>
@@ -168,8 +168,11 @@
                             <div class="form-group">
                                 <label>Khung giao diện</label>
                                 <select class="form-control" name="layout">
-                                    <option>Mặc định</option>
-                                    <option>Danh mục điện thoại</option>
+                                    <?php if ($categoryLayout = category_layout()): ?>
+                                        <?php foreach ($categoryLayout as $key => $value): ?>
+                                            <option value="<?php echo $key ?>"><?php echo $value; ?></option>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
                                 </select>
                             </div>
                             <div class="form-group">
