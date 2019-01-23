@@ -143,3 +143,4 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{ font-family: 'Roboto', san
   left: 0;
   top: 0;
   opacity: 0; }
+.color-red{ color: #a20a0a;font-weight: bold; }

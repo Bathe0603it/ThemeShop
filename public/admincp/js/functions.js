@@ -14,6 +14,20 @@ $(document).ready(function(){
     $('.show-box').click(function(){
         $(this).parent().children('.box-hidden').slideDown();
     });
+
+    /** Check max len **/
+    $('.check-max-lenght').keyup(function(){
+        var dataMax = $(this).attr('data-max');
+        var len     = $(this).val().length;
+        var labelObj    = $(this).parent().find('.for-check-max-lenght');
+        if (len > dataMax) {
+            labelObj.addClass('color-red');
+        }
+        else{
+            labelObj.removeClass('color-red');
+        }
+        labelObj.text(len);
+    });
     
 });
 
@@ -32,5 +46,7 @@ function scroll_to(box){
 function get_editor(param){
     CKEDITOR.replace(param);
 }
+
+
 
 

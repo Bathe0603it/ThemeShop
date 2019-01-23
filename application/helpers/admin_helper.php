@@ -98,8 +98,8 @@
         }
     }
 
-    if(!function_exists('rediectIndex')){
-        function rediectIndex($input = null){
+    if(!function_exists('redirectIndex')){
+        function redirectIndex($input = null){
             return redirect(base_url('admincp/').getObject().'/index');
         }
     }

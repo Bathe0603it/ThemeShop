@@ -206,6 +206,14 @@ $config = array(
                 'max_length' => '%s có chiều dài không lớn hơn 255 Kí tự',
             )
         ),
+        array(
+            'field' => 'slug',
+            'label' => 'Đường dẫn',
+            'rules' => 'trim|is_unique[categorys.slug]',
+            'errors' => array(
+                'is_unique' => '%s phải là duy nhất (<i>Đã tồn tại đường dẫn này</i>)',
+            )
+        ),
     ),
 
     /** Product create **/

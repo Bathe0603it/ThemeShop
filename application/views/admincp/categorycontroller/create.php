@@ -64,20 +64,20 @@
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
-                                        <p><label for="">Thẻ tiêu đề </label><span class="text-right"><b data-bind="(object.seo_title || titlePlaceholder()).length">0</b>/70</span></p>
-                                        <input name="meta_title" value="<?php echo set_value('meta_title'); ?>" type="text" bind-placeholder="titlePlaceholder()" class="form-control" placeholder="Enter title...">
+                                        <p><label for="">Thẻ tiêu đề </label><span class="text-right">&nbsp;<b class="for-check-max-lenght">0</b>/70</span></p>
+                                        <input name="meta_title" value="<?php echo set_value('meta_title'); ?>" type="text" class="form-control check-max-lenght" data-max="70" placeholder="Enter title...">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
-                                        <p><label for="">Thẻ keywords</label><span class="text-right">1/320</span></p>
-                                        <textarea name="meta_keywords" class="form-control"><?php echo set_value('meta_keywords'); ?></textarea>
+                                        <p><label for="">Thẻ keywords</label>&nbsp;<span class="text-right"><b class="for-check-max-lenght">0</b>/320</span></span></p>
+                                        <textarea name="meta_keywords" class="form-control check-max-lenght" data-max="320"><?php echo set_value('meta_keywords'); ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <div class="form-group">
-                                        <p><label for="">Thẻ mô tả</label><span class="text-right">1/320</span></p>
-                                        <textarea name="meta_description" class="form-control"><?php echo set_value('meta_description'); ?></textarea>
+                                        <p><label for="">Thẻ mô tả</label>&nbsp;<span class="text-right"><b class="for-check-max-lenght">0</b>/320</span></p>
+                                        <textarea name="meta_description" class="form-control check-max-lenght" data-max="320"><?php echo set_value('meta_description'); ?></textarea>
                                     </div>
                                 </div>
                             </div>

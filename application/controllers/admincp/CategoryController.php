@@ -60,7 +60,7 @@
             
             /** 2. Xu ly function now **/
             if (is_post()) {
-                $this->postCreate();
+                $this->postCreate()?redirectIndex():'';
             }
             
             $recListCat = $this->category_lib->categoryRecusive();
@@ -81,7 +81,9 @@
 
             // 2. Xu ly function now
             if (is_post()) {
-                $this->postEdit($id);
+                if ($this->postEdit($id)) {
+                    return redirectIndex();
+                }
             }
             $recListCat = $this->category_lib->categoryRecusive();
 
@@ -102,7 +104,14 @@
             if ($this->form_validation->run('cat_create')) {
                 $arr_insert = $input;
 
-                $arr_insert['slug'] = slug($input['name']);
+                // Customer slug
+                $slug               = $input['slug']?$input['slug']:slug($input['name']);
+                if ($this->categoryModel->getWhere(array('slug' => $slug))) {
+                    // Get next id
+                    $nextId = $this->categoryModel->getNextId();
+                    $slug   = $slug.'-'.$nextId;
+                }
+                $arr_insert['slug'] = $slug;
                 
                 // Upload image
                 if (isset($_FILES['image']) and $_FILES['image']['name']) {
@@ -121,10 +130,12 @@
                 // Thong bao
                 $msg = insertOk('Danh Mục');
                 $this->system->flash('msg_success',$msg);
+                return true;
             }
             else{
                 $msg = validation_errors();
                 $this->system->flash('msg_warning',$msg);
+                return false;
             }
         }
 

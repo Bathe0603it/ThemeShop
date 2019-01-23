@@ -12,8 +12,10 @@
 
         public function __construct(){
             parent::__construct();
-            $this->urlNow = $this->uri->uri_string();
-            $segment1 = $this->uri->segment(1);
+            $this->urlNow   = $this->uri->uri_string();
+            $segment1       = $this->uri->segment(1);
+
+            $this->load->helper('admin_helper');
 
             // Check admincp in url
             if (preg_match('/'.$this->prefix.'/', $this->urlNow) and $segment1 = $this->prefix) {
