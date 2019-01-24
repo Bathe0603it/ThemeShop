@@ -195,7 +195,8 @@ $config = array(
                 )),
     ),
 
-    /** Category create **/
+    /** Category **/
+    // Create
     'cat_create' => array(
         array(
             'field' => 'name',
@@ -212,6 +213,27 @@ $config = array(
             'rules' => 'trim|is_unique[categorys.slug]',
             'errors' => array(
                 'is_unique' => '%s phải là duy nhất (<i>Đã tồn tại đường dẫn này</i>)',
+            )
+        ),
+    ),
+    // Edit
+    'cat_edit' => array(
+        array(
+            'field' => 'name',
+            'label' => 'Thông tin tên',
+            'rules' => 'trim|required|max_length[255]',
+            'errors' => array(
+                'required' => '{feild} không được để trống.',
+                'max_length' => '{feild} có chiều dài không lớn hơn {param} Kí tự',
+            )
+        ),
+        array(
+            'field' => 'slug',
+            'label' => 'Đường dẫn',
+            'rules' => 'trim|required|callback_slugCheck',
+            'errors' => array(
+                'required' => '{feild} vui lòng không để trống.'
+                'slugCheck' => '{feild} đã tồn tại ở 1 bản ghi khác vui lòng đặt lại',
             )
         ),
     ),

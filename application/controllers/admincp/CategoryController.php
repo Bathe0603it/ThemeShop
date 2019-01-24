@@ -8,6 +8,7 @@
     class CategoryController extends MY_Controller
     {
         private $model = 'categoryModel';
+        private $pathImage  = 'categorys';
 
         public function __construct(){                       
             parent::__construct();
@@ -81,9 +82,7 @@
 
             // 2. Xu ly function now
             if (is_post()) {
-                if ($this->postEdit($id)) {
-                    return redirectIndex();
-                }
+                $this->postEdit($id)?redirectIndex():'';
             }
             $recListCat = $this->category_lib->categoryRecusive();
 
@@ -105,7 +104,7 @@
                 $arr_insert = $input;
 
                 // Customer slug
-                $slug               = $input['slug']?$input['slug']:slug($input['name']);
+                $slug   = $input['slug']?$input['slug']:slug($input['name']);
                 if ($this->categoryModel->getWhere(array('slug' => $slug))) {
                     // Get next id
                     $nextId = $this->categoryModel->getNextId();
@@ -115,7 +114,7 @@
                 
                 // Upload image
                 if (isset($_FILES['image']) and $_FILES['image']['name']) {
-                    if ($this->upload_lib->doUpload(array('name' => 'image', 'path' => 'categorys'))) {
+                    if ($this->upload_lib->doUpload(array('name' => 'image', 'path' => $this->pathImage))) {
                         $infoImage              = $this->upload_lib->info;
                         $arr_insert['image']    = $infoImage['file_name'];
                     }
@@ -144,17 +143,29 @@
             $input  = $this->input->post();
             if ($this->form_validation->run('cat_edit')) {
                 $arr_update = $input;
+
+                // Check image upload
+                if (isset($_FILES['image']) and $_FILES['image']['name']) {
+                    if ($this->upload_lib->doUpload(array('name' => 'image', 'path' => $this->pathImage))) {
+                        $infoImage              = $this->upload_lib->info;
+                        $arr_update['image']    = $infoImage['file_name'];
+                    }
+                    else{
+                        $this->system->flash('msg_warning',$this->upload_lib->errors);
+                    }
+                }
+                
                 $this->categoryModel->update($arr_update,$id);
 
                 // Add into category_taxonomy
-                $idCatRel = $this->categoryRelationshipModel->updateWhere( 
-                    array(
-                        'category_taxonomy_id' => $arr_insert['taxonomy']
-                    ), // update
-                    array(
-                        'category_id' => $id
-                    ) // where
-                );
+                // $idCatRel = $this->categoryRelationshipModel->updateWhere( 
+                //     array(
+                //         'category_taxonomy_id' => $arr_insert['taxonomy']
+                //     ), // update
+                //     array(
+                //         'category_id' => $id
+                //     ) // where
+                // );
                 
                 $msg = editOk('Danh mục');
                 $this->system->flash('msg_success',$msg);
@@ -163,5 +174,14 @@
                 $msg = validation_errors();
                 $this->system->flash('msg_warning',$msg);
             }
+        }
+
+        public function slugCheck(){
+            $input  = $this->input->post();
+            // Kiem tra url hien tai da ton tai trong db
+            $id     = $_GET['id'];
+            $slug   = $input['slug'];
+            $checkData  = $this->categoryModel->getWhere(array( 'slug' => $slug , 'id<>' => $id ));
+            return $checkData?true:false;   // neu tim thay 1 ban ghi cung permission va khac item id return true as "tim thay" else "khong tim thay"
         }
     }

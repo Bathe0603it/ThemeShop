@@ -31,19 +31,6 @@
     
     /**
     *
-    * get template of fronted
-    * @param string
-    * @return string url
-    *
-    **/
-    if(!function_exists('public_url')){
-        function public_url($input = null){
-            return base_url('templates/site/');
-        }
-    }
-    
-    /**
-    *
     * show url now
     * @param string
     * @return string
@@ -284,10 +271,6 @@
 
             return trim($title, $separator);
         }
-    }
-
-    function limit(){
-        return LIMIT;
     }
 
     /**
