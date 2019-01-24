@@ -232,7 +232,7 @@ $config = array(
             'label' => 'Đường dẫn',
             'rules' => 'trim|required|callback_slugCheck',
             'errors' => array(
-                'required' => '{feild} vui lòng không để trống.'
+                'required' => '{feild} vui lòng không để trống.',
                 'slugCheck' => '{feild} đã tồn tại ở 1 bản ghi khác vui lòng đặt lại',
             )
         ),

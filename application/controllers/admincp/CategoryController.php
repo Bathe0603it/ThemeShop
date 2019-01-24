@@ -35,12 +35,12 @@
             $total  = $this->categoryModel->countAll();
             $catList    = $this->categoryModel->getBy(
                 array(
-                    'limit'     => $offset,
-                    'order_by'  => array('sort', 'asc'),
+                    'limit'     => $offset
                 )
             );
             $catList = $this->recusive_lib->set_parent_to_array($catList);
             $catList = $this->recusive_lib->get_parent_to_array();
+            
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
                 'total'     => $total,
@@ -50,7 +50,7 @@
 
             /** 3. Xu ly data to view **/
             $data['data']   = array(
-                'cat_list'   => $catList,
+                'catList'   => $catList,
                 'pagination'    => $pagination,
             );
             $this->loadView($this->view, $data);
