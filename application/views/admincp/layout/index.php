@@ -18,6 +18,8 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="<?php echo admin_template_url();?>dist/css/skins/_all-skins.min.css">
+        <!-- iCheck -->
+        <link rel="stylesheet" href="<?php echo admin_template_url();?>plugins/iCheck/flat/blue.css">
 
         <link rel="stylesheet" href="<?php echo admin_public_url();?>css/global-style.css">
 
@@ -253,8 +255,35 @@
         <!-- AdminLTE for demo purposes -->
         <script src="<?php echo admin_template_url();?>dist/js/demo.js"></script>
         <script src="<?php echo admin_public_url();?>js/jsadmin.js"></script>
+        <!-- iCheck -->
+        <script src="<?php echo admin_template_url();?>plugins/iCheck/icheck.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                /** Checkbox nice **/
+                //Enable iCheck plugin for checkboxes
+                //iCheck for checkbox and radio inputs
+                $('.mailbox-messages input[type="checkbox"]').iCheck({
+                    checkboxClass: 'icheckbox_flat-blue',
+                    radioClass: 'iradio_flat-blue'
+                });
 
-        
+                /** Check all **/
+                //Enable check and uncheck all functionality
+                $(".checkbox-toggle").click(function () {
+                    var clicks = $(this).data('clicks');
+                    if (clicks) {
+                        //Uncheck all checkboxes
+                        $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+                        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+                    } else {
+                        //Check all checkboxes
+                        $(".mailbox-messages input[type='checkbox']").iCheck("check");
+                        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+                    }
+                    $(this).data("clicks", !clicks);
+                });
+            });
+        </script>
         
     </body>
 </html>
