@@ -39,7 +39,7 @@
                 )
             );
             $catList = $this->recusive_lib->set_parent_to_array($catList);
-            $catList = $this->recusive_lib->get_parent_to_array();dd($catList);
+            $catList = $this->recusive_lib->get_parent_to_array();
             
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(

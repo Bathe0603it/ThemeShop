@@ -105,10 +105,10 @@
                                             $id = $value['id'];
                                             $image  = get_link_image_category($value);
                                             $name   = $value['name'];
-                                            $editLink   = $get_link_edit($value);
+                                            $editLink   = get_link_to_edit($value);
                                             $type   = category_taxonomy($value['taxonomy']);
-                                            $status = get_status($value);
-                                            $timer  = '';
+                                            $status = get_status($value['status']);
+                                            $timer  = $value['post_date'];
                                         ?>
                                         <tr>
                                             <td><input type="checkbox" value="<?php echo $id; ?>"></td>

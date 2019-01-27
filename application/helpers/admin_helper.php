@@ -43,7 +43,7 @@
 
     if(!function_exists('get_link_to_edit')){
         function get_link_to_edit($input = null){
-            return redirect(base_url('admincp/').getObject().'/edit?id='.$input['id']);
+            return base_url('admincp/').getObject().'/edit?id='.$input['id'];
         }
     }
 
