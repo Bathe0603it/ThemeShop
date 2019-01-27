@@ -95,19 +95,19 @@
                                     <th style="width: 10px">#</th>
                                     <th>Ảnh</th>
                                     <th>Danh mục</th>
-                                    <th>Loại danh mục</th>
+                                    <th>Phân loại</th>
                                     <th>Status</th>
                                     <th>Timer</th>
                                 </tr>
                                 <?php if ($catList): ?>
                                     <?php foreach ($catList as $key => $value): ?>
                                         <?php
-                                            $id = '';
-                                            $image  = '';
-                                            $name   = '';
-                                            $editLink   = '';
-                                            $type   = '';
-                                            $status = '';
+                                            $id = $value['id'];
+                                            $image  = get_link_image_category($value);
+                                            $name   = $value['name'];
+                                            $editLink   = $get_link_edit($value);
+                                            $type   = category_taxonomy($value['taxonomy']);
+                                            $status = get_status($value);
                                             $timer  = '';
                                         ?>
                                         <tr>

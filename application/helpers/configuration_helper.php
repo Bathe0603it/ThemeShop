@@ -120,6 +120,13 @@
                 'trash'     => 'Trong thùng rác',
                 'destroy'   => 'Phá hủy(xóa hoàn toàn)',
             );
+            if ($input) {
+                if (array_key_exists($input, $arr)) {
+                    return $arr[$input];
+                }
+                return false;
+            }
+            return $arr;
         }
     }
     

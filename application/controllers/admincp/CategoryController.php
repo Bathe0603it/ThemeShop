@@ -39,7 +39,7 @@
                 )
             );
             $catList = $this->recusive_lib->set_parent_to_array($catList);
-            $catList = $this->recusive_lib->get_parent_to_array();
+            $catList = $this->recusive_lib->get_parent_to_array();dd($catList);
             
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
@@ -49,7 +49,7 @@
             $pagination     = $this->paginationextend->get( $paramsPagination );
 
             /** 3. Xu ly data to view **/
-            $data['data']   = array(
+            $data   = array(
                 'catList'   => $catList,
                 'pagination'    => $pagination,
             );
