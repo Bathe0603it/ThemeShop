@@ -99,25 +99,28 @@
                                     <th>Status</th>
                                     <th>Timer</th>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                    </td>
-                                    <td class="mailbox-attachment"></td>
-                                    <td class="mailbox-attachment"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox"></td>
-                                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-                                    <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                    <td class="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                                    </td>
-                                    <td class="mailbox-attachment"></td>
-                                    <td class="mailbox-attachment"></td>
-                                </tr>
-                                
+                                <?php if ($catList): ?>
+                                    <?php foreach ($catList as $key => $value): ?>
+                                        <?php
+                                            $id = '';
+                                            $image  = '';
+                                            $name   = '';
+                                            $editLink   = '';
+                                            $type   = '';
+                                            $status = '';
+                                            $timer  = '';
+                                        ?>
+                                        <tr>
+                                            <td><input type="checkbox" value="<?php echo $id; ?>"></td>
+                                            <td class="mailbox-star"><a href="<?php echo $editLink; ?>"><img src="<?php echo $image; ?>"></a></td>
+                                            <td class="mailbox-name"><a href="<?php echo $editLink; ?>"><?php echo $name; ?></a></td>
+                                            <td class="mailbox-subject"><b><?php echo $type; ?></b>
+                                            </td>
+                                            <td class="mailbox-attachment"><?php echo $status; ?></td>
+                                            <td class="mailbox-attachment"><?php echo $timer; ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                <?php endif ?>
                             </tbody>
                         </table>
                         <!-- /.table -->

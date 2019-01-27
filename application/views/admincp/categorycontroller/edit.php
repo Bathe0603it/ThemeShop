@@ -129,9 +129,9 @@
                                         <span class="custom-file-container__custom-file__custom-file-control">Up load ảnh</span>
                                     </label>
                                     <?php
-                                        $imageItem  = ''; 
+                                        $imageItem  = get_link_image_category($item); 
                                     ?>
-                                    <div class="custom-file-container__image-preview"></div>
+                                    <div class="custom-file-container__image-preview"><img src="<?php echo $imageItem; ?>"></div>
                                 </section>
                                 
                             </div>

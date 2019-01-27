@@ -91,7 +91,7 @@
 
             // 4. Xu ly data to view
             $data = array(
-                'arr_cat' => $recListCat,
+                'rcsCategory' => $recListCat,
                 'item' => $item
             );
             $this->loadView($this->view, $data);
