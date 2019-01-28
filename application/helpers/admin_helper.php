@@ -46,6 +46,4 @@
             return base_url('admincp/').getObject().'/edit?id='.$input['id'];
         }
     }
-
-
 ?>

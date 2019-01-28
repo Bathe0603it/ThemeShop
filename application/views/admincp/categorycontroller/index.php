@@ -103,7 +103,7 @@
                                     <?php foreach ($catList as $key => $value): ?>
                                         <?php
                                             $id = $value['id'];
-                                            $image  = get_link_image_category($value);
+                                            $image  = get_link_image_thumb_min_size_category($value);
                                             $name   = $value['name'];
                                             $editLink   = get_link_to_edit($value);
                                             $type   = category_taxonomy($value['taxonomy']);
@@ -114,7 +114,7 @@
                                             <td><input type="checkbox" value="<?php echo $id; ?>"></td>
                                             <td class="mailbox-star"><a href="<?php echo $editLink; ?>"><img src="<?php echo $image; ?>"></a></td>
                                             <td class="mailbox-name"><a href="<?php echo $editLink; ?>"><?php echo $name; ?></a></td>
-                                            <td class="mailbox-subject"><b><?php echo $type; ?></b>
+                                            <td class="mailbox-subject"><?php echo $type; ?>
                                             </td>
                                             <td class="mailbox-attachment"><?php echo $status; ?></td>
                                             <td class="mailbox-attachment"><?php echo $timer; ?></td>
