@@ -8,6 +8,7 @@
     class ProductController extends MY_Controller
     {
         private $model = 'productModel';
+        private $pathImage  = 'products';
 
         public function __construct(){                       
             parent::__construct();
@@ -16,40 +17,42 @@
                 'categoryModel'
             ));
             $this->load->library(array(
-                'category_lib'
+                'category_lib',
+                'upload_lib'
             ));
         }
     
         public function index(){
-            // 1. Xu ly du lieu xuong tu url
+            /** 1. Xu ly du lieu xuong tu url **/
             $inputGet   = $this->input->get();
-            $page   = isset($inputGet['page'])?($inputGet['page']?$inputGet['page']:1):1;
-            $offset = ( $page - 1 )*$this->productModel->limit;
+            $page   = isset( $inputGet['page'] ) ? ( $inputGet['page'] ? $inputGet['page'] : 1 ) : 1;
+            $offset = ( $page - 1 ) * LIMIT;
 
-            // 2. Xu ly function hien tai
+            /** 2. Xu ly function hien tai **/
             $total  = $this->productModel->countAll();
-            $productList    = $this->productModel->getBy(
+            $productsList   = $this->productModel->getBy(
                 array(
-                    'limit' => $offset,
+                    'limit' => $offset
                 )
             );
-
+            
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
                 'total'     => $total,
                 'base_url'  => $this->uri->uri_string()
             );
-            $pagination     = $this->paginationextend->get($paramsPagination);
+            $pagination     = $this->paginationextend->get( $paramsPagination );
 
-            /** Danh sách danh mục **/
-            
+            // 2.2. Xu ly danh mục sản phẩm
+            $catsListRecus = $this->category_lib->categoryRecusive();
 
-            // 3. Xu ly data to view
-            $data['data']   = array(
-                'productList'   => $productList,
+            /** 3. Xu ly data to view **/
+            $data   = array(
+                'productsList'  => $productsList,
                 'pagination'    => $pagination,
+                'catsListRecus' => $catsListRecus
             );
-            $this->loadView($this->view,$data);
+            $this->loadView($this->view, $data);
         }
         
         public function create(){

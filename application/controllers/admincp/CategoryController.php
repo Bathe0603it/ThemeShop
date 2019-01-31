@@ -14,9 +14,7 @@
             parent::__construct();
 
             $this->load->model(array(
-                $this->model,
-                'categoryRelationshipModel',
-                'categoryTaxonomyModel'
+                $this->model
             ));
 
             $this->load->library(array(
@@ -29,17 +27,17 @@
             /** 1. Xu ly du lieu xuong tu url **/
             $inputGet   = $this->input->get();
             $page   = isset( $inputGet['page'] ) ? ( $inputGet['page'] ? $inputGet['page'] : 1 ) : 1;
-            $offset = ( $page - 1 ) * $this->categoryModel->limit;
+            $offset = ( $page - 1 ) * LIMIT;
 
             /** 2. Xu ly function hien tai **/
             $total  = $this->categoryModel->countAll();
-            $catList    = $this->categoryModel->getBy(
+            $catsList    = $this->categoryModel->getBy(
                 array(
                     'limit'     => $offset
                 )
             );
-            $catList = $this->recusive_lib->set_parent_to_array($catList);
-            $catList = $this->recusive_lib->get_parent_to_array();
+            $catsList = $this->recusive_lib->set_parent_to_array($catsList);
+            $catsList = $this->recusive_lib->get_parent_to_array();
             
             // 2.1. Xu ly phan trang
             $paramsPagination    = array(
@@ -50,7 +48,7 @@
 
             /** 3. Xu ly data to view **/
             $data   = array(
-                'catList'   => $catList,
+                'catsList'   => $catsList,
                 'pagination'    => $pagination,
             );
             $this->loadView($this->view, $data);

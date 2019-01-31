@@ -99,8 +99,8 @@
                                     <th>Status</th>
                                     <th>Timer</th>
                                 </tr>
-                                <?php if ($catList): ?>
-                                    <?php foreach ($catList as $key => $value): ?>
+                                <?php if ($catsList): ?>
+                                    <?php foreach ($catsList as $key => $value): ?>
                                         <?php
                                             $id = $value['id'];
                                             $image  = get_link_image_thumb_min_size_category($value);

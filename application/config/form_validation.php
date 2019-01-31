@@ -248,7 +248,15 @@ $config = array(
                 'required' => '%s không được để trống.',
                 'max_length' => '%s có chiều dài không lớn hơn {param}',
             )
-        )
+        ),
+        array(
+            'field' => 'slug',
+            'label' => 'Đường dẫn',
+            'rules' => 'trim|is_unique[products.slug]',
+            'errors' => array(
+                'is_unique' => '%s phải là duy nhất (<i>Đã tồn tại đường dẫn này</i>)',
+            )
+        ),
     ),
 
     'product_edit' => array(
